@@ -1,0 +1,437 @@
+.icon {
+    width: 108px;
+    height: 25px;
+    font-size: 20px;
+    filter: invert(5%);
+}  
+
+.icon-edit {
+    color:#fff;
+    font-size: 18px;
+    background-color:#bc05bc;
+    padding: 3px 3px 6px 5px;
+    border-radius: 10px;
+    border: 0px;
+    cursor: pointer;
+}
+
+.icon-edit:hover {
+    opacity: 0.7;
+}
+
+.icon-acao-servico {
+    font-size: 18px;
+}
+
+.icon-acao-servico:hover {
+    opacity: 0.7;
+}
+
+.loading{
+    background:url('../../Resources/images/loading.gif') no-repeat right center;
+    background-size:25px 25px;
+}
+
+.body {
+    background-image: url('../images/maker/fundoLogin.jpeg');
+}
+
+a:link, a:visited{
+    color: #7c15c0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active{
+    text-decoration: none;
+}
+
+td{
+    font-size: .9em;
+}
+
+.label{
+    font-size: 11px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+
+.labelFont20{
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+.labelFont12{
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+
+.labelFont13{
+    font-size: 13px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+
+.labelFont14{
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+
+.labelFont15{
+    font-size: 15px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color:#000000;
+}
+
+.labelFont16{
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding-left: 30px;
+    text-align: left;
+    color:#FA58AC;
+}
+
+.divDefault{
+    border: 1px solid #a4bed4;
+}
+
+.inputFont12{
+    font-size: 12px;
+    font-family: Verdana, sans-serif;margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.inputFont14{
+    font-size: 14px;
+    font-family: Verdana, sans-serif;margin: 0;
+    padding: 0;
+    height: 25px;
+    text-align: left;
+}
+
+.disabledTable {
+    pointer-events: none;
+    opacity: 100;
+}
+
+/*Card*/
+.card-cabecalho {
+    border: 1px solid #6d0a57;
+    border-bottom-width: 0px;
+    border-radius: 4px;
+    background-color: #FBEFF8;
+    margin-bottom: 15px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 #0000004d;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: arial;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    padding: 20px 20px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+}
+
+.card-prestador {
+    box-shadow: 0 4px 8px 0 #0000004d;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: arial;
+    background-color: #f4e3fc;
+    border-radius: 6px;
+    padding: 10px 10px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+}
+
+/*Textos*/
+.cabecalho {
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.titulo {
+    padding: 5px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #7c15c0;
+}
+
+.titulo-cadastro {
+    text-align:center;
+    font-family:'Comic Sans MS', 'Comic Sans', 'cursive';
+    color: #FA58AC;
+    margin: 0px;
+}
+
+/*Input*/
+.input {
+    width: 100%;
+    height: 35px;
+    padding: 5px 5px;
+    margin: 4px 0;
+    border-radius: 4px;
+}
+
+.input-menor {
+    width: 35%;
+    height: 35px;
+    padding: 5px 5px;
+    margin: 4px 0;
+    border-radius: 4px;
+}
+
+.checkbox {
+    font-size: 16px;
+    color: #202020;
+}
+
+/*Botões*/
+.button {
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #FF0040;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.button:hover {
+    opacity: 0.7;
+}
+
+.button-cadastro {
+    border: none;
+    padding: 5px;
+    color: white;
+    /* border: 1px solid #AC58FA; */
+    border-radius: 8px;
+    background-color: #7c15c0;
+    text-align: center;
+    cursor: pointer;
+    white-space: normal;
+    width: 40%;
+    font-size: 18px;
+}
+
+.button-cadastro:hover {
+    opacity: 0.7;
+}
+
+.button-enviar {
+    margin-left:45px;
+    background-color: #FA58AC;
+    border-color:#aa1137;
+    border: none;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    white-space: normal;
+    width: 40%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.button-enviar:hover {
+    opacity: 0.7;
+}
+
+.button-default {
+    margin-left:55px;
+    border: none;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    background-color: #b5b2b6;
+    text-align: center;
+    cursor: pointer;
+    white-space: normal;
+    width: 40%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.button-default:hover {
+    opacity: 0.7;
+}
+
+.button-novo {
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: mediumorchid;
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+    font-size: 18px;
+}
+
+.button-novo:hover {
+    opacity: 0.7;
+}
+
+.button-edit {
+    border: none;
+    border-radius: 8px;
+    padding: 4px;
+    color: white;
+    background-color: #bc05bc;
+    text-align: center;
+    cursor: pointer;
+    width: 130px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.button-edit:hover {
+    opacity: 0.7;
+}
+
+.button-search {
+    color:#fff;
+    font-size: 20px;
+    background-color:#bc05bc;
+    padding: 10px 30px 15px 32px;
+    border-radius: 8px;
+    border: 0px;
+    cursor: pointer;
+}
+
+.button-search:hover {
+    opacity: 0.7;
+}
+
+/*Modal*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 15px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 102%; /* Full width */
+    height: 98%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    /* background-color: #000000; Fallback color */
+    background-color: #0000004a; /* Black w/ opacity */
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: MediumAquamarine;
+    color: white;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Gráfico Knob*/
+#knobContainer {
+    position: relative;
+}
+.inputField {
+    left: 100px;
+    top: 180px;
+    width: 200px;
+    height: 40px;
+    color: black;
+    font-size: 26px;
+    position: absolute;
+    background: transparent;
+    text-align: center;
+    border: none;
+}
+.inputField2 {
+    left: 60px;
+    top: 60px;
+    width: 180px;
+    height: 50px;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    background: transparent;
+    text-align: center;
+    border: none;
+}
+.inputField3 {
+    left: 60px;
+    top: 190px;
+    width: 180px;
+    height: 50px;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    background: transparent;
+    text-align: center;
+    border: none;
+}
+text.jqx-knob-label {
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+.inputField .jqx-input-content {
+    background: transparent;
+    font-size: 30px;
+    color: black;
+}
+#knob2 {
+    position: absolute !important;
+    top: 50px;
+    left: 50px;
+}
+#knob3 {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+}
