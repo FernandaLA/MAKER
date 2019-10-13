@@ -160,5 +160,12 @@ class UsuarioDao extends BaseDao {
                      WHERE COD_USUARIO = " . $codUsuario;
         return $this->insertDB($update);
     }
+
+    public function BuscaPerfilUsuario($codUsuario) {
+        $select = " SELECT COD_PERFIL
+                      FROM SE_USUARIO
+                     WHERE COD_USUARIO =".$codUsuario;
+        return $this->selectDB($select, false);
+    }
 }
 ?>

@@ -17,8 +17,6 @@ class PrestadorDao extends UsuarioDao
     
     Public Function InsertPrestador(stdClass $obj) {
         $obj->codUsuario = $this->CatchUltimoCodigo('SE_USUARIO', 'COD_USUARIO');
-        $obj->nmeUsuario = $obj->nmeUsuario.toUpperCase();
-        $obj->dscSobrenome = $obj->dscSobrenome.toUpperCase();
         $obj->indAtivo = "N";
         $obj->txtSenha = md5($obj->txtSenha);
         return $this->MontarInsert($obj);

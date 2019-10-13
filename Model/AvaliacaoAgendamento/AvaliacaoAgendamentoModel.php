@@ -1,0 +1,31 @@
+<?php
+include_once("Model/BaseModel.php");
+include_once("Dao/AvaliacaoAgendamento/AvaliacaoAgendamentoDao.php");
+class AvaliacaoAgendamentoModel extends BaseModel
+{
+    public function AvaliacaoAgendamentoModel() {
+        If (!isset($_SESSION)){
+            ob_start();
+            session_start();
+        }
+    }
+
+    Public Function CarregaAvaliacaoAgendamento($Json=true) {
+        $dao = new AvaliacaoAgendamentoDao();
+        $lista = $dao->CarregaAvaliacaoAgendamento();
+        if ($Json){
+            return json_encode($lista);
+        }else{
+            return $lista;
+        }
+    }
+
+    Public Function InsertAvaliacaoAgendamento() {
+        $dao = new AvaliacaoAgendamentoDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $result = $dao->InsertAvaliacaoAgendamento($this->objRequest);
+        return json_encode($result);
+    }
+    
+}
+

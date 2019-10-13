@@ -16,7 +16,12 @@ $(function () {
 
     $('#btnSalvarPre').click(function () {
         salvarCadastroPre();
-        $('#CadPrestador').hide('fade');
+        // if($('#arquivo').val() != '') {
+        //     var formCertificado = new FormData(document.formComprovante);
+        //     // Ta sem permissão
+        //     ExecutaDispatchUpload('Usuario', 'UploadCertificado', formCertificado, retornaEnvioCertificado);
+            
+        // }
     });
         
     $("#nroCepPre").on('blur', function(){
@@ -26,6 +31,14 @@ $(function () {
     });
 
 });
+
+function retornaEnvioFoto(dado) {
+    $("#dscCaminhoFotoPre").val(dado[1]);
+}
+
+function retornaEnvioCertificado(dado) {
+    $("#dscCaminhoCertificado").val(dado[1]);
+}
 
 function pesquisaCepPre(){
     var parametros = 'nroCep;'+$("#nroCepPre").val()+'|verificaPermissao;N|';
@@ -108,8 +121,15 @@ function salvarCadastroPre() {
     var parametros = retornaParametros("cadPrestador");
     parametros += "|verificaPermissao;N|codPerfil;2|";
     // console.log(parametros);
-    ExecutaDispatch('Prestador','InsertPrestador', parametros);
+    ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador);
 }
+
+function retornoSalvarPrestador(dado) {
+    if(dado[0]){
+        $('#CadPrestador').hide('fade');
+    }
+}
+
 
 function DesabilitaCamposPre(ind) {
     $("#fotoPre").attr('Disabled', ind);
@@ -134,4 +154,12 @@ $(document).ready(function() {
     ExecutaDispatch('CategoriaServico','ListarCategoriaServicoAtivo', 'verificaPermissao;N|', montaBoxCategoria);
     ExecutaDispatch('UnidadeFederativa','ListarUnidadeFederativa', 'verificaPermissao;N|', MontaComboUFPre);
     DesabilitaCamposPre(true);
+
+    $('#fotoPre').change(function () {
+        if($('#fotoPre').val() !== ''){
+            // Ta sem permissão
+            var formFoto = new FormData(document.formFoto);
+            ExecutaDispatchUpload('Usuario', 'UploadFotoPerfil', formFoto, retornaEnvioFoto, 'Aguarde...', 'Foto Salva!!');
+        }
+    });
 });

@@ -6,20 +6,7 @@ include_once "../Scripts.php";
     <title>MAKER - Home</title>
     <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
 <style>
-    /*Grid*/
-    .grid-container {
-        display: grid;
-        grid-template-areas:
-        'header header header'
-        'left main right';
-        grid-gap: 0px;
-        background-color: #f2f2f200;
-    }
-    .item1 { grid-area: header; }
-    .item2 { grid-area: left; }
-    .item3 { grid-area: main; margin: auto }
-    .item4 { grid-area: right;}
-
+    
     /*Card*/
     .card-principal {
         box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3);

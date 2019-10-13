@@ -39,44 +39,6 @@ function MontaMenuNew(dados) {
     });
 }
 
-// function MontaMenu(menu){
-//     var DadosMenu = '';
-//     DadosMenu = menu;
-//     if (DadosMenu[0]){
-//         var source =
-//         {
-//             datatype: "json",
-//             datafields: [
-//                 { name: 'id', map: 'COD_MENU' },
-//                 { name: 'idPai', map: 'COD_MENU_PAI' },
-//                 { name: 'dscMenu', map: 'DSC_MENU' },
-//                 { name: 'labelMenu', map: 'LABEL' },
-//                 { name: 'subMenuWidth', map: 'VLR_TAMANHO_SUBMENU' }
-//             ],
-//             id: 'id',
-//             localdata: DadosMenu[1]
-//         };
-//         var dataAdapter = new $.jqx.dataAdapter(source);
-//         dataAdapter.dataBind();
-//         var records = dataAdapter.getRecordsHierarchy('id', 'idPai', 'items', [
-//             // {name: 'dscMenu', map: 'label'},
-//             {name: 'labelMenu', map: 'label'},
-//             {name: 'id', map: 'id'}
-//         ]);
-//         $('#CriaMenu').jqxMenu({ source: records, height: 45, theme: 'styleMaker' });
-//         $("#CriaMenu").on('itemclick', function (event) {
-//             for(var i=0;i<DadosMenu[1].length; i++){
-
-//                 if (event.args.id==DadosMenu[1][i].COD_MENU){                    
-//                     if((DadosMenu[1][i].NME_CONTROLLER!='#') && (DadosMenu[1][i].NME_CONTROLLER!=null) && (DadosMenu[1][i].NME_CONTROLLER!='')){
-//                         RedirecionaController(DadosMenu[1][i].NME_CONTROLLER, DadosMenu[1][i].NME_METHOD);
-//                     }
-//                 }
-//             }
-//         });
-//     }
-// }
-
 function CriarDivAutoComplete(nmeInput, url, method, dataFields, displayMember, valueMember, callback, width){ 
     if ( $("#divAutoComplete").length ){
         $("#divAutoComplete").jqxWindow("destroy");

@@ -24,6 +24,8 @@ class PrestadorModel extends UsuarioModel
     Public Function InsertPrestador() {
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
+        $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
         $result = $dao->InsertPrestador($this->objRequest);
         return json_encode($result);
     }

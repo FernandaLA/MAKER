@@ -1,9 +1,9 @@
 $(function () {
-    $("#CadUsuarios").jqxWindow({
+    $("#ConfirmaValidacao").jqxWindow({
         autoOpen: false,
         height: 360,
         width: 480,
-        theme: 'styleMaker',
+        theme: 'darkcyan',
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
@@ -12,12 +12,12 @@ $(function () {
     });
     $("#btnNovo").click(function () {
         LimparCampos();
-        $("#CadUsuarios").jqxWindow("open");
+        $("#ConfirmaValidacao").jqxWindow("open");
     });
 });
 
 function CarregaGridUsuario() {
-    ExecutaDispatch('Usuario', 'ListarUsuario', undefined, retornoGridUsuario);
+    ExecutaDispatch('ValidaPrestador', 'ListarPrestadoresPendentes', undefined, retornoGridUsuario);
 }
 
 function retornoGridUsuario(retorno) {
@@ -26,7 +26,7 @@ function retornoGridUsuario(retorno) {
 }
 
 function MontaTabelaUsuario(listaUsuario) {
-    var nomeGrid = 'listaUsuarios';
+    var nomeGrid = 'listaPrestadores';
     var source =
     {
         localdata: listaUsuario,
@@ -37,13 +37,10 @@ function MontaTabelaUsuario(listaUsuario) {
         datafields:
             [
                 { name: 'COD_USUARIO', type: 'string' },
-                { name: 'NME_USUARIO', type: 'string' },
-                { name: 'COD_PERFIL', type: 'string' },
-                { name: 'DSC_PERFIL', type: 'string' },
-                { name: 'IND_ATIVO', type: 'string' },
-                { name: 'ATIVO', type: 'boolean' },
+                { name: 'NME_COMPLETO', type: 'string' },
                 { name: 'NRO_CPF', type: 'string' },
-                { name: 'TXT_EMAIL', type: 'string' }
+                { name: 'DSC_CAMINHO_CERTIFICADO', type: 'string' }
+
             ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
@@ -51,36 +48,31 @@ function MontaTabelaUsuario(listaUsuario) {
         {
             width: 700,
             source: dataAdapter,
-            theme: 'darkcyan',
+            theme: 'styleMaker',
             sortable: true,
             filterable: true,
             pageable: true,
             columnsresize: true,
             selectionmode: 'singlerow',
             columns: [
-                { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_USUARIO', width: 70 },
-                { text: 'Login', datafield: 'NME_USUARIO', columntype: 'textbox', width: 170 },
-                { text: 'Perfil', datafield: 'DSC_PERFIL', columntype: 'textbox', width: 180 },
-                { text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 180 },
-                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 60, align: 'center' }
+                { text: 'C&oacute;d', columntype: 'textbox', datafield: 'COD_USUARIO', width: 50 },
+                { text: 'Nome Completo', datafield: 'NME_COMPLETO', columntype: 'textbox', width: 320 },
+                { text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 150 }
             ]
         });
     // events
-    $('#' + nomeGrid).jqxGrid('hidecolumn', 'NRO_CPF');
 
     $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
         var args = event.args;
-        var rows = $('#listaUsuarios').jqxGrid('getdisplayrows');
+        var rows = $('#listaPrestadores').jqxGrid('getdisplayrows');
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
-        preencheCamposForm(listaUsuario[rowID],'indAtivo;B|');
-        $("#method").val("UpdateMenu");
-        $("#CadUsuarios").jqxWindow("open");
+        preencheCamposForm(listaUsuario[rowID]);
+        $("#ConfirmaValidacao").jqxWindow("open");
     });
 }
 
 $(document).ready(function () {
-    ExecutaDispatch('Perfil', 'ListarPerfilAtivo', undefined, CarregaComboPerfil);
     CarregaGridUsuario();
 });

@@ -7,6 +7,8 @@
         <div id="CadPrestador" class="modal">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
             <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="2">
+            <input type="hidden" id="dscCaminhoCertificado" name="dscCaminhoCertificado" class="cadPrestador">
+            <input type="hidden" id="dscCaminhoFotoPre" name="dscCaminhoFoto" class="cadPrestador">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalPre" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">
@@ -21,16 +23,21 @@
                 <table width="100%" cellspacing="8px">
                     <tr>
                         <td colspan="2">
-                        <!-- previa da foto -->
-                        <!-- add foto -->
-                        <div style="padding-top: 10px;width: 220px;">
-                            Escolher uma foto:<br>
-                            <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
-                            <br />
-                            <progress value="0" max="100"></progress>
-                            <span id="porcentagem">0%</span>
-                            <br />
-                        </div>
+                            <form id="formFoto" name="formFoto" action="">
+                                <!-- previa da foto -->
+                                <!-- add foto -->
+                                <div style="padding-top: 10px;width: 220px;">
+                                    Escolher uma foto:
+                                    <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
+                                    <br />
+                                    <progress value="0" max="100"></progress>
+                                    <span id="porcentagem">0%</span>
+                                    <br />
+                                </div>
+                                <span style="color: #505050">
+                                    Tamanho máximo: 80KB. Formatos: .jpg, .jpeg ou .png
+                                </span>
+                            </form>
                         </td>
                         <td>
                             <h5 style="width: 100%;margin: 0px;text-align: right;color:#7c15c0">* Campos Obrigatórios</h5>
@@ -114,17 +121,21 @@
                 <div style="margin-bottom: 1em;margin-top: 1em">
                     <table width="100%" id="servicosBox"></table>
                 </div>
-                
-                <label for="arquivoPre" class="titulo">Envio do Certificado *</label>
-                <!-- add arquivo -->
-                <div style="padding-top: 10px;width: 220px;">
-                    Selecione o arquivo:<br>
-                    <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
-                    <br />
-                    <progress value="0" max="100"></progress>
-                    <span id="porcentagem">0%</span>
-                    <br />
-                </div>
+                <form id="formComprovante" name="formComprovante" action="">
+                    <label for="arquivo" class="titulo">Envio do Certificado *</label>
+                    <!-- add arquivo -->
+                    <div style="padding-top: 10px;width: 220px;">
+                        Selecione o arquivo:
+                        <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
+                        <br />
+                        <progress value="0" max="100"></progress>
+                        <span id="porcentagem">0%</span>
+                        <br />
+                    </div>
+                    <small style="color: #505050">
+                        Tamanho máximo: 200KB. Apenas .pdf
+                    </small>
+                </form>
                 
                 <hr style="margin-top: 20px">
                 <h2 class="titulo-cadastro">Dados de Acesso</h2>
