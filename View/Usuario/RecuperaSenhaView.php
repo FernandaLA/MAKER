@@ -9,8 +9,8 @@
                 <span id="fechaModalSenha" class="close">&times;</span>
                 <h4 style="margin-top: 10px;">Informe o CPF cadastrado e enviaremos uma nova senha para o seu E-mail</h4>
 
-                <label for="nroCpf" class="titulo">CPF</label>
-                <input required type="text" id="nroCpf" name="nroCpf" class="recuperaSenha input">
+                <label for="nroCpfR" class="titulo">CPF</label>
+                <input required type="text" id="nroCpfR" name="nroCpfR" class="recuperaSenha input">
                 
                 <div class="titulo">
                     <input type="button" id="btnEnviar" value="Enviar" class="button">

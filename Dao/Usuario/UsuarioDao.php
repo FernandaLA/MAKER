@@ -9,7 +9,6 @@ class UsuarioDao extends BaseDao {
                                 "txtEmail"                  => array("column" =>"TXT_EMAIL", "typeColumn" =>"S"),
                                 "nroTelefone"               => array("column" =>"NRO_TELEFONE", "typeColumn" =>"S"),
                                 "dscLogradouro"             => array("column" =>"DSC_LOGRADOURO", "typeColumn" =>"S"),
-                                "nmeLogin"                  => array("column" =>"NME_LOGIN", "typeColumn" =>"S"),
                                 "txtSenha"                  => array("column" =>"TXT_SENHA", "typeColumn" =>"S"),
                                 "codPerfil"                 => array("column" =>"COD_PERFIL", "typeColumn" =>"I"),
                                 "indAtivo"                  => array("column" =>"IND_ATIVO", "typeColumn" =>"S"),

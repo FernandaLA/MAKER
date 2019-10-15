@@ -6,7 +6,7 @@
     <body>
         <div id="CadCliente" class="modal">
             <input type="hidden" id="codUsuarioCli" name="codUsuario" class="cadCliente">
-            <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="3">
+            <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="4">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalCli" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">
@@ -107,10 +107,6 @@
 
                 <table  width="80%" cellspacing="8px">
                     <tr>
-                        <td>
-                            <label for="nmeLoginCad" class="titulo">Login *</label>
-                            <input required type="text" id="nmeLoginCadCli" name="nmeLogin" class="cadCliente input">
-                        </td>
                         <td>
                             <label for="txtSenhaCad" class="titulo">Senha *</label>
                             <input required type="password" id="txtSenhaCadCli" name="txtSenha" class="cadCliente input">

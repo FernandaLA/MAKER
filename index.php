@@ -56,8 +56,8 @@ include_once getenv("CONSTANTES");
         <div class="card" style="max-width: 300px;margin-top: 50px;padding-bottom: 20px;">
             <div class="cabecalho" style="margin-top: 0px;margin-bottom: 20px"><img src="Resources/images/maker/logoOficial.png" width="280" alt="Logo MAKER"></div>
             
-            <label for="nmeLogin" class="titulo">Login</label>
-            <input type="text" id="nmeLogin" name="nmeLogin" class='login input persist' placeholder="Informe o CPF">
+            <label for="nroCpf" class="titulo">Login</label>
+            <input type="text" id="nroCpf" name="nroCpf" class='login input persist' placeholder="Informe o CPF">
 
             <label for="txtSenha" class="titulo">Senha</label>   
             <input type="password" id="txtSenha" name="txtSenha" class='login input persist' placeholder="Senha">

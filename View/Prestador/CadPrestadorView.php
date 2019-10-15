@@ -6,7 +6,7 @@
     <body>
         <div id="CadPrestador" class="modal">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
-            <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="2">
+            <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
             <input type="hidden" id="dscCaminhoCertificado" name="dscCaminhoCertificado" class="cadPrestador">
             <input type="hidden" id="dscCaminhoFotoPre" name="dscCaminhoFoto" class="cadPrestador">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">

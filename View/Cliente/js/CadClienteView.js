@@ -83,7 +83,7 @@ function RetornoValidaCpfCli(resposta) {
 
 function salvarCadastroCli() {
     var parametros = retornaParametros("cadCliente");
-    parametros += "|verificaPermissao;N|codPerfil;3|";
+    parametros += "|verificaPermissao;N|";
     // console.log(parametros);
     ExecutaDispatch('Usuario','InsertUsuario', parametros);
 }
@@ -100,7 +100,6 @@ function DesabilitaCamposCli(ind) {
     $("#dscBairroCli").attr('Disabled', ind);
     $("#dscCidadeCli").attr('Disabled', ind);
     $("#dscEstadoCli").attr('Disabled', ind);
-    $("#nmeLoginCadCli").attr('Disabled', ind);
     $("#txtSenhaCadCli").attr('Disabled', ind);
     $("#txtSenhaConfCli").attr('Disabled', ind);
 }

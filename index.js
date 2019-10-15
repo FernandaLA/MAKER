@@ -1,6 +1,6 @@
 $(function () {
-    $("#nmeLogin").mask('999.999.999-99');
     $("#nroCpf").mask('999.999.999-99');
+    $("#nroCpfR").mask('999.999.999-99');
     $("#nroCep").mask('99999-999');
     $("#nroTelefone").mask('(99) 99999-9999');
 
@@ -35,5 +35,5 @@ function posLogin(logar){
 }
 
 $(document).ready(function () {
-    $("#nmeLogin").focus();
+    $("#nroCpf").focus();
 });

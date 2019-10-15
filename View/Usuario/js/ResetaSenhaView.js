@@ -24,5 +24,5 @@ function retornoResetaSenha(retorno) {
 }
 
 $(document).ready(function () {
-    $("#nmeLogin").focus();
+    $("#nroCpf").focus();
 });

@@ -8,10 +8,6 @@
             <td><input type="text" id="nmeUsuario" name="nmeUsuario" class="persist input"></td>
         </tr>
         <tr>
-            <td class="titulo">Login</td>
-            <td><input type="text" id="nmeLogin" name="nmeLogin" class="persist input"></td>
-        </tr>
-        <tr>
             <td class="titulo">CPF</td>
             <td><input type="text" id="nroCpf" name="nroCpf" class="persist input"></td>
         </tr>

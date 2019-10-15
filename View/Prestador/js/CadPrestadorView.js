@@ -119,7 +119,7 @@ function montaBoxCategoria(categorias) {
 
 function salvarCadastroPre() {
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|verificaPermissao;N|codPerfil;2|";
+    parametros += "|verificaPermissao;N|";
     // console.log(parametros);
     ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador);
 }
@@ -145,7 +145,6 @@ function DesabilitaCamposPre(ind) {
     $("#dscEstadoPre").attr('Disabled', ind);
     $("#codCategoria").attr('Disabled', ind);
     $("#arquivo").attr('Disabled', ind);
-    $("#nmeLoginCadPre").attr('Disabled', ind);
     $("#txtSenhaCadPre").attr('Disabled', ind);
     $("#txtSenhaConfPre").attr('Disabled', ind);
 }
