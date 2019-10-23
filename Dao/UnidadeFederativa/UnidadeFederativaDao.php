@@ -4,9 +4,9 @@ class UnidadeFederativaDao extends BaseDao
 {
     Protected $tableName = "EN_UNIDADE_FEDERATIVA";
 
-    Protected $columns = array ("dscEstado"   => array("column" =>"dsc_estado", "typeColumn" =>"S"));
+    Protected $columns = array ("dscEstado"   => array("column" =>"DSC_ESTADO", "typeColumn" =>"S"));
 
-    Protected $columnKey = array("sglEstado"=> array("column" =>"sgl_estado", "typeColumn" => "S"));
+    Protected $columnKey = array("sglEstado"=> array("column" =>"SGL_ESTADO", "typeColumn" => "S"));
 
     Public Function UnidadeFederativaDao() {
         $this->conect();

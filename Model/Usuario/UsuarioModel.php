@@ -32,6 +32,8 @@ class UsuarioModel extends BaseModel
     function InsertUsuario(){
         $dao = new UsuarioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
+        $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
         return json_encode($dao->InsertUsuario($this->objRequest));
     }
     

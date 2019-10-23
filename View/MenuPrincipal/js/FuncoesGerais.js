@@ -3,7 +3,6 @@ function CarregaMenu(){
 }
 
 function MontaMenuNew(dados) {
-    // console.log(dados);
     var DadosMenu = dados;
     var html = "<ul style='list-style: none;'>";
     for(var i=0;i<dados[1].length; i++){
@@ -26,7 +25,7 @@ function MontaMenuNew(dados) {
     }
     html += "</ul>";
     $('#CriaMenu').html(html);
-    $('#CriaMenu').jqxMenu({ width: '99,5%', height: 35, theme: 'styleMaker' });
+    $('#CriaMenu').jqxMenu({ width: '99,5%', height: 35, theme: 'maker' });
     $("#CriaMenu").on('itemclick', function (event) {
         for(var i=0;i<DadosMenu[1].length; i++){
 
@@ -58,7 +57,7 @@ function CriarDivAutoComplete(nmeInput, url, method, dataFields, displayMember, 
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: 'darkcyan',
+        theme: 'maker',
         isModal: false,
         autoOpen: false
     });           
@@ -135,21 +134,23 @@ function SelecionaItem(event, dataAdapter, dataFields, callback){
 }
 
 function CriarComboDispatch(nmeCombo, arrDados, valor, classe, name){ 
-    if(name == undefined){
-        name = nmeCombo;
+    if (arrDados[1] !== null){
+        if(name == undefined){
+            name = nmeCombo;
+        }
+        $("#td"+nmeCombo).html('');
+        var select = '<select id="'+nmeCombo+'" name="'+name+'" class="'+classe+' input" style="background-color: white;">';
+        select += '<option value="'+valor+'" disabled selected>Selecione...</option>';
+        for (var i=0;i<arrDados[1].length;i++){
+            select += '<option value="'+arrDados[1][i]['COD']+'">'+arrDados[1][i]['DSC']+'</option>';
+            
+        }
+        select += '</select>';
+        $("#td"+nmeCombo).html(select);
+        $("#"+nmeCombo).jqxDropDownList({dropDownHeight: '150px'});
+        $("#"+nmeCombo).attr('parm', name);
+        return false;
     }
-    $("#td"+nmeCombo).html('');
-    var select = '<select id="'+nmeCombo+'" name="'+name+'" class="'+classe+' input" style="background-color: white;">';
-    select += '<option value="'+valor+'" disabled selected>Selecione...</option>';
-    for (var i=0;i<arrDados[1].length;i++){
-        select += '<option value="'+arrDados[1][i]['COD']+'">'+arrDados[1][i]['DSC']+'</option>';
-        
-    }
-    select += '</select>';
-    $("#td"+nmeCombo).html(select);
-    $("#"+nmeCombo).jqxDropDownList({dropDownHeight: '150px'});
-    $("#"+nmeCombo).attr('parm', name);
-    return false;
 }
 
 

@@ -85,7 +85,7 @@ $(document).ready(function () {
             width: 800,
             height: 700,
             source: adapter,
-            theme: 'styleMaker',
+            theme: 'maker',
             showLegend: true,
             ready: function () {
                 $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');

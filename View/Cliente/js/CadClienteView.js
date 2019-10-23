@@ -46,13 +46,9 @@ function preencheEnderecoCli(data) {
         $("#dscComplementoEnderecoCli").val(endereco.complemento);
         $("#dscBairroCli").val(endereco.bairro);
         $("#dscCidadeCli").val(endereco.localidade);
-        $("#slgUfCli").val(endereco.uf);
+        $("#sglUfCli").val(endereco.uf);
     }
 
-}
-
-function MontaComboUFCli(arrDados) {
-    CriarComboDispatch('slgUfCli', arrDados, 0, 'cadCliente', 'slgUf');
 }
 
 function limparCampos() {
@@ -84,7 +80,6 @@ function RetornoValidaCpfCli(resposta) {
 function salvarCadastroCli() {
     var parametros = retornaParametros("cadCliente");
     parametros += "|verificaPermissao;N|";
-    // console.log(parametros);
     ExecutaDispatch('Usuario','InsertUsuario', parametros);
 }
 
@@ -106,5 +101,4 @@ function DesabilitaCamposCli(ind) {
 
 $(document).ready(function() {
     DesabilitaCamposCli(true);
-    ExecutaDispatch('UnidadeFederativa','ListarUnidadeFederativa', 'verificaPermissao;N|', MontaComboUFCli);
 });

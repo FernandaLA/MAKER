@@ -34,6 +34,12 @@ function posLogin(logar){
     $(location).attr('href', '../../Dispatch.php?controller=' + logar[1][0]['DSC_PAGINA'] + '&method=' + logar[1][0]['NME_METHOD']+'&verificaPermissao=N');
 }
 
+function MontaComboUF(arrDados) {
+    CriarComboDispatch('sglUfPre', arrDados, 0, 'cadPrestador', 'sglUf');
+    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente', 'sglUf');
+}
+
 $(document).ready(function () {
+    ExecutaDispatch('UnidadeFederativa','ListarUnidadeFederativa', 'verificaPermissao;N|', MontaComboUF);
     $("#nroCpf").focus();
 });

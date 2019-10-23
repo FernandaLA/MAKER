@@ -104,7 +104,7 @@
                         </td>
                         <td>
                             <label for="dscEstadoPre" class="titulo">Estado *</label>
-                            <div id="tdslgUfPre" ></div>
+                            <div id="tdsglUfPre" ></div>
                         </td>
                     </tr>
                 </table>

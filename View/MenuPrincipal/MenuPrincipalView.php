@@ -81,7 +81,7 @@ include_once "../Scripts.php";
                     <table width="100%" align="center">
                         <tr>
                             <td width="50%">
-                                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Nossas Prestadores</span>
+                                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Nossos Prestadores</span>
                             </td>
                             <td width="35%">
                                 <label for="tdcodCategoria" class="titulo">Categoria: </label>

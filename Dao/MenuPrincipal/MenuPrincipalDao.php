@@ -13,7 +13,6 @@ class MenuPrincipalDao extends MenuDao
                                NME_CONTROLLER,
                                CONCAT('" . $path . "','/Controller/',NME_CONTROLLER) AS NME_PATH,
                                NME_METHOD,
-                               NME_LOGIN,
                                M.COD_MENU_PAI,
                                TXT_SENHA,
                                '250px' AS VLR_TAMANHO_SUBMENU,
@@ -52,7 +51,6 @@ class MenuPrincipalDao extends MenuDao
     public function CarregaDadosUsuario($codUsuario) {
         $select = "SELECT COD_USUARIO,
                           NME_USUARIO,
-                          NME_LOGIN,
                           NRO_CPF,
                           COD_PERFIL
                      FROM SE_USUARIO

@@ -132,7 +132,7 @@ include_once "../Scripts.php";
                     </td>
                     <td>
                         <label for="dscEstadoPre" class="titulo">Estado *</label>
-                        <div id="tdslgUf" ></div>
+                        <div id="tdsglUf" ></div>
                     </td>
                 </tr>
             </table>

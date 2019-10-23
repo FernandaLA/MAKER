@@ -46,7 +46,6 @@ function pesquisaCepPre(){
 }
 
 function preencheEnderecoPre(data) {
-    console.log(data);
     var endereco = data[1][0];
     if (endereco.erro) {
         swal({
@@ -60,13 +59,9 @@ function preencheEnderecoPre(data) {
         $("#dscComplementoEnderecoPre").val(endereco.complemento);
         $("#dscBairroPre").val(endereco.bairro);
         $("#dscCidadePre").val(endereco.localidade);
-        $("#slgUfPre").val(endereco.uf);
+        $("#sglUfPre").val(endereco.uf);
     }
 
-}
-
-function MontaComboUFPre(arrDados) {
-    CriarComboDispatch('slgUfPre', arrDados, 0, 'cadPrestador', 'slgUf');
 }
 
 function limparCampos() {
@@ -96,31 +91,32 @@ function RetornoValidaCpfPre(resposta) {
 }
 
 function montaBoxCategoria(categorias) {
-    var count = 5;
-    var html = "";
-
-    for (var i=0; i<categorias[1].length; i++ ) {
-        if(count == 5){
-            html += "<tr>";
-            count = 0;
+    if(categorias[1] !== null) {
+        var count = 5;
+        var html = "";
+    
+        for (var i=0; i<categorias[1].length; i++ ) {
+            if(count == 5){
+                html += "<tr>";
+                count = 0;
+            }
+            html += "<td width='300px'>";
+            html += "<strong class='checkbox'>";
+            html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador'>"+categorias[1][i]['DSC']+"";
+            html += "</strong>";
+            html += "</td>"
+            count++;
+            if(count == 5){
+                html += "</tr>";
+            }
         }
-        html += "<td width='300px'>";
-        html += "<strong class='checkbox'>";
-        html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador'>"+categorias[1][i]['DSC']+"";
-        html += "</strong>";
-        html += "</td>"
-        count++;
-        if(count == 5){
-            html += "</tr>";
-        }
+        $("#servicosBox").html(html);
     }
-    $("#servicosBox").html(html);
 }
 
 function salvarCadastroPre() {
     var parametros = retornaParametros("cadPrestador");
     parametros += "|verificaPermissao;N|";
-    // console.log(parametros);
     ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador);
 }
 
@@ -151,7 +147,6 @@ function DesabilitaCamposPre(ind) {
 
 $(document).ready(function() {
     ExecutaDispatch('CategoriaServico','ListarCategoriaServicoAtivo', 'verificaPermissao;N|', montaBoxCategoria);
-    ExecutaDispatch('UnidadeFederativa','ListarUnidadeFederativa', 'verificaPermissao;N|', MontaComboUFPre);
     DesabilitaCamposPre(true);
 
     $('#fotoPre').change(function () {

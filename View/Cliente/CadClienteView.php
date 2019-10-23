@@ -95,7 +95,7 @@
                         </td>
                         <td>
                             <label for="dscEstado" class="titulo">Estado *</label>
-                            <div id="tdslgUfCli"></div>
+                            <div id="tdsglUfCli"></div>
                             <!-- <input required type="text" id="dscEstadoCli" name="dscEstado" class="cadCliente input"> -->
                         </td>
                     </tr>

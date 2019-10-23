@@ -46,7 +46,7 @@ function ListaMenus(ListaMenus) {
         }
     }
     $("#checkboxes").html(tabela);
-    var theme = 'darkcyan';
+    var theme = 'maker';
     // Create jqxCheckBox
     $(".check").jqxCheckBox({ height: 25, theme: theme});
     $('.check').jqxCheckBox('uncheck');

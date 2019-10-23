@@ -6,7 +6,7 @@ $(function () {
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: 'darkcyan',
+        theme: 'maker',
         isModal: true,
         autoOpen: false,
         position: { x: 435, y: 90 }
@@ -18,7 +18,7 @@ $(function () {
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: 'darkcyan',
+        theme: 'maker',
         isModal: true,
         autoOpen: false
     });
@@ -29,7 +29,7 @@ $(function () {
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: 'darkcyan',
+        theme: 'maker',
         isModal: true,
         autoOpen: false
     });
@@ -47,7 +47,7 @@ function CarregaGridMenu(listaMenus) {
 
 function MontaTabelaMenu(listaMenus) {
     var nomeGrid = 'listaMenus';
-    var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px', autoOpenPopup: false, mode: 'popup', theme: 'darkcyan' });
+    var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px', autoOpenPopup: false, mode: 'popup', theme: 'maker' });
     var source =
     {
         localdata: listaMenus,
@@ -74,7 +74,7 @@ function MontaTabelaMenu(listaMenus) {
         {
             width: 800,
             source: dataAdapter,
-            theme: 'darkcyan',
+            theme: 'maker',
             sortable: true,
             filterable: true,
             pageable: true,

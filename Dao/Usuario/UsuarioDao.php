@@ -17,7 +17,7 @@ class UsuarioDao extends BaseDao {
                                 "dscCidade"                 => array("column" =>"DSC_CIDADE", "typeColumn" =>"S"),
                                 "dscSobrenome"              => array("column" =>"DSC_SOBRENOME", "typeColumn" =>"S"),
                                 "nroCep"                    => array("column" =>"NRO_CEP", "typeColumn" =>"S"),
-                                "slgUf"                     => array("column" =>"SLG_UF", "typeColumn" =>"S"),
+                                "sglUf"                     => array("column" =>"SGL_UF", "typeColumn" =>"S"),
                                 "dtaNascimento"             => array("column" =>"DTA_NASCIMENTO", "typeColumn" =>"D"),
                                 "dscCaminhoFoto"            => array("column" =>"DSC_CAMINHO_FOTO", "typeColumn" =>"S"),
                                 "dscCaminhoCertificado"     => array("column" =>"DSC_CAMINHO_CERTIFICADO", "typeColumn" =>"S"));
@@ -30,8 +30,6 @@ class UsuarioDao extends BaseDao {
     
     Public Function InsertUsuario(stdClass $obj) {
         $obj->codUsuario = $this->CatchUltimoCodigo('SE_USUARIO', 'COD_USUARIO');
-        $obj->nmeUsuario = $obj->nmeUsuario.toUpperCase();
-        $obj->dscSobrenome = $obj->dscSobrenome.toUpperCase();
         $obj->indAtivo = "S";
         $obj->txtSenha = md5($obj->txtSenha);
         return $this->MontarInsert($obj);

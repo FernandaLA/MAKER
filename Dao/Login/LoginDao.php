@@ -32,7 +32,7 @@ class LoginDao extends UsuarioDao{
     // Public Function VerificaUsuario(){
     //     $select = "SELECT COALESCE(COUNT(*),0) AS QTD 
     //                  FROM SE_USUARIO
-    //                 WHERE NME_LOGIN = '".$this->Populate('nmelogin')."'";
+    //                 WHERE NRO_CPF = '".$this->Populate('nroCpf')."'";
     //     return $this->selectDB($select, false);
     // }
     

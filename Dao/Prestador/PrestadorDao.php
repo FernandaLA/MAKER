@@ -35,19 +35,19 @@ class PrestadorDao extends UsuarioDao
                            U.DSC_COMPLEMENTO_ENDERECO,
                            U.DSC_BAIRRO,
                            U.DSC_CIDADE,
-                           U.SLG_UF,
+                           U.SGL_UF,
                            CONCAT(COALESCE(U.DSC_LOGRADOURO, ''), ' ',
                                   COALESCE(U.DSC_COMPLEMENTO_ENDERECO, ''), ' ',
                                   COALESCE(U.DSC_BAIRRO, ''), ' ',
                                   COALESCE(U.DSC_CIDADE, ''), ' ',
-                                  COALESCE(U.SLG_UF, '')) AS ENDERECO_COMPLETO,
+                                  COALESCE(U.SGL_UF, '')) AS ENDERECO_COMPLETO,
                            U.DSC_CAMINHO_FOTO,
                            U.DSC_CAMINHO_CERTIFICADO,
                            J.COD_JORNADA_PRESTADOR,
                            J.HRA_INICIO,
                            J.HRA_FIM
                       FROM SE_USUARIO U
-                     INNER JOIN EN_JORNADA_PRESTADOR J
+                      LEFT JOIN EN_JORNADA_PRESTADOR J
                         ON U.COD_USUARIO = J.COD_PRESTADOR
                      WHERE COD_USUARIO =". $codUsuario;
         
