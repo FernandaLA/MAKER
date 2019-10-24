@@ -70,32 +70,11 @@ class UsuarioModel extends BaseModel
         return json_encode($result);
     }
 
-    // Public Function ReiniciarSenha(){
-    //     $dao = new UsuarioDao();
-    //     return json_encode($dao->ReiniciarSenha());
-    // }
-
     Public Function ResetaSenha(){
         $dao = new UsuarioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $nroCpf = $this->objRequest->nroCpf;
         return json_encode($dao->ResetaSenha($nroCpf));
-    }
-
-    Public Function AlterarSenha(){
-        $dao = new UsuarioDao();
-        BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $codUsuario = $_SESSION['cod_usuario'];
-        $senhaAtual = $this->objRequest->txtSenha;
-        $novaSenha = filter_input(INPUT_POST, 'novaSenha', FILTER_SANITIZE_STRING);
-        $result = $dao->VerificaSenhaAtual($codUsuario, $senhaAtual);
-        if($result[0]){
-            $result = $dao->RecuperarSenha($codUsuario, $novaSenha);
-        } else {
-            $result[0] = false;
-            $result[0] = "Senha Atual Incorreta! Verifique seu e-mail.";
-        }
-        return json_encode($result);
     }
 
     Public Function RecuperarSenha(){
