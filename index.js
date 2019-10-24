@@ -1,6 +1,6 @@
 $(function () {
-    $("#nmeLogin").mask('999.999.999-99');
     $("#nroCpf").mask('999.999.999-99');
+    $("#nroCpfR").mask('999.999.999-99');
     $("#nroCep").mask('99999-999');
     $("#nroTelefone").mask('(99) 99999-9999');
 
@@ -34,6 +34,12 @@ function posLogin(logar){
     $(location).attr('href', '../../Dispatch.php?controller=' + logar[1][0]['DSC_PAGINA'] + '&method=' + logar[1][0]['NME_METHOD']+'&verificaPermissao=N');
 }
 
+function MontaComboUF(arrDados) {
+    CriarComboDispatch('sglUfPre', arrDados, 0, 'cadPrestador', 'sglUf');
+    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente', 'sglUf');
+}
+
 $(document).ready(function () {
-    $("#nmeLogin").focus();
+    ExecutaDispatch('UnidadeFederativa','ListarUnidadeFederativa', 'verificaPermissao;N|', MontaComboUF);
+    $("#nroCpf").focus();
 });

@@ -6,7 +6,6 @@ class MenuModel extends BaseModel
 {
     /**
      * Carrega Lista de menus
-     * @param type $nmeLogin
      * @param type $txtSenha
      * @return type
      */

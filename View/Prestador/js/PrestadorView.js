@@ -57,7 +57,7 @@ function listaCategorias(dados) {
 }
 
 function MontaComboUF(arrDados) {
-    CriarComboDispatch('slgUf', arrDados, 0, 'cadPrestador');
+    CriarComboDispatch('sglUf', arrDados, 0, 'cadPrestador');
 }
 
 function montaBoxCategoria(categorias) {

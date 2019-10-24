@@ -22,7 +22,6 @@ $(function() {
     $('#btnSalvarServico').click(function () {
         var parametros = retornaParametros('cadServico');
         parametros += "codCategoria;"+$('#codCategoria').val()+"|";
-        console.log(parametros);
         ExecutaDispatch('ServicoPrestador', 'InsertServicoPrestador', parametros, atualizaGridServicos);
     });
 
@@ -79,7 +78,7 @@ function MontaGridServicos(lista) {
         {
             width: 700,
             source: dataAdapter,
-            theme: 'styleMaker',
+            theme: 'maker',
             sortable: true,
             filterable: true,
             pageable: true,

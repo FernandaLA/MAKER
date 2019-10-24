@@ -54,11 +54,7 @@ class JornadaPrestadorDao extends BaseDao
     Public Function InsertJornadaPrestador(stdClass $obj) {
         $codJornadaPrestador = $this->CatchUltimoCodigo('EN_JORNADA_PRESTADOR', 'COD_JORNADA_PRESTADOR');
         $obj->codPrestador = $_SESSION['cod_usuario'];
-        $retorno = $this->MontarInsert($obj);
-        if ($retorno[0]) {
-            $retorno[1] = $codJornadaPrestador;
-        }
-        return $retorno;
+        return $this->MontarInsert($obj);
     }
 
     Public Function InsertDiasJornada($codJornadaPrestador, $codDia) {

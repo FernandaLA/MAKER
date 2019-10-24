@@ -1,4 +1,4 @@
-var theme = 'bootstrap';
+var theme = 'maker';
 var localizationobj = {};
 localizationobj.pagergotopagestring = "Ir para pag.:";
 localizationobj.pagershowrowsstring = "Registros por p&aacute;gina:";
@@ -470,7 +470,7 @@ function comparaDatas(dataAtual, dataCompara){
 
 function MontarGrid(nomeGrid, listaGrid, campos){
     
-    var theme = 'energyblue';
+    var theme = 'maker';
     var linhas = campos.split('|');
     var dados = new Array();
     var dadosColunas = new Array();

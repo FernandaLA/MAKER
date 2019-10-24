@@ -24,6 +24,8 @@ class PrestadorModel extends UsuarioModel
     Public Function InsertPrestador() {
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
+        $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
         $result = $dao->InsertPrestador($this->objRequest);
         return json_encode($result);
     }
@@ -39,10 +41,13 @@ class PrestadorModel extends UsuarioModel
         $dao = new PrestadorDao();
         $JPdao = new JornadaPrestadorDao();
         $result = $dao->CarregaDadosPrestador($_SESSION['cod_usuario']);
-        $result[1][0]['HRA_INICIO'] = substr($result[1][0]['HRA_INICIO'], 0, 5);
-        $result[1][0]['HRA_FIM'] = substr($result[1][0]['HRA_FIM'], 0, 5);
-        $listaDias = $JPdao->ListarDiasJornada($result[1][0]['COD_JORNADA_PRESTADOR']);
-        $result[1][0]['DIAS_ATENDIMENTO'] = $listaDias[1];
+        // var_dump($result); die;
+        if($result[0] && $result[1] !== null) {
+            $result[1][0]['HRA_INICIO'] = substr($result[1][0]['HRA_INICIO'], 0, 5);
+            $result[1][0]['HRA_FIM'] = substr($result[1][0]['HRA_FIM'], 0, 5);
+            $listaDias = $JPdao->ListarDiasJornada($result[1][0]['COD_JORNADA_PRESTADOR']);
+            $result[1][0]['DIAS_ATENDIMENTO'] = $listaDias[1];
+        }
         return json_encode($result);
     }
     

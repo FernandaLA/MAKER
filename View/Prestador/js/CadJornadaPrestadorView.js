@@ -30,7 +30,6 @@ function MontaComboDiaSelecionado() {
         }
     });
     diasAtendimento = diasAtendimento.substr(0, diasAtendimento.length-1);
-    console.log(diasAtendimento);
     validaCamposJornada(diasAtendimento);
 }
 
@@ -101,7 +100,6 @@ function validaCamposJornada(diasAtendimento) {
 function salvarJornada(diasAtendimento) {
     var parametros = retornaParametros('cadJornada');
     parametros += "dscDiasAtendimento;"+diasAtendimento+"|";
-    console.log(parametros);
     if ($("#codJornadaPrestador").val()) {
         $("#method").val('UpdateJornadaPrestador');
     } else {

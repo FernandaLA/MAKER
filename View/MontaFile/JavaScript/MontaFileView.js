@@ -14,7 +14,7 @@ function GeraFile(dscTabela, nmeFile) {
 //*************************
 function MontaListaTabelas(ListaTabelas) {
     ListaTabelas = ListaTabelas[1];
-    var theme = 'darkcyan';
+    var theme = 'maker';
     var nomeGrid = 'listaTabelas';
     var source =
     {

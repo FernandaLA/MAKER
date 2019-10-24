@@ -4,7 +4,7 @@ $(function () {
         autoOpen: true,
         height: 150,
         width: 450,
-        theme: 'darkcyan',
+        theme: 'maker',
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
@@ -12,7 +12,7 @@ $(function () {
         title: 'Esqueci Minha Senha'
     });
     $("#nroCpf").mask('999.999.999-99');
-    $("#btnResetar").jqxButton({ width: '150', theme: 'darkcyan' });
+    $("#btnResetar").jqxButton({ width: '150', theme: 'maker' });
     $("#btnResetar").click(function () {
         ExecutaDispatch('Usuario', 'ResetaSenha', 'nroCpf;' + $("#nroCpf").val() + '|', retornoResetaSenha, "Aguarde, resetando senha");
     });
@@ -24,5 +24,5 @@ function retornoResetaSenha(retorno) {
 }
 
 $(document).ready(function () {
-    $("#nmeLogin").focus();
+    $("#nroCpf").focus();
 });

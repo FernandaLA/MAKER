@@ -65,7 +65,7 @@ include_once "../Scripts.php";
 
         <div id="editarCadastro" class="card">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
-            <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="2">
+            <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
 
 
             <hr style="margin-top: 20px">
@@ -132,7 +132,7 @@ include_once "../Scripts.php";
                     </td>
                     <td>
                         <label for="dscEstadoPre" class="titulo">Estado *</label>
-                        <div id="tdslgUf" ></div>
+                        <div id="tdsglUf" ></div>
                     </td>
                 </tr>
             </table>

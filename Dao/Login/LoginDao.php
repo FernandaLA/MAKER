@@ -8,7 +8,7 @@ class LoginDao extends UsuarioDao{
         $select = "SELECT COD_USUARIO,
                           COD_PERFIL
                      FROM SE_USUARIO
-                    WHERE NRO_CPF = '".$objRequest->nmeLogin."'
+                    WHERE NRO_CPF = '".$objRequest->nroCpf."'
                       AND TXT_SENHA = '".$objRequest->txtSenha."'
                       AND IND_ATIVO = 'S'";
         return $this->selectDB($select, false);
@@ -29,12 +29,12 @@ class LoginDao extends UsuarioDao{
         return $this->insertDB($update);
     }
     
-    Public Function VerificaUsuario(){
-        $select = "SELECT COALESCE(COUNT(*),0) AS QTD 
-                     FROM SE_USUARIO
-                    WHERE NME_LOGIN = '".$this->Populate('nmelogin')."'";
-        return $this->selectDB($select, false);
-    }
+    // Public Function VerificaUsuario(){
+    //     $select = "SELECT COALESCE(COUNT(*),0) AS QTD 
+    //                  FROM SE_USUARIO
+    //                 WHERE NRO_CPF = '".$this->Populate('nroCpf')."'";
+    //     return $this->selectDB($select, false);
+    // }
     
     Public Function VerificaEmail(){
         $select = "SELECT COALESCE(COUNT(*),0) AS QTD 
@@ -50,8 +50,7 @@ class LoginDao extends UsuarioDao{
     //                                     NRO_CPF,
     //                                     TXT_EMAIL,
     //                                     NRO_TELEFONE,
-    //                                     DSC_ENDERECO, 
-    //                                     NME_LOGIN, 
+    //                                     DSC_ENDERECO,
     //                                     TXT_SENHA, 
     //                                     COD_PERFIL,
     //                                     IND_ATIVO)
@@ -61,7 +60,6 @@ class LoginDao extends UsuarioDao{
     //                    '".$this->Populate('txtEmail')."', 
     //                    '".$this->Populate('nroTelefone')."', 
     //                    '".$this->Populate('dscEndereco')."', 
-    //                    '".$this->Populate('nmeLogin')."', 
     //                    '".md5($this->Populate('txtSenha'))."',
     //                    2,
     //                    'S')";

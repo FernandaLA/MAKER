@@ -34,11 +34,12 @@ class JornadaPrestadorModel extends BaseModel
         } else {
             $result = $dao->InsertJornadaPrestador($this->objRequest);
             if($result[0]){
+                $codJornadaPrestador = $result[2];
                 $diasAtendimento = explode('-', $dao->Populate('dscDiasAtendimento', 'S'));
-                var_dump($diasAtendimento); die;
+                // var_dump($result[2]); die;
                 $todos = count($diasAtendimento);
                 for($i=0;$i<$todos;$i++){
-                    $result = $dao->InsertDiasJornada($result[1], $diasAtendimento[$i]);
+                    $result = $dao->InsertDiasJornada($codJornadaPrestador, $diasAtendimento[$i]);
                 }
 
             }
