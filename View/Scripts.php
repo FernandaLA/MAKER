@@ -1,4 +1,3 @@
-<?php include_once "../../Resources/fontawesome/svgs/brands/regular/user.svg"?>
 <html>
     <head>
         <script src="../../Resources/JavaScript.js"></script>
