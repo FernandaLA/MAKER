@@ -33,6 +33,15 @@ class AgendaModel extends BaseModel
         $result = $dao->UpdateAgendamento($this->objRequest);
         return json_encode($result);
     }
+
+    Public Function ListaHorariosDisponiveis() {
+        $dao = new AgendaDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $lista = $dao->ListaHorariosDisponiveis($this->objRequest);
+
+        return json_encode($lista);
+
+    }
     
 }
 

@@ -28,4 +28,10 @@ class AgendaDao extends BaseDao
     Public Function InsertAgendamento(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
+
+    Public Function ListaHorariosDisponiveis(stdClass $obj) {
+        $select = "";
+
+        return $this->selectDB($select, false);
+    }
 }

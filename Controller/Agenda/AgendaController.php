@@ -25,4 +25,9 @@ class AgendaController extends BaseController
         $AgendaModel = new AgendaModel();
         echo $AgendaModel->UpdateAgendamento();
     }
+
+    Public Function ListaHorariosDisponiveis() {
+        $AgendaModel = new AgendaModel();
+        echo $AgendaModel->ListaHorariosDisponiveis();
+    }
 }
