@@ -8,7 +8,7 @@ include_once "../Scripts.php";
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/CadastroMenuView.js?rdm=<?php echo time();?>"></script>
     </head>
-    <body>
+    <body class="body">
         <input type="hidden" id="method" name="method" class="persist">
         <div class="card" style="max-width: 810px;">
                 <?php include_once "../../View/MenuPrincipal/Cabecalho.php"; ?>

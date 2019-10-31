@@ -8,7 +8,7 @@ include_once "../Scripts.php";
         <title>MAKER - Monta File</title>
         <script src="../MontaFile/JavaScript/MontaFileView.js?rdm=<?php echo time();?>"></script>        
     </head>
-    <body>
+    <body class="body">
         <input type="hidden" id="method">
         <input type="hidden" id="codUsuario">
         <div class="card">
