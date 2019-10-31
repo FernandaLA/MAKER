@@ -62,13 +62,13 @@ include_once "../Scripts.php";
                 <td colspan="4" id="servicosPrestador" class="titulo"></td>
             </tr>
         </table>
+        <hr style="margin-top: 20px">
 
         <div id="editarCadastro" class="card">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
             <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
 
 
-            <hr style="margin-top: 20px">
             <h2 class="titulo-cadastro">Dados Pessoais</h2>
             <table width="100%" cellspacing="8px">
                 <tr>
@@ -78,12 +78,12 @@ include_once "../Scripts.php";
                     </td>
                     <td>
                         <label for="nmeUsuarioPre" class="titulo">Nome *</label>
-                        <input required type="text" id="nmeUsuarioPre" name="nmeUsuario"
+                        <input disabled type="text" id="nmeUsuarioPre" name="nmeUsuario"
                             class="cadPrestador input" style="text-transform:uppercase;" disabled>
                     </td>
                     <td>
                         <label for="dscSobrenomePre" class="titulo">Sobrenome *</label>
-                        <input required type="text" id="dscSobrenomePre" name="dscSobrenome"
+                        <input disabled type="text" id="dscSobrenomePre" name="dscSobrenome"
                             class="cadPrestador input" style="text-transform:uppercase;" disabled>
                     </td>
                 </tr>
@@ -132,7 +132,7 @@ include_once "../Scripts.php";
                     </td>
                     <td>
                         <label for="dscEstadoPre" class="titulo">Estado *</label>
-                        <div id="tdsglUf" ></div>
+                        <div id="tdsglUfPre" ></div>
                     </td>
                 </tr>
             </table>
@@ -167,11 +167,10 @@ include_once "../Scripts.php";
                 <tr>
                     <td>
                         <label for="txtSenhaCadPre" class="titulo">Senha *</label>
-                        <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input">
+                        <input disabled type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input">
                     </td>
                     <td>
-                        <label for="txtSenhaConfPre" class="titulo">Confirme a Senha *</label>
-                        <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="input">
+                        <input type="button" id="btnAlterarSenha" value="Alterar Senha" class="button">
                     </td>
                 </tr>
             </table>

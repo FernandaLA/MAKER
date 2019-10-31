@@ -31,7 +31,7 @@
                     <tr class="formServico">
                         <td>
                             <label for="comboCategorias" class="titulo">Categoria *</label>
-                            <div id="tdcodCategoria"></div>
+                            <div id="tdcodCategoriaSer"></div>
                         </td>
                         <td>
                             <label for="dscServico" class="titulo">Descrição *</label>

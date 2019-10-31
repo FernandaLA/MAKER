@@ -2,6 +2,7 @@
 include_once("Model/Usuario/UsuarioModel.php");
 include_once("Dao/Prestador/PrestadorDao.php");
 include_once("Dao/JornadaPrestador/JornadaPrestadorDao.php");
+include_once("Resources/php/FuncoesString.php");
 class PrestadorModel extends UsuarioModel
 {
     public function PrestadorModel() {
@@ -21,12 +22,32 @@ class PrestadorModel extends UsuarioModel
         }
     }
 
+    Public Function ListarServicosFuturos() {
+        $dao = new PrestadorDao();
+        $lista = $dao->ListarServicosFuturos();
+
+        return json_encode($lista);
+    }
+
     Public Function InsertPrestador() {
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
-        $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
-        $result = $dao->InsertPrestador($this->objRequest);
+        $cats = $dao->Populate('categoriasPrestador', 'S');
+        $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
+        $result = $this->ValidaCampos($cats);
+        if($result[0]){
+            $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
+            $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
+            $result = $dao->InsertPrestador($this->objRequest);
+            if($result[0]){
+                $codPrestador = $result[2];
+                    $categorias = explode('-', $dao->Populate('categoriasPrestador', 'S'));
+                    $todos = count($categorias);
+                    for($i=0;$i<$todos;$i++){
+                        $result = $dao->InsertCategoriaServicoPrestador($codPrestador, $categorias[$i]);
+                    }
+            }
+        }
         return json_encode($result);
     }
 
@@ -34,6 +55,15 @@ class PrestadorModel extends UsuarioModel
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->UpdatePrestador($this->objRequest);
+        if($result[0]){
+            $result = $dao->DeleteCategoriaServicoPrestador($this->objRequest->codPrestador);
+            $categorias = explode('-', $dao->Populate('categoriasPrestador', 'S'));
+            // var_dump($categorias); die;
+            $todos = count($categorias);
+            for($i=0;$i<$todos;$i++){
+                $result = $dao->InsertCategoriaServicoPrestador($this->objRequest->codPrestador, $categorias[$i]);
+            }
+        }
         return json_encode($result);
     }
 
@@ -45,11 +75,65 @@ class PrestadorModel extends UsuarioModel
         if($result[0] && $result[1] !== null) {
             $result[1][0]['HRA_INICIO'] = substr($result[1][0]['HRA_INICIO'], 0, 5);
             $result[1][0]['HRA_FIM'] = substr($result[1][0]['HRA_FIM'], 0, 5);
-            $listaDias = $JPdao->ListarDiasJornada($result[1][0]['COD_JORNADA_PRESTADOR']);
-            $result[1][0]['DIAS_ATENDIMENTO'] = $listaDias[1];
+            if($result[1][0]['COD_JORNADA_PRESTADOR'] !== null){
+                $listaDias = $JPdao->ListarDiasJornada($result[1][0]['COD_JORNADA_PRESTADOR']);
+                $result[1][0]['DIAS_ATENDIMENTO'] = $listaDias[1];
+            } else {
+                $result[1][0]['DIAS_ATENDIMENTO'] = null;
+            }
         }
         return json_encode($result);
     }
     
+    Public Function ValidaCampos($cats){
+        $result=array(true, '');
+        if (!isset($this->objRequest->nmeUsuario)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Nome'\n";
+        }else if (trim($this->objRequest->nmeUsuario)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Nome'\n";
+        }
+        if (!isset($this->objRequest->dscSobrenome)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Sobrenome'\n";
+        } else if (trim($this->objRequest->dscSobrenome)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Sobrenome'\n";
+        }
+        if (!isset($this->objRequest->dtaNascimento)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Data de Nascimento'\n";
+        }
+        if (!isset($this->objRequest->nroTelefone)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Celular'\n";
+        }
+        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+            $result[0] = false;
+            $result[1] .= "Email inválido\n";
+        }      
+        if (!isset($cats)){
+            $result[0] = false;
+            $result[1] .= "Informe pelo menos uma Categoria\n";
+        } else if (trim($cats)=='') {
+            $result[0] = false;
+            $result[1] .= "Informe pelo menos uma Categoria\n";
+        }
+        if (!isset($this->objRequest->txtSenha)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Senha'\n";
+        } else if (trim($this->objRequest->txtSenha)=='') {
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Senha'\n";
+        } else if ($this->objRequest->txtSenha.length() < 4) {
+            $result[0] = false;
+            $result[1] .= "Sua senha deve ter pelo menos 4 caracteres'\n";
+        } else if ($this->objRequest->txtSenha !== $this->objRequest->txtSenhaConf) {
+            $result[0] = false;
+            $result[1] .= "As Senhas informadas não são iguais'\n";
+        }
+        return $result;
+    }
 }
 
