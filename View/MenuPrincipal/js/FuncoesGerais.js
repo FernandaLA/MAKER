@@ -356,6 +356,55 @@ function preencheCamposForm(arrCampos, valorPadrao){
     }
 }
 
+/**
+ * 
+ * @param {type} arrCampos
+ * @param {type} valorPadrao (Passar o nome do campo concatenado com ';' e após o tipo do campo e depois '|' ex.:IND_ATIVO;B|
+ * @returns {undefined}
+ */
+function preencheCamposFormPre(arrCampos, valorPadrao){
+    var entrou = false;
+    for (var k in arrCampos){
+        if (typeof arrCampos[k] !== 'function') {
+            var LK = k.toLowerCase();
+            var ret = LK.split('_');
+            var campo='';
+            for (var i=0;i<ret.length;i++){
+                if (i>0){
+                    campo += ret[i].substring(0,1).toUpperCase()+ret[i].substring(1,ret[i].lenght);
+                }else{
+                    campo = ret[i];
+                }
+            }
+            if (valorPadrao!=undefined){
+                var valores = valorPadrao.split('|');
+                for (i=0;i<valores.length;i++){
+                    var tipo = valores[i].split(';');
+                    var entrou = false;
+                    if (tipo[0]==campo){
+                        switch (tipo[1]) {
+                            case 'B':
+                                if (arrCampos[k]=='S'){
+                                    $("#"+campo).prop('checked', true);
+                                }else{
+                                    $("#"+campo).prop('checked', false);
+                                }
+                                break;
+                            default:
+                                $("#"+campo).val(arrCampos[k]);
+                                break;
+                        }
+                        entrou=true;
+                    }
+                }
+            }
+            if (!entrou){
+                $("#"+campo+"Pre").val(arrCampos[k]);
+            }
+        }
+    }
+}
+
 function LimparCampos(classe){
     if (classe == undefined) {
         classe = 'persist';

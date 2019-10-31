@@ -5,6 +5,22 @@ $(function() {
     });
 });
 
+function MontaTela(dado) {
+    console.log(dado);
+    if(dado[0]) {
+        if(dado[1][0]['COD_PERFIL'] == 3) {
+            $("#telaCliente").hide();
+            $("#telaPrestador").show();
+            ExecutaDispatch('Prestador', 'ListarServicosFuturos', '', CarregaLista);
+        } else if(dado[1][0]['COD_PERFIL'] == 4) {
+            $("#telaCliente").show();
+            $("#telaPrestador").hide();
+            ExecutaDispatch('Cliente', 'CarregaListaPrestadores', '', CarregaLista);
+            ExecutaDispatch('CategoriaServico', 'ListarCategoriaServicoAtivo', undefined, MontaComboCategorias);
+        }
+    }
+}
+
 function CarregaLista(dados) {
     var lista = dados[1];
     var html = "";
@@ -26,13 +42,13 @@ function CarregaLista(dados) {
                 }
                 jornadaDias = jornadaDias.substr(0, jornadaDias.length-1);
             }
-            html +=" <div class='card-prestador' onClick='javascript: SolicitarAgendamento("+lista[i]['COD_USUARIO']+")'>";
+            html +=" <div class='card-prestador' onClick='javascript: AbreModalAgendamento("+lista[i]['COD_USUARIO']+")'>";
             html +=" <table width='100%'>";
             html +=" <tr>";
             html +="  <td width='8%'>";
             html +="   <img style='border-radius:50%' src='../../Resources/images/maker/fotoPerfil.jpg' width='75' alt='foto de Perfil'>";
             html +="  </td>";
-            html +="  <td width='48%' style='text-align:left'>";
+            html +="  <td width='70%' style='text-align:left'>";
             html +="   <table width='100%'>";
             html +="    <tr><td class='labelFont14' style='font-size: 19px'>"+lista[i]['NME_USUARIO_COMPLETO']+"</td></tr>";
             html +="    <tr>";
@@ -40,25 +56,41 @@ function CarregaLista(dados) {
             html +="    </tr>";
             html +="   </table>";
             html +="  </td>";
-            html +="  <td width='44%' style='text-align:left'>";
+            // html +="  <td width='44%' style='text-align:left'>";
+            // html +="   <table width='100%' style='border-spacing: 4px'>";
+            // html +="    <tr>";
+            // html +="     <td class='labelFont15'>Jornada: <div style='color: magenta'>"+lista[i]['JORNADA_PRESTADOR']+"</div>";
+            // html +="     </td>";
+            // html +="    </tr>";
+            // html +="    <tr>";
+            // html +="     <td class='labelFont15'>Dias de Atendimento: <br>";
+            // html +="      <div style='color: magenta'>"+jornadaDias+"</div>";
+            // html +="     </td>";
+            // html +="    </tr>";
+            // html +="   </table> ";
+            // html +="  </td>";
+            html +="  <td rowspan=3 style='font-size: 25px;text-align: right;color:grey' title='Agendar com esse prestador' onClick='javascript: AbreModalAgendamento("+lista[i]['COD_USUARIO']+")'>";
+            html +="    <span class='oi oi-chevron-right'></span>"; // icone seta '>'
+            html +="  </td>";
+            html +=" </tr>";
+            html +=" <tr>";
+            html +="  <td colspan='3'>";
             html +="   <table width='100%' style='border-spacing: 4px'>";
             html +="    <tr>";
-            html +="     <td class='labelFont15'>Jornada: <div style='color: magenta'>"+lista[i]['JORNADA_PRESTADOR']+"</div>";
+            html +="     <td class='labelFont15'>Jornada: "
+            html +="      <span style='color: magenta'>"+lista[i]['JORNADA_PRESTADOR']+"</span>";
             html +="     </td>";
             html +="    </tr>";
             html +="    <tr>";
-            html +="     <td class='labelFont15'>Dias de Atendimento: <br>";
-            html +="      <div style='color: magenta'>"+jornadaDias+"</div>";
+            html +="     <td class='labelFont15'>Dias de Atendimento: ";
+            html +="      <span style='color: magenta'>"+jornadaDias+"</span>";
             html +="     </td>";
             html +="    </tr>";
             html +="   </table> ";
             html +="  </td>";
-            html +="  <td rowspan=2 style='font-size: 14px' title='Agendar com esse prestador' onClick='javascript: SolicitarAgendamento("+lista[i]['COD_USUARIO']+")'>";
-            html +="    <span class='io io-chevron-right'></span>"; // icone seta '>'
-            html +="  </td>";
             html +=" </tr>";
             html +=" <tr>";
-            html +="  <td colspan='4' class='titulo' style='color: purple'>"+listaCategorias+"</td>";
+            html +="  <td colspan='3' class='titulo' style='color: purple'>"+listaCategorias+"</td>";
             html +=" </tr>";
             html +=" </table>";
             html +=" </div>";
@@ -68,18 +100,20 @@ function CarregaLista(dados) {
     }
     
     $("#listagemPrestadores").html(html);
+    $("#listagemServicosFuturos").html(html);
 }
 
 function MontaComboCategorias(arrDados) {
     CriarComboDispatch('codCategoria', arrDados, 0, 'persist');
 }
 
-function SolicitarAgendamento(codPrestador) {
+function AbreModalAgendamento(codPrestador) {
     $('#codPrestador').val(codPrestador);
+
+    ExecutaDispatch('ServicoPrestador', 'ListarServicoAtivoPrestador', "codPrestador;"+codPrestador+"|", montaComboServicos)
     $('#CadAgendamento').show('fade');
 }
 
 $(document).ready(function() {
-    ExecutaDispatch('Cliente', 'CarregaListaPrestadores', '', CarregaLista);
-    ExecutaDispatch('CategoriaServico', 'ListarCategoriaServicoAtivo', undefined, MontaComboCategorias);
+    ExecutaDispatch('Perfil', 'RetornaPerfilUsuarioLogado', '', MontaTela);
 });
