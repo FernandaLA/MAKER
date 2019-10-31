@@ -42,9 +42,37 @@ class ServicoPrestadorModel extends BaseModel
         return json_encode($result);
     }
 
-    Public Function ValidaCampos() {
-        $retorno = [];
-        $retorno[0] = true;
+    Public Function ValidaCampos(){
+        $result=array(true, '');
+        if ($this->objRequest->codCategoria == 0){
+            $result[0] = false;
+            $result[1] .= "Selecione uma Categoria \n";
+        }
+        if (!isset($this->objRequest->dscServico)){
+            $result[0] = false;
+            $result[1] .= "Informe uma Descrição do serviço\n";
+        } else if (trim($this->objRequest->dscServico)==''){
+            $result[0] = false;
+            $result[1] .= "Informe uma Descrição do serviço\n";
+        }
+        if (!$this->objRequest->vlrServico){
+            $result[0] = false;
+            $result[1] .= "Informe o Valor do serviço\n";
+        }
+        if (!$this->objRequest->tmpDuracaoServico){
+            $result[0] = false;
+            $result[1] .= "Informe o Tempo que leva para realizar esse serviço\n";
+        }
+        return $result;
+    }
+
+    Public Function ListarServicoAtivoPrestador() {
+        $dao = new ServicoPrestadorDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        // var_dump($this->objRequest); die;
+        $lista = $dao->ListarServicoAtivoPrestador($this->objRequest->codPrestador);
+
+        return json_encode($lista);
     }
     
 }
