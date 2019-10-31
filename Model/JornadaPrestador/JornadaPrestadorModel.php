@@ -59,7 +59,6 @@ class JornadaPrestadorModel extends BaseModel
             for($i=0;$i<$todos;$i++){
                 $result = $dao->InsertDiasJornada($this->objRequest->codJornadaPrestador, $diasAtendimento[$i]);
             }
-
         }
         return json_encode($result);
     }
