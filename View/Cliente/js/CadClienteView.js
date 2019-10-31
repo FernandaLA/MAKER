@@ -84,19 +84,22 @@ function salvarCadastroCli() {
 }
 
 function DesabilitaCamposCli(ind) {
-    $("#fotoCli").attr('Disabled', ind);
-    $("#nmeUsuarioCli").attr('Disabled', ind);
-    $("#dscSobrenomeCli").attr('Disabled', ind);
-    $("#dtaNascimentoCli").attr('Disabled', ind);
-    $("#nroTelefoneCli").attr('Disabled', ind);
-    $("#txtEmailCli").attr('Disabled', ind);
-    $("#nroCepCli").attr('Disabled', ind);
-    $("#dscComplementoEnderecoCli").attr('Disabled', ind);
-    $("#dscBairroCli").attr('Disabled', ind);
-    $("#dscCidadeCli").attr('Disabled', ind);
-    $("#dscEstadoCli").attr('Disabled', ind);
-    $("#txtSenhaCadCli").attr('Disabled', ind);
-    $("#txtSenhaConfCli").attr('Disabled', ind);
+    $(".cadCliente").attr('Disabled', ind);
+    $("#nroCpfCli").attr('Disabled', false);
+    $("#dscLogradouroCli").attr('Disabled', true);
+    // $("#fotoCli").attr('Disabled', ind);
+    // $("#nmeUsuarioCli").attr('Disabled', ind);
+    // $("#dscSobrenomeCli").attr('Disabled', ind);
+    // $("#dtaNascimentoCli").attr('Disabled', ind);
+    // $("#nroTelefoneCli").attr('Disabled', ind);
+    // $("#txtEmailCli").attr('Disabled', ind);
+    // $("#nroCepCli").attr('Disabled', ind);
+    // $("#dscComplementoEnderecoCli").attr('Disabled', ind);
+    // $("#dscBairroCli").attr('Disabled', ind);
+    // $("#dscCidadeCli").attr('Disabled', ind);
+    // $("#sglUfCli").attr('Disabled', ind);
+    // $("#txtSenhaCadCli").attr('Disabled', ind);
+    // $("#txtSenhaConfCli").attr('Disabled', ind);
 }
 
 $(document).ready(function() {

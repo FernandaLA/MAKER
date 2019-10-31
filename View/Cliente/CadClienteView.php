@@ -3,7 +3,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="View/Cliente/js/CadClienteView.js?rdm=<?php echo time(); ?>"></script>
     </head>
-    <body>
+    <body class="body">
         <div id="CadCliente" class="modal">
             <input type="hidden" id="codUsuarioCli" name="codUsuario" class="cadCliente">
             <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="4">
@@ -96,7 +96,6 @@
                         <td>
                             <label for="dscEstado" class="titulo">Estado *</label>
                             <div id="tdsglUfCli"></div>
-                            <!-- <input required type="text" id="dscEstadoCli" name="dscEstado" class="cadCliente input"> -->
                         </td>
                     </tr>
                 </table>
@@ -113,7 +112,7 @@
                         </td>
                         <td>
                             <label for="txtSenhaConf" class="titulo">Confirme a Senha *</label>
-                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="input">
+                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="cadCliente input">
                         </td>
                     </tr>
                 </table>
