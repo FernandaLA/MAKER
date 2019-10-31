@@ -37,7 +37,7 @@ class UsuarioDao extends BaseDao {
 
     function ListarUsuario() {
         $select = " SELECT DISTINCT U.COD_USUARIO,
-                           NME_USUARIO,
+                           CONCAT(NME_USUARIO, '', DSC_SOBRENOME) AS NME_USUARIO,
                            NRO_CPF,
                            TXT_EMAIL,
                            U.COD_PERFIL,
@@ -140,13 +140,6 @@ class UsuarioDao extends BaseDao {
                        SET TXT_SENHA = '" . $novaSenha . "'
                      WHERE COD_USUARIO = " . $codUsuario;
         return $this->insertDB($update);
-    }
-
-    public function BuscaPerfilUsuario($codUsuario) {
-        $select = " SELECT COD_PERFIL
-                      FROM SE_USUARIO
-                     WHERE COD_USUARIO =".$codUsuario;
-        return $this->selectDB($select, false);
     }
 }
 ?>

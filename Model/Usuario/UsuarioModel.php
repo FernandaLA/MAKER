@@ -32,9 +32,14 @@ class UsuarioModel extends BaseModel
     function InsertUsuario(){
         $dao = new UsuarioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
-        $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
-        return json_encode($dao->InsertUsuario($this->objRequest));
+        $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
+        $result = $this->ValidaCampos();
+        if($result[0]){
+            $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
+            $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
+            $result = $dao->InsertUsuario($this->objRequest);
+        }
+        return json_encode($result);
     }
     
     function AddUsuario(){
@@ -107,6 +112,50 @@ class UsuarioModel extends BaseModel
             $result[1] = "Informe o CPF!";
         }
         return json_encode($result);
+    }
+
+    Public Function ValidaCampos(){
+        $result=array(true, '');
+        if (!isset($this->objRequest->nmeUsuario)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Nome'\n";
+        }else if (trim($this->objRequest->nmeUsuario)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Nome'\n";
+        }
+        if (!isset($this->objRequest->dscSobrenome)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Sobrenome'\n";
+        } else if (trim($this->objRequest->dscSobrenome)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Sobrenome'\n";
+        }
+        if (!isset($this->objRequest->dtaNascimento)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Data de Nascimento'\n";
+        }
+        if (!isset($this->objRequest->nroTelefone)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Celular'\n";
+        }
+        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+            $result[0] = false;
+            $result[1] .= "Email inválido\n";
+        }
+        if (!isset($this->objRequest->txtSenha)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Senha'\n";
+        } else if (trim($this->objRequest->txtSenha)=='') {
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Senha'\n";
+        } else if (strlen($this->objRequest->txtSenha) < 3) {
+            $result[0] = false;
+            $result[1] .= "Sua senha deve ter pelo menos 3 caracteres'\n";
+        } else if ($this->objRequest->txtSenha !== $this->objRequest->txtSenhaConf) {
+            $result[0] = false;
+            $result[1] .= "As Senhas informadas não são iguais'\n";
+        }
+        return $result;
     }
 }
 ?>
