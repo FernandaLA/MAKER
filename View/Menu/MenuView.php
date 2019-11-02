@@ -10,7 +10,7 @@ include_once "../Scripts.php";
     </head>
     <body>
         <input type="hidden" id="method" name="method" class="persist">
-        <div class="card" style="max-width: 810px;">
+        <div class="card">
                 <?php include_once "../../View/MenuPrincipal/Cabecalho.php"; ?>
             <div class="cabecalho">Cadastro de Menus</div>
             

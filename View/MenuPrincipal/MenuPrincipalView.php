@@ -100,5 +100,17 @@ include_once "../Scripts.php";
                 <div id="listagemPrestadores"></div>
             </div>
         </div>
+
+        <div class="grid-container" id="telaPrestador">
+            <div class="item3" style="text-align: center;">
+                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Futuros</span>
+            </div>
+            <div class="item3" style="width: 600px;">
+                <div id="listagemServicosFuturos"></div>
+            </div>
+        </div>
+    </div>
+    <div id="ModalJornadaPrestador">
+        <?php include_once "CadAgendamentoView.php"; ?>
     </div>
 </body>

@@ -22,6 +22,7 @@ $(function() {
 });
 
 function montaTelaPrestador(dados) {
+    preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var jornada = dadosPre['HRA_INICIO']+" às "+dadosPre['HRA_FIM'];

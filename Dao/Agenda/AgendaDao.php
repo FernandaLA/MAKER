@@ -28,4 +28,46 @@ class AgendaDao extends BaseDao
     Public Function InsertAgendamento(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
+
+    Public Function ListaHorariosDisponiveis(stdClass $obj) {
+        $select = "";
+
+        return $this->selectDB($select, false);
+    }
+
+    Public Function ListarServicosFuturos($codUsuario) {
+        $select = " SELECT A.COD_AGENDAMENTO,
+                           A.COD_CLIENTE AS COD_USUARIO_REF,
+                           CONCAT(U.NME_USUARIO, '', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
+                       --    '4,8' AS NOTA_PRESTADOR,
+                           U.DSC_CAMINHO_FOTO,
+                           A.DSC_HORARIO,
+                           A.DTA_AGENDAMENTO,
+                           A.COD_SERVICO,
+                           SP.COD_CATEGORIA,
+                           CS.DSC_CATEGORIA,
+                           SP.DSC_SERVICO,
+                           SP.VLR_SERVICO,
+                           CASE WHEN (A.COD_STATUS == 2 AND A.DTA_AGENDAMENTO < NOW(DATE))
+                                THEN 'Realizado'
+                                WHEN (A.COD_STATUS == 2 AND A.DTA_AGENDAMENTO == NOW(DATE) AND A.DSC_HORARIO+SP.TMP_DURACAO_SERVICO < NOW())
+                                THEN 'Realizado'
+                           ELSE SA.DSC_STATUS
+                           END AS SITUACAO
+                      FROM EN_AGENDAMENTO A
+                     INNER JOIN SE_USUARIO U
+                        ON A.COD_CLIENTE = U.COD_USUARIO
+                     INNER JOIN EN_SERVICO_PRESTADOR SP
+                        ON A.COD_SERVICO = SP.COD_SERVICO_PRESTADOR
+                     INNER JOIN EN_CATEGORIA_SERVICO CS
+                        ON SP.COD_CATEGORIA = CS.COD_CATEGORIA
+                     INNER JOIN EN_STATUS_AGENDAMENTO SA
+                        ON A.COD_STATUS = SA.COD_STATUS
+                     WHERE A.COD_STATUS = 2
+                       AND A.DTA_AGENDAMENTO >= NOW(DATE)
+                       AND A.DSC_HORARIO > NOW()
+                       AND COD_PRESTADOR =".$codUsuario."
+                     ORDER BY A.DTA_AGENDAMENTO, A.DSC_HORARIO";
+        return $this->selectDB($select, false);
+    }
 }

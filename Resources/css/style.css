@@ -1,3 +1,8 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
 .icon {
     width: 108px;
     height: 25px;
@@ -34,6 +39,7 @@
 
 .body {
     background-image: url('../images/maker/fundoLogin.jpeg');
+    background-size: 100%;
 }
 
 a:link, a:visited{
@@ -147,9 +153,37 @@ td{
     margin-bottom: 15px;
 }
 
+.card-index {
+    max-width: 300px;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 #0000004d;
+    margin: auto;
+    margin-bottom: 15px;
+    font-family: arial;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    padding: 20px 20px;
+    overflow-y: auto;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 #0000004d;
-    max-width: 800px;
+    max-width: 55%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: arial;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    padding: 20px 20px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+}
+
+.card-maximo {
+    box-shadow: 0 4px 8px 0 #0000004d;
+    max-width: 95%;
     margin: auto;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -234,6 +268,46 @@ td{
 }
 
 .button:hover {
+    opacity: 0.7;
+}
+
+.btn-danger {
+    margin-left:45px;
+    background-color: #d32424;
+    border-color:#aa1137;
+    border: none;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    white-space: normal;
+    width: 40%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.btn-danger {
+    opacity: 0.7;
+}
+
+.btn-success {
+    margin-left:45px;
+    background-color: #1dbe25;
+    border-color:#0f8115;
+    border: none;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    white-space: normal;
+    width: 40%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.btn-success:hover {
     opacity: 0.7;
 }
 

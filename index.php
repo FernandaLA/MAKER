@@ -53,7 +53,7 @@ include_once getenv("CONSTANTES");
     </head>
     <body class="body">
         <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
-        <div class="card" style="max-width: 300px;margin-top: 50px;padding-bottom: 20px;">
+        <div class="card-index">
             <div class="cabecalho" style="margin-top: 0px;margin-bottom: 20px"><img src="Resources/images/maker/logoOficial.png" width="280" alt="Logo MAKER"></div>
             
             <label for="nroCpf" class="titulo">Login</label>

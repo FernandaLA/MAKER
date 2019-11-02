@@ -313,7 +313,7 @@ function retornaParametros(classe){
  * @param {type} valorPadrao (Passar o nome do campo concatenado com ';' e após o tipo do campo e depois '|' ex.:IND_ATIVO;B|
  * @returns {undefined}
  */
-function preencheCamposForm(arrCampos, valorPadrao){
+function preencheCamposForm(arrCampos, final = "", valorPadrao){
     var entrou = false;
     for (var k in arrCampos){
         if (typeof arrCampos[k] !== 'function') {
@@ -350,11 +350,60 @@ function preencheCamposForm(arrCampos, valorPadrao){
                 }
             }
             if (!entrou){
-                $("#"+campo).val(arrCampos[k]);
+                $("#"+campo+final).val(arrCampos[k]);
             }
         }
     }
 }
+
+// /**
+//  * 
+//  * @param {type} arrCampos
+//  * @param {type} valorPadrao (Passar o nome do campo concatenado com ';' e após o tipo do campo e depois '|' ex.:IND_ATIVO;B|
+//  * @returns {undefined}
+//  */
+// function preencheCamposFormPre(arrCampos, final, valorPadrao){
+//     var entrou = false;
+//     for (var k in arrCampos){
+//         if (typeof arrCampos[k] !== 'function') {
+//             var LK = k.toLowerCase();
+//             var ret = LK.split('_');
+//             var campo='';
+//             for (var i=0;i<ret.length;i++){
+//                 if (i>0){
+//                     campo += ret[i].substring(0,1).toUpperCase()+ret[i].substring(1,ret[i].lenght);
+//                 }else{
+//                     campo = ret[i];
+//                 }
+//             }
+//             if (valorPadrao!=undefined){
+//                 var valores = valorPadrao.split('|');
+//                 for (i=0;i<valores.length;i++){
+//                     var tipo = valores[i].split(';');
+//                     var entrou = false;
+//                     if (tipo[0]==campo){
+//                         switch (tipo[1]) {
+//                             case 'B':
+//                                 if (arrCampos[k]=='S'){
+//                                     $("#"+campo).prop('checked', true);
+//                                 }else{
+//                                     $("#"+campo).prop('checked', false);
+//                                 }
+//                                 break;
+//                             default:
+//                                 $("#"+campo).val(arrCampos[k]);
+//                                 break;
+//                         }
+//                         entrou=true;
+//                     }
+//                 }
+//             }
+//             if (!entrou){
+//                 $("#"+campo+"Pre").val(arrCampos[k]);
+//             }
+//         }
+//     }
+// }
 
 function LimparCampos(classe){
     if (classe == undefined) {
@@ -383,4 +432,114 @@ function LimparCampos(classe){
 
 function RedirecionaController(Controller, Method){
     $(location).attr('href','../../Dispatch.php?controller='+Controller+'&method='+Method);
+}
+
+function MontaCardServico(lista, nmeCampo, acao = false){
+    var html = "";
+    if (lista!=null){
+        for (var i = 0;i < lista.length; i++) {
+            var categorias = "";
+            for(var j = 0; j<lista[i]['LISTA_CATEGORIAS'].length; j++) {
+                if(lista[i]['LISTA_CATEGORIAS'][j]['COD'] != 0) {
+                    categorias += "<u>"+lista[i]['LISTA_CATEGORIAS'][j]['DSC']+"</u> - ";
+                }
+            }
+            var listaCategorias = categorias.substr(0, categorias.length-3);
+
+            var DIAS = lista[i]['DIAS_ATENDIMENTO'];
+            var jornadaDias = "";
+            if (DIAS != null) {
+                for (var h=0;h<DIAS.length;h++) {
+                    jornadaDias += DIAS[h]['DSC_DIA']+'-';
+                }
+                jornadaDias = jornadaDias.substr(0, jornadaDias.length-1);
+            }
+            html +=" <div class='card-prestador'>";
+            html +=" <table width='100%'>";
+            html +=" <tr>";
+            html +="  <td width='8%'>";
+            html +="   <img style='border-radius:50%' src='../../Resources/images/maker/fotoPerfil.jpg' width='75' alt='foto de Perfil'>";
+            html +="  </td>";
+            html +="  <td width='70%' style='text-align:left'>";
+            html +="   <table width='100%'>";
+            html +="    <tr><td class='labelFont14' style='font-size: 19px'>"+lista[i]['NME_USUARIO_COMPLETO']+"</td></tr>";
+            html +="    <tr>";
+            html +="     <td class='labelFont14' >Avaliação: "+lista[i]['NOTA_PRESTADOR']+" <span class='oi oi-star' style='color:gold;border-color:khaki;'></span></td>";
+            html +="    </tr>";
+            html +="   </table>";
+            html +="  </td>";
+            if (acao) {
+                html +="  <td rowspan=3 style='font-size: 25px;text-align: right;color:grey' title='Agendar com esse prestador' onClick='javascript: AbreModalAgendamento("+lista[i]['COD_USUARIO']+")'>";
+                html +="    <span class='oi oi-chevron-right'></span>"; // icone seta '>'
+                html +="  </td>";
+            }
+            html +=" </tr>";
+            html +=" <tr>";
+            html +="  <td colspan='3'>";
+            html +="   <table width='100%' style='border-spacing: 4px'>";
+            html +="    <tr>";
+            html +="     <td class='labelFont15'>Jornada: "
+            html +="      <span style='color: magenta'>"+lista[i]['JORNADA_PRESTADOR']+"</span>";
+            html +="     </td>";
+            html +="    </tr>";
+            html +="    <tr>";
+            html +="     <td class='labelFont15'>Dias de Atendimento: ";
+            html +="      <span style='color: magenta'>"+jornadaDias+"</span>";
+            html +="     </td>";
+            html +="    </tr>";
+            html +="   </table> ";
+            html +="  </td>";
+            html +=" </tr>";
+            html +=" <tr>";
+            html +="  <td colspan='3' class='titulo' style='color: purple'>"+listaCategorias+"</td>";
+            html +=" </tr>";
+            html +=" </table>";
+            if(lista[i]['SITUACAO'] == 'Realizado') {
+                html +="<hr>";
+                html +="<table>";
+                html +=" <tr>";
+                html +="  <td>";
+                html +="   <button class='btn-success'>";
+                html +="    <span class='oi oi-circle-check'></span> Finalizar";
+                html +="   </button> ";
+                html +="  </td>";
+                html +=" </tr>";
+                html +="</table>";
+            }
+            if(lista[i]['SITUACAO'] == 'Pendente') {
+                html +="<hr>";
+                html +="<table>";
+                html +=" <tr>";
+                html +="  <td>";
+                html +="   <button class='btn-danger'>";
+                html +="    <span class='oi oi-thumbs-down'></span> Recusar";
+                html +="   </button> ";
+                html +="  </td>";
+                html +="  <td>";
+                html +="   <button class='btn-success'>";
+                html +="    <span class='oi oi-thumbs-up'></span> Aceitar";
+                html +="   </button> ";
+                html +="  </td>";
+                html +=" </tr>";
+                html +="</table>";
+            }
+            if(lista[i]['SITUACAO'] == 'Confirmado') {
+                html +="<hr>";
+                html +="<table>";
+                html +=" <tr>";
+                html +="  <td>";
+                html +="   <button class='button-default'>";
+                html +="    <span class='oi oi-x'></span> Cancelar";
+                html +="   </button> ";
+                html +="  </td>";
+                html +=" </tr>";
+                html +="</table>";
+            }
+            html +=" </div>";
+        }
+    } else {
+        html += "NENHUM REGISTRO ENCONTRADO"
+    }
+
+    $("#"+nmeCampo).html(html);
 }

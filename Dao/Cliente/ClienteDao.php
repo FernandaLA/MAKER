@@ -52,11 +52,29 @@ class ClienteDao extends UsuarioDao
         return $this->selectDB($select, false);
     }
 
-    Public Function UpdateCliente(stdClass $obj) {
-        return $this->MontarUpdate($obj);
-    }
-
-    Public Function InsertCliente(stdClass $obj) {
-        return $this->MontarInsert($obj);
+    Public Function CarregaDadosCliente($codUsuario) {
+        $select = " SELECT NME_USUARIO,
+                           DSC_SOBRENOME,
+                           CONCAT(NME_USUARIO, ' ', COALESCE(DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
+                           DTA_NASCIMENTO,
+                           NRO_CPF,
+                           TXT_EMAIL,
+                           NRO_TELEFONE,
+                           NRO_CEP,
+                           DSC_LOGRADOURO,
+                           DSC_COMPLEMENTO_ENDERECO,
+                           DSC_BAIRRO,
+                           DSC_CIDADE,
+                           SGL_UF,
+                           CONCAT(COALESCE(DSC_LOGRADOURO, ''), ' ',
+                                  COALESCE(DSC_COMPLEMENTO_ENDERECO, ''), ' ',
+                                  COALESCE(DSC_BAIRRO, ''), ' ',
+                                  COALESCE(DSC_CIDADE, ''), ' ',
+                                  COALESCE(SGL_UF, '')) AS ENDERECO_COMPLETO,
+                           DSC_CAMINHO_FOTO
+                      FROM SE_USUARIO
+                     WHERE COD_USUARIO =". $codUsuario;
+        
+        return $this->selectDB($select, false);
     }
 }

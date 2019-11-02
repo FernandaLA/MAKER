@@ -63,9 +63,8 @@ include_once "../Scripts.php";
             </tr>
         </table>
 
-        <div id="editarCadastro" class="card">
+        <div id="editarCadastro" class="card-maximo">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
-            <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
 
 
             <hr style="margin-top: 20px">
@@ -163,15 +162,14 @@ include_once "../Scripts.php";
             <hr style="margin-top: 20px">
             <h2 class="titulo-cadastro">Dados de Acesso</h2>
 
-            <table  width="80%" cellspacing="8px">
+            <table  width="100%" cellspacing="8px">
                 <tr>
                     <td>
                         <label for="txtSenhaCadPre" class="titulo">Senha *</label>
-                        <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input">
+                        <span>********</span>
                     </td>
-                    <td>
-                        <label for="txtSenhaConfPre" class="titulo">Confirme a Senha *</label>
-                        <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="input">
+                    <td style="text-align: right;">
+                        <input type="button" id="btnAlterarSenha" value="Alterar Senha" class="button" style="width: 180px;">
                     </td>
                 </tr>
             </table>

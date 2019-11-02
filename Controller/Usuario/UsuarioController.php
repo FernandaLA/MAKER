@@ -22,10 +22,10 @@ class UsuarioController extends BaseController
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->InsertUsuario();
     }
-    Public function AddUsuario(){
-        $UsuarioModel = new UsuarioModel();
-        echo $UsuarioModel->AddUsuario();
-    }
+    // Public function AddUsuario(){
+    //     $UsuarioModel = new UsuarioModel();
+    //     echo $UsuarioModel->AddUsuario();
+    // }
     Public function UpdateUsuario(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->UpdateUsuario();  

@@ -121,7 +121,7 @@ function MontaTabelaMenu(listaMenus) {
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
 
-        preencheCamposForm(listaMenus[rowID], 'indAtivo;B|indAtalho;B|indVisible;B|');
+        preencheCamposForm(listaMenus[rowID], '', 'indAtivo;B|indAtalho;B|indVisible;B|');
         $("#method").val("UpdateMenu");
         $("#CadMenus").jqxWindow("open");
     });

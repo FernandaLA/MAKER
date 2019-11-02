@@ -3,13 +3,13 @@
 $(document).ready(function () {
     var appointments = [
         {
-            id: "id1",
-            description: "George brings projector for presentations.",
-            location: "",
-            subject: "Quarterly Project Review Meeting",
+            id: "Agendamento1",
+            description: "8:30",
+            location: "endereço da cliente",
+            subject: "Manicure - Só mão.",
             calendar: "Pendente",
-            start: new Date(2019, 10, 23, 9, 0, 0),
-            end: new Date(2019, 10, 23, 16, 0, 0)
+            start: new Date(2019, 10, 25, 8, 0, 0),
+            end: new Date(2019, 10, 25, 9, 0, 0)
         },
         {
             id: "id2",
@@ -27,7 +27,7 @@ $(document).ready(function () {
             subject: "Course Social Media",
             calendar: "Finalizado",
             start: new Date(2019, 10, 23, 11, 0, 0),
-            end: new Date(2019, 10, 26, 13, 0, 0)
+            end: new Date(2019, 10, 23, 13, 0, 0)
         },
         {
             id: "id4",
@@ -36,7 +36,7 @@ $(document).ready(function () {
             subject: "New Projects Planning",
             calendar: "Confirmado",
             start: new Date(2019, 10, 23, 16, 0, 0),
-            end: new Date(2019, 10, 27, 18, 0, 0)
+            end: new Date(2019, 10, 23, 18, 0, 0)
         },
         {
             id: "id5",
@@ -45,7 +45,7 @@ $(document).ready(function () {
             subject: "Interview with James",
             calendar: "Pendente",
             start: new Date(2019, 10, 24, 15, 0, 0),
-            end: new Date(2019, 10, 25, 17, 0, 0)
+            end: new Date(2019, 10, 24, 17, 0, 0)
         },
         {
             id: "id6",
@@ -53,17 +53,10 @@ $(document).ready(function () {
             location: "",
             subject: "Interview with Nancy",
             calendar: "Recusado",
-            start: new Date(2019, 10, 24, 14, 0, 0),
+            start: new Date(2019, 10, 30, 14, 0, 0),
             end: new Date(2019, 10, 30, 16, 0, 0)
         }
     ]
-        // appointments.push(appointment1);
-        // appointments.push(appointment2);
-        // appointments.push(appointment3);
-        // appointments.push(appointment4);
-        // appointments.push(appointment5);
-        // appointments.push(appointment6);
-        // prepare the data
         var source =
         {
             dataType: "array",
@@ -82,13 +75,13 @@ $(document).ready(function () {
         var adapter = new $.jqx.dataAdapter(source);
         $("#scheduler").jqxScheduler({
             date: new $.jqx.date(2019, 11, 21),
-            width: 800,
+            width: '100%',
             height: 700,
             source: adapter,
             theme: 'maker',
             showLegend: true,
             ready: function () {
-                $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
+                $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'Agendamento1');
             },
             resources:
             {
