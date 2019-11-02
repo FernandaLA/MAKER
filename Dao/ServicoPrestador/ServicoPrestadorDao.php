@@ -41,4 +41,14 @@ class ServicoPrestadorDao extends BaseDao
     Public Function InsertServicoPrestador(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
+
+    Public Function ListarServicoAtivoPrestador($codUsuario) {
+        $select = " SELECT SP.COD_SERVICO_PRESTADOR AS COD,
+                           CONCAT(SP.DSC_SERVICO, ' - ', SP.VLR_SERVICO) AS DSC
+                      FROM EN_SERVICO_PRESTADOR SP
+                     WHERE SP.COD_PRESTADOR =". $codUsuario ."
+                       AND SP.IND_ATIVO = 'S'";
+                    //    echo $select; die;
+        return $this->selectDB($select, false);
+    }
 }

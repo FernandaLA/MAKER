@@ -21,22 +21,24 @@
                 </table>
 
                 <hr>
+                <div id="infoPrestador"></div>
 
                 <table width="100%" cellspacing="8px">
                     <tr>
-                        <td width="30%" style="border-right: 1px solid #000">
+                        <td colspan="2" style="border-right: 1px solid #000">
                             <label for="codServico" class="titulo">Serviço *</label><br>
-                            <div id="tdcodServico"></div> <!-- criar combo -->
-                            <!-- <input type="text" id="codServico" name="codServico" class="cadAgendamento input-menor" placeholder="08:00" maxlength="5"> -->
+                            <div id="tdcodServico"></div>
                         </td>
-                        <td>
+                    </tr>
+                    <tr>
+                        <td width="45%">
                             <label for="dtaAgendamento" class="titulo">Data *</label>
-                            <input type="input" id="dtaAgendamento" class="input">
+                            <input disabled type="date" id="dtaAgendamento" class="input cadAgendamento">
                         </td>
                         <td>
                             <label for="dscHorario" class="titulo">Horário *</label>
                             <!-- combo com horários disponíveis -->
-                            <input type="input" id="dtaAgendamento" class="input">
+                            <div id="tddscHorario"></div> <!-- criar combo -->
                         </td>
                     </tr>
                     <tr>

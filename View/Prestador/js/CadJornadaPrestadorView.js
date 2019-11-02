@@ -109,6 +109,7 @@ function salvarJornada(diasAtendimento) {
 }
 
 function fecharModalJornada() {
+    ExecutaDispatch('Prestador', 'CarregaDadosPrestador', undefined, montaTelaPrestador);
     $('#CadJornadaPrestador').hide('fade');
 }
 

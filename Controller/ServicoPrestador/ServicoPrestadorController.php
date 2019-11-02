@@ -20,9 +20,14 @@ class ServicoPrestadorController extends BaseController
         $ServicoPrestadorModel = new ServicoPrestadorModel();
         echo $ServicoPrestadorModel->InsertServicoPrestador();
     }
-
+    
     Public Function UpdateServicoPrestador() {
         $ServicoPrestadorModel = new ServicoPrestadorModel();
         echo $ServicoPrestadorModel->UpdateServicoPrestador();
+    }
+
+    Public Function ListarServicoAtivoPrestador() {
+        $ServicoPrestadorModel = new ServicoPrestadorModel();
+        echo $ServicoPrestadorModel->ListarServicoAtivoPrestador();
     }
 }

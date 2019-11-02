@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
+ini_set('default_charset', 'UTF-8');
 session_start();
 session_unset();
 include_once getenv("CONSTANTES");

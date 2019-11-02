@@ -6,7 +6,7 @@ include_once "../Scripts.php";
     <title>MAKER - Cliente</title>
     <script src="../../View/Cliente/js/ClienteView.js"></script>
 </head>
-<body>
+<body class="body">
     <div class="card">
         <?php include_once "../../View/MenuPrincipal/Cabecalho.php"; ?>
 

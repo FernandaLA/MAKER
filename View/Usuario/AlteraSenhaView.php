@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>MAKER - Investimentos</title>
+        <title>MAKER - Alterar Senha</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script language="JavaScript" type="text/JavaScript"></script>
         <script src="../../Resources/JavaScript.js"></script>

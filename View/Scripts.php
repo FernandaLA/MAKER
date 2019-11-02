@@ -1,4 +1,7 @@
-<?php include_once "../../Resources/fontawesome/svgs/brands/regular/user.svg"?>
+<?php
+header('Content-Type: text/html; charset=UTF-8');
+ini_set('default_charset', 'UTF-8');
+?>
 <html>
     <head>
         <script src="../../Resources/JavaScript.js"></script>

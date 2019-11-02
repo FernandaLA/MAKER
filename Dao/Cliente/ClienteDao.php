@@ -27,7 +27,8 @@ class ClienteDao extends UsuarioDao
                       FROM SE_USUARIO U
                      INNER JOIN EN_JORNADA_PRESTADOR J
                         ON U.COD_USUARIO = J.COD_PRESTADOR
-                     WHERE U.IND_ATIVO = 'S'";
+                     WHERE U.COD_PERFIL = 3
+                       AND U.IND_ATIVO = 'S'";
         return $this->selectDB($select, false);
     }
 

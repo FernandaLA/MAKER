@@ -37,7 +37,7 @@ class UsuarioDao extends BaseDao {
 
     function ListarUsuario() {
         $select = " SELECT DISTINCT U.COD_USUARIO,
-                           NME_USUARIO,
+                           CONCAT(NME_USUARIO, '', DSC_SOBRENOME) AS NME_USUARIO,
                            NRO_CPF,
                            TXT_EMAIL,
                            U.COD_PERFIL,
@@ -109,14 +109,6 @@ class UsuarioDao extends BaseDao {
         return $result;
     }
 
-    // function ReiniciarSenha() {
-    //     $senha = md5("123459");
-    //     $update = " UPDATE SE_USUARIO
-    //                    SET TXT_SENHA = '" . $senha . "'
-    //                  WHERE COD_USUARIO = " . filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);
-    //     return $this->insertDB("$update");
-    // }
-
     public function ResetaSenha($nroCpf) {
         // $nroCpf = str_replace('-', '', str_replace('.', '', filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_NUMBER_INT)));
         $select = " SELECT COD_USUARIO FROM SE_USUARIO WHERE NRO_CPF = '" . $nroCpf . "'";
@@ -136,14 +128,6 @@ class UsuarioDao extends BaseDao {
         return $rs;
     }
 
-    public function VerificaSenhaAtual($codUsuario, $senhaAtual) {
-        $select = " SELECT COD_USUARIO
-                      FROM SE_USUARIO
-                     WHERE COD_USUARIO =" . $codUsuario . "
-                       AND TXT_SENHA = '". $senhaAtual ."'";
-        return $this->selectDB($select, false);
-    }
-
     public function VerificaUsuario($nroCpf) {
         $select = " SELECT COD_USUARIO
                       FROM SE_USUARIO
@@ -156,13 +140,6 @@ class UsuarioDao extends BaseDao {
                        SET TXT_SENHA = '" . $novaSenha . "'
                      WHERE COD_USUARIO = " . $codUsuario;
         return $this->insertDB($update);
-    }
-
-    public function BuscaPerfilUsuario($codUsuario) {
-        $select = " SELECT COD_PERFIL
-                      FROM SE_USUARIO
-                     WHERE COD_USUARIO =".$codUsuario;
-        return $this->selectDB($select, false);
     }
 }
 ?>

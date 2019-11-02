@@ -32,12 +32,13 @@ function MontaComboCategorias(arrDados) {
     CriarComboDispatch('codCategoria', arrDados, 0, 'persist');
 }
 
-function SolicitarAgendamento(codPrestador) {
+function AbreModalAgendamento(codPrestador) {
     $('#codPrestador').val(codPrestador);
+
+    ExecutaDispatch('ServicoPrestador', 'ListarServicoAtivoPrestador', "codPrestador;"+codPrestador+"|", montaComboServicos)
     $('#CadAgendamento').show('fade');
 }
 
 $(document).ready(function() {
-    ExecutaDispatch('Cliente', 'CarregaListaPrestadores', '', CarregaLista);
-    ExecutaDispatch('CategoriaServico', 'ListarCategoriaServicoAtivo', undefined, MontaComboCategorias);
+    ExecutaDispatch('Perfil', 'RetornaPerfilUsuarioLogado', '', MontaTela);
 });

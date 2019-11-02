@@ -41,19 +41,9 @@ class UsuarioController extends BaseController
         echo $UsuarioModel->VerificaCpf();
     }
 
-    // Public Function ReiniciarSenha(){
-    //     $UsuarioModel = new UsuarioModel();
-    //     echo $UsuarioModel->ReiniciarSenha();
-    // }
-
     Public Function ResetaSenha(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->ResetaSenha();
-    }
-
-    Public Function AlterarSenha(){
-        $UsuarioModel = new UsuarioModel();
-        echo $UsuarioModel->AlterarSenha();
     }
 
     Public Function RecuperarSenha(){

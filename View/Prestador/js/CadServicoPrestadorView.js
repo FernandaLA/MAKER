@@ -21,7 +21,6 @@ $(function() {
 
     $('#btnSalvarServico').click(function () {
         var parametros = retornaParametros('cadServico');
-        parametros += "codCategoria;"+$('#codCategoria').val()+"|";
         ExecutaDispatch('ServicoPrestador', 'InsertServicoPrestador', parametros, atualizaGridServicos);
     });
 
@@ -29,7 +28,7 @@ $(function() {
 
 function EditarServico(codServicoPrestador, codCategoria, dscServico, vlrServico, duracaoServico) {
     $("#codServico").val(codServicoPrestador);
-    $("#codCategoria").val(codCategoria);
+    $("#codCategoriaSer").val(codCategoria);
     $("#dscServico").val(dscServico);
     $("#vlrServico").val(vlrServico);
     $("#tmpDuracaoServico").val(duracaoServico);
@@ -49,7 +48,7 @@ function atualizaGridServicos() {
 }
 
 function montaComboCategoria(arrDados) {
-    CriarComboDispatch('codCategoria', arrDados, 0, ' ');
+    CriarComboDispatch('codCategoriaSer', arrDados, 0, 'cadServico', 'codCategoria');
 }
 
 function MontaGridServicos(lista) {

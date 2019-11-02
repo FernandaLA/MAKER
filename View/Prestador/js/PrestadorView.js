@@ -8,7 +8,7 @@ $(function() {
     });
 
     $("#btnSalvarCadastro").click(function () {
-        salvarCadastro();
+        montaCampoCategorias();
     });
 
     $("#btnMeusServicos").click(function () {
@@ -25,11 +25,16 @@ function montaTelaPrestador(dados) {
     preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
-    var jornada = dadosPre['HRA_INICIO']+" às "+dadosPre['HRA_FIM'];
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     // var nota = dadosPre['NOTA_AVALIACAO'];
     // var icon = $("#avaliacaoPrestador").html();
+    var jornada = "";
+    if(dadosPre['HRA_INICIO'] !== "" && dadosPre['HRA_FIM'] !== ""){
+        jornada = dadosPre['HRA_INICIO']+" às "+dadosPre['HRA_FIM'];
+    } else {
+        jornada = "Você ainda não cadastrou sua jornada";
+    }
     
     var jornadaDias = "";
     if (DIAS != null) {
@@ -37,6 +42,8 @@ function montaTelaPrestador(dados) {
             jornadaDias += DIAS[i]['DSC_DIA']+'-';
         }
         jornadaDias = jornadaDias.substr(0, jornadaDias.length-1);
+    } else {
+        jornadaDias = "Você ainda cadastrou essa informação";
     }
     $("#nmePrestadorCompleto").html(nmeCompleto);
     $("#jornadaPrestador").html(jornada);
@@ -46,19 +53,24 @@ function montaTelaPrestador(dados) {
 }
 
 function listaCategorias(dados) {
-    montaComboCategoria(dados);
-    var lista = "";
-    for(var i = 0; i<dados[1].length; i++) {
-        if(dados[1][i]['COD'] != 0) {
-            lista += "<u>"+dados[1][i]['DSC']+"</u> - ";
+    if (dados[0]) {
+        if (dados[1] !== null) {
+            montaComboCategoria(dados);
+            var lista = "";
+            for(var i = 0; i<dados[1].length; i++) {
+                if(dados[1][i]['COD'] != 0) {
+                    lista += "<u>"+dados[1][i]['DSC']+"</u> - ";
+                }
+            }
+            var html = lista.substr(0, lista.length-3);
+            
+            $("#servicosPrestador").html(html)
         }
     }
-    var html = lista.substr(0, lista.length-3);
-    $("#servicosPrestador").html(html)
 }
 
 function MontaComboUF(arrDados) {
-    CriarComboDispatch('sglUf', arrDados, 0, 'cadPrestador');
+    CriarComboDispatch('sglUfPre', arrDados, 0, 'cadPrestador');
 }
 
 function montaBoxCategoria(categorias) {
@@ -83,8 +95,25 @@ function montaBoxCategoria(categorias) {
     $("#servicosBox").html(html);
 }
 
-function salvarCadastro() {
-    
+function montaCampoCategorias() {
+    var categorias = '';
+    $(".checkCat").each(function () {
+        if ($(this).prop('checked')) {
+            categorias += $(this).val() + '-';
+        }
+    });
+    categorias = categorias.substr(0, categorias.length-1);
+
+    salvarCadastro(categorias);
+}
+
+function salvarCadastro(categorias) {
+    var parametros = retornaParametros("cadPrestador");
+    parametros += "|categoriasPrestador;"+categorias+"|";
+    ExecutaDispatch('Prestador','UpdatePrestador', parametros, retornoSalvarCadastro, "Aguarde, atualizando seu cadastro", "Cadastro atualizado com sucesso!");
+}
+
+function retornoSalvarCadastro() {
     $("#editarCadastro").hide();
 }
 

@@ -15,7 +15,7 @@ $(function () {
     });
 
     $('#btnSalvarPre').click(function () {
-        salvarCadastroPre();
+        montaCampoCategorias();
         // if($('#arquivo').val() != '') {
         //     var formCertificado = new FormData(document.formComprovante);
         //     // Ta sem permissão
@@ -31,6 +31,18 @@ $(function () {
     });
 
 });
+
+function montaCampoCategorias() {
+    var categorias = '';
+    $(".checkCat").each(function () {
+        if ($(this).prop('checked')) {
+            categorias += $(this).val() + '-';
+        }
+    });
+    categorias = categorias.substr(0, categorias.length-1);
+
+    salvarCadastroPre(categorias);
+}
 
 function retornaEnvioFoto(dado) {
     $("#dscCaminhoFotoPre").val(dado[1]);
@@ -102,7 +114,7 @@ function montaBoxCategoria(categorias) {
             }
             html += "<td width='300px'>";
             html += "<strong class='checkbox'>";
-            html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador'>"+categorias[1][i]['DSC']+"";
+            html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador checkCat'>"+categorias[1][i]['DSC']+"";
             html += "</strong>";
             html += "</td>"
             count++;
@@ -114,9 +126,9 @@ function montaBoxCategoria(categorias) {
     }
 }
 
-function salvarCadastroPre() {
+function salvarCadastroPre(categorias) {
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|verificaPermissao;N|";
+    parametros += "|verificaPermissao;N|categoriasPrestador;"+categorias+"|";
     ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador);
 }
 
@@ -128,21 +140,23 @@ function retornoSalvarPrestador(dado) {
 
 
 function DesabilitaCamposPre(ind) {
-    $("#fotoPre").attr('Disabled', ind);
-    $("#nmeUsuarioPre").attr('Disabled', ind);
-    $("#dscSobrenomePre").attr('Disabled', ind);
-    $("#dtaNascimentoPre").attr('Disabled', ind);
-    $("#nroTelefonePre").attr('Disabled', ind);
-    $("#txtEmailPre").attr('Disabled', ind);
-    $("#nroCepPre").attr('Disabled', ind);
-    $("#dscComplementoEnderecoPre").attr('Disabled', ind);
-    $("#dscBairroPre").attr('Disabled', ind);
-    $("#dscCidadePre").attr('Disabled', ind);
-    $("#dscEstadoPre").attr('Disabled', ind);
-    $("#codCategoria").attr('Disabled', ind);
-    $("#arquivo").attr('Disabled', ind);
-    $("#txtSenhaCadPre").attr('Disabled', ind);
-    $("#txtSenhaConfPre").attr('Disabled', ind);
+    $(".cadPrestador").attr('Disabled', ind);
+    $("#nroCpfPre").attr('Disabled', false);
+    $("#dscLogradouroPre").attr('Disabled', true);
+    // $("#nmeUsuarioPre").attr('Disabled', ind);
+    // $("#dscSobrenomePre").attr('Disabled', ind);
+    // $("#dtaNascimentoPre").attr('Disabled', ind);
+    // $("#nroTelefonePre").attr('Disabled', ind);
+    // $("#txtEmailPre").attr('Disabled', ind);
+    // $("#nroCepPre").attr('Disabled', ind);
+    // $("#dscComplementoEnderecoPre").attr('Disabled', ind);
+    // $("#dscBairroPre").attr('Disabled', ind);
+    // $("#dscCidadePre").attr('Disabled', ind);
+    // $("#sglUfPre").attr('Disabled', ind);
+    // $("#codCategoria").attr('Disabled', ind);
+    // $("#arquivo").attr('Disabled', ind);
+    // $("#txtSenhaCadPre").attr('Disabled', ind);
+    // $("#txtSenhaConfPre").attr('Disabled', ind);
 }
 
 $(document).ready(function() {

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL & ~E_WARNING & ~ E_DEPRECATED);
 if (!isset($_SESSION)) {
     session_start();
 }

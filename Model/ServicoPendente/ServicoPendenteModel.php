@@ -13,12 +13,12 @@ class ServicoPendenteModel extends AgendaModel
 
     Public Function ListarServicoPendente() {
         $dao = new ServicoPendenteDao();
-        $daoU = new UsuarioDao();
+        $daoP = new PerfilDao();
         $codUsuario = $_SESSION['cod_usuario'];
-        $perfil = $daoU->BuscaPerfilUsuario($codUsuario);
-        if($perfil[1]['COD_PERFIL'] == 2) {
+        $perfil = $daoP->RetornaPerfilUsuarioLogado($codUsuario);
+        if($perfil[1]['COD_PERFIL'] == 3) {
             $lista = $dao->ListarServicoPendentePrestador($codUsuario);
-        } else if ($perfil[1]['COD_PERFIL'] == 3) {
+        } else if ($perfil[1]['COD_PERFIL'] == 4) {
             $lista = $dao->ListarServicoPendenteCliente($codUsuario);
         }
 

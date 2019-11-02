@@ -75,26 +75,24 @@ include_once "../Scripts.php";
 <body class="body">
     <div class="card">
         <?php include_once "Cabecalho.php"; ?>
-        <div class="grid-container">
+        <div class="grid-container" id="telaCliente">
             <div class="item1" style="text-align: left;">
-                <!-- <div class="card-principal"> -->
-                    <table width="100%" align="center">
-                        <tr>
-                            <td width="50%">
-                                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Nossos Prestadores</span>
-                            </td>
-                            <td width="35%">
-                                <label for="tdcodCategoria" class="titulo">Categoria: </label>
-                                <div id="tdcodCategoria"></div>
-                            </td>
-                            <td width="15%">
-                                <button class="button-search" id="btnPesquisar" title="Filtrar Prestadores">
-                                    <span class="oi oi-magnifying-glass"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                <!-- </div> -->
+                <table width="100%" align="center">
+                    <tr>
+                        <td width="50%">
+                            <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Nossos Prestadores</span>
+                        </td>
+                        <td width="35%">
+                            <label for="tdcodCategoria" class="titulo">Categoria: </label>
+                            <div id="tdcodCategoria"></div>
+                        </td>
+                        <td width="15%">
+                            <button class="button-search" id="btnPesquisar" title="Filtrar Prestadores">
+                                <span class="oi oi-magnifying-glass"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="item3" style="width: 600px;">
                 <div id="listagemPrestadores"></div>

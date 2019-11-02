@@ -8,8 +8,8 @@ include_once "../Scripts.php";
         <script src="js/ValidaPrestadorView.js?rdm=<?php echo time(); ?>"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
     </head>
-    <body>
-        <div class="card" style="max-width: 710px;">
+    <body class="body">
+        <div class="card">
             <?php include_once "../../View/MenuPrincipal/Cabecalho.php";?>
             <div class="cabecalho">Prestadores Pendentes de Aprovação</div>
             
