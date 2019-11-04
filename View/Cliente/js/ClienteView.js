@@ -14,7 +14,7 @@ $(function() {
 });
 
 function montaTelaCliente(dados) {
-    console.log(dados);
+    // console.log(dados);
     preencheCamposForm(dados[1][0], "Cli");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
