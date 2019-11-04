@@ -134,7 +134,7 @@ class FuncoesString{
         return $palavra;
     }  
     
-    Public function validaCPF($cpf = null) {
+    Public Static function validaCPF($cpf = null) {
 
         // Verifica se um número foi informado
         if(empty($cpf)) {
