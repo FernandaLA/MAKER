@@ -15,14 +15,9 @@ class ClienteController extends UsuarioController
         $ClienteModel = new ClienteModel();
         echo $ClienteModel->CarregaListaPrestadores();
     }
-    
-    // Public Function InsertCliente() {
-    //     $ClienteModel = new ClienteModel();
-    //     echo $ClienteModel->InsertCliente();
-    // }
 
-    // Public Function UpdateCliente() {
-    //     $ClienteModel = new ClienteModel();
-    //     echo $ClienteModel->UpdateCliente();
-    // }
+    Public Function CarregaDadosCliente() {
+        $ClienteModel = new ClienteModel();
+        echo $ClienteModel->CarregaDadosCliente();
+    }
 }

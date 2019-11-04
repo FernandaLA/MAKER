@@ -17,8 +17,8 @@ include_once "../Scripts.php";
                 <!-- <div class="card-principal"> -->
                 <table width="100%" align="center">
                     <tr>
-                        <td>
-                            <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Finalizados</span>
+                        <td style="text-align: center;">
+                            <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Pendentes</span>
                         </td>
                     </tr>
                 </table>

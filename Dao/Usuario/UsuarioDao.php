@@ -59,32 +59,32 @@ class UsuarioDao extends BaseDao {
         return $this->selectDB("$select", false);
     }
 
-    function AddUsuario() {
-        $codUsuario = $this->CatchUltimoCodigo('SE_USUARIO', 'COD_USUARIO');
-        $txtSenha = '123459';
-        $senha = base64_encode($txtSenha);
-        $insert = " INSERT INTO SE_USUARIO (
-                                COD_USUARIO,
-                                NME_USUARIO,
-                                TXT_SENHA,
-                                COD_PERFIL,
-                                IND_ATIVO,
-                                TXT_EMAIL,
-                                NRO_CPF)
-                         VALUES (
-                                $codUsuario,
-                                '" . filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                                '" . $senha . "',
-                                '" . filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT) . "',
-                                '" . filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING) . "',
-                                '" . filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_STRING) . "',
-                                '" . filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_STRING) . "')";
-        $result = $this->insertDB("$insert");
-        if ($result[0]) {
-            $result[1] = $codUsuario;
-        }
-        return $result;
-    }
+    // function AddUsuario() {
+    //     $codUsuario = $this->CatchUltimoCodigo('SE_USUARIO', 'COD_USUARIO');
+    //     $txtSenha = '123459';
+    //     $senha = base64_encode($txtSenha);
+    //     $insert = " INSERT INTO SE_USUARIO (
+    //                             COD_USUARIO,
+    //                             NME_USUARIO,
+    //                             TXT_SENHA,
+    //                             COD_PERFIL,
+    //                             IND_ATIVO,
+    //                             TXT_EMAIL,
+    //                             NRO_CPF)
+    //                      VALUES (
+    //                             $codUsuario,
+    //                             '" . filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES) . "',
+    //                             '" . $senha . "',
+    //                             '" . filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT) . "',
+    //                             '" . filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING) . "',
+    //                             '" . filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_STRING) . "',
+    //                             '" . filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_STRING) . "')";
+    //     $result = $this->insertDB("$insert");
+    //     if ($result[0]) {
+    //         $result[1] = $codUsuario;
+    //     }
+    //     return $result;
+    // }
 
     function UpdateUsuario() {
         $nroCpf = str_replace('-', '', str_replace('.', '', filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_NUMBER_INT)));

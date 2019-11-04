@@ -12,7 +12,7 @@ include_once "../Scripts.php";
         <input type="hidden" value="" name="method" id="method">
         <input type="hidden" value="" name="codMenu" id="codMenu">
         <input type="hidden" value="" name="indAtivo" id="indAtivo">
-        <div class="card" style="max-width: 80%;">
+        <div class="card">
                 <?php include_once "../../View/MenuPrincipal/Cabecalho.php";?>
                 <div class="cabecalho">Permissões de Menu</div>
                 

@@ -34,7 +34,7 @@ class PrestadorModel extends UsuarioModel
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $cats = $dao->Populate('categoriasPrestador', 'S');
         $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
-        $result = $this->ValidaCampos($cats);
+        $result = $this->ValidaCamposPrestador($cats);
         if($result[0]){
             $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
             $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
@@ -85,7 +85,7 @@ class PrestadorModel extends UsuarioModel
         return json_encode($result);
     }
     
-    Public Function ValidaCampos($cats){
+    Public Function ValidaCamposPrestador($cats){
         $result=array(true, '');
         if (!isset($this->objRequest->nmeUsuario)){
             $result[0] = false;

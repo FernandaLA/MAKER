@@ -42,10 +42,10 @@ class UsuarioModel extends BaseModel
         return json_encode($result);
     }
     
-    function AddUsuario(){
-        $dao = new UsuarioDao();
-        return json_encode($dao->AddUsuario());
-    }
+    // function AddUsuario(){
+    //     $dao = new UsuarioDao();
+    //     return json_encode($dao->AddUsuario());
+    // }
 
     function UpdateUsuario(){
         $dao = new UsuarioDao();

@@ -42,6 +42,13 @@ class AgendaModel extends BaseModel
         return json_encode($lista);
 
     }
+
+    Public Function ListarServicosFuturos() {
+        $dao = new AgendaDao();
+        $lista = $dao->ListarServicosFuturos();
+
+        return json_encode($lista);
+    }
     
 }
 

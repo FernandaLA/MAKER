@@ -101,13 +101,7 @@ include_once "../Scripts.php";
 
         <div class="grid-container" id="telaPrestador">
             <div class="item3" style="text-align: center;">
-                <!-- <table width="100%" align="center">
-                    <tr>
-                        <td width="50%"> -->
-                            <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Futuros</span>
-                        <!-- </td>
-                    </tr>
-                </table> -->
+                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Futuros</span>
             </div>
             <div class="item3" style="width: 600px;">
                 <div id="listagemServicosFuturos"></div>

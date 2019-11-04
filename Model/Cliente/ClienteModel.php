@@ -37,17 +37,10 @@ class ClienteModel extends UsuarioModel
         return json_encode($lista);
     }
 
-    Public Function InsertCliente() {
+    Public Function CarregaDadosCliente() {
         $dao = new ClienteDao();
-        BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->InsertCliente($this->objRequest);
-        return json_encode($result);
-    }
-
-    Public Function UpdateCliente() {
-        $dao = new ClienteDao();
-        BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->UpdateCliente($this->objRequest);
+        $result = $dao->CarregaDadosCliente($_SESSION['cod_usuario']);
+        // var_dump($result); die;
         return json_encode($result);
     }
     

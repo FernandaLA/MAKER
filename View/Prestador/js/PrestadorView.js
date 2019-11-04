@@ -22,7 +22,7 @@ $(function() {
 });
 
 function montaTelaPrestador(dados) {
-    preencheCamposFormPre(dados[1][0]);
+    preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
