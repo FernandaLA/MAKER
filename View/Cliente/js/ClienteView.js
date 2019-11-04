@@ -3,7 +3,7 @@ $(function() {
         $("#editarCadastro").show('fade');
     });
 
-    $("#btnCancelarEdicao").click(function () {
+    $("#btnCancelaEdicao").click(function () {
         $("#editarCadastro").hide('fade');
     });
 
