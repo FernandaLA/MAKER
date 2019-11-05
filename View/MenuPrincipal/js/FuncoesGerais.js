@@ -538,7 +538,7 @@ function MontaCardServico(lista, nmeCampo, acao = false){
             html +=" </div>";
         }
     } else {
-        html += "NENHUM REGISTRO ENCONTRADO"
+        html += "<h4 style='text-align: center;'>NENHUM REGISTRO ENCONTRADO</h4>"
     }
 
     $("#"+nmeCampo).html(html);

@@ -7,7 +7,16 @@ $(function() {
 
 function MontaTela(dado) {
     if(dado[0]) {
-        if(dado[1][0]['COD_PERFIL'] == 3) {
+        if(dado[1][0]['COD_PERFIL'] == 1) {
+            $("#telaCliente").hide();
+            $("#telaPrestador").show();
+            ExecutaDispatch('Agenda', 'ListarServicosFuturos', '', MontaListaServicos);
+            
+            $("#telaCliente").show();
+            $("#telaPrestador").hide();
+            ExecutaDispatch('Cliente', 'CarregaListaPrestadores', '',MontaListaPrestadores);
+            ExecutaDispatch('CategoriaServico', 'ListarCategoriaServicoAtivo', undefined, MontaComboCategorias);
+        }else if(dado[1][0]['COD_PERFIL'] == 3) {
             $("#telaCliente").hide();
             $("#telaPrestador").show();
             ExecutaDispatch('Agenda', 'ListarServicosFuturos', '', MontaListaServicos);
