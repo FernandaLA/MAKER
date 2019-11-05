@@ -148,9 +148,9 @@ class UsuarioModel extends BaseModel
         } else if (trim($this->objRequest->txtSenha)=='') {
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Senha'\n";
-        } else if (strlen($this->objRequest->txtSenha) < 3) {
+        } else if (strlen($this->objRequest->txtSenha) < 6) {
             $result[0] = false;
-            $result[1] .= "Sua senha deve ter pelo menos 3 caracteres'\n";
+            $result[1] .= "Sua senha deve ter pelo menos 6 caracteres'\n";
         } else if ($this->objRequest->txtSenha !== $this->objRequest->txtSenhaConf) {
             $result[0] = false;
             $result[1] .= "As Senhas informadas não são iguais'\n";
