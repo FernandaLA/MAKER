@@ -66,7 +66,6 @@ function MontaTabelaUsuario(listaUsuario) {
             ]
         });
     // events
-    $('#' + nomeGrid).jqxGrid('hidecolumn', 'NRO_CPF');
 
     $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
@@ -74,7 +73,7 @@ function MontaTabelaUsuario(listaUsuario) {
         var rows = $('#listaUsuarios').jqxGrid('getdisplayrows');
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
-        preencheCamposForm(listaUsuario[rowID],'indAtivo;B|');
+        preencheCamposForm(listaUsuario[rowID],'', 'indAtivo;B|');
         $("#method").val("UpdateMenu");
         $("#CadUsuarios").jqxWindow("open");
     });
