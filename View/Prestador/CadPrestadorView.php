@@ -121,9 +121,22 @@
                 <div style="margin-bottom: 1em;margin-top: 1em">
                     <table width="100%" id="servicosBox"></table>
                 </div>
+
+                <!-- <form id="formComprovante" name="formComprovante" action="../../Controller/Usuario/UsuarioController.php" enctype="multipart/form-data" method="post">
+                    <label for="arquivo" class="titulo">Envio do Certificado *</label>
+                    <div style="padding-top: 10px;width: 220px;">
+                        <input id="arquivo" name="arquivo" type="file" class="cadPrestador" />
+
+                        <!-- <input id="enviarArquivo" name="enviarArquivo" type="submit" value="Salvar Certificado" /> -->
+                    </div>
+                    <small style="color: #505050">
+                        Tamanho máximo: 200KB. Apenas .pdf
+                    </small>
+                </form> -->
+
                 <form id="formComprovante" name="formComprovante" action="">
                     <label for="arquivo" class="titulo">Envio do Certificado *</label>
-                    <!-- add arquivo -->
+
                     <div style="padding-top: 10px;width: 220px;">
                         Selecione o arquivo:
                         <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
@@ -144,16 +157,20 @@
                     <tr>
                         <td>
                             <label for="txtSenhaCadPre" class="titulo">Senha *</label>
-                            <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input" minlength="4" maxlength="8">
+                            <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input" minlength="6" maxlength="8">
                         </td>
                         <td>
                             <label for="txtSenhaConfPre" class="titulo">Confirme a Senha *</label>
-                            <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="cadPrestador input" minlength="4" maxlength="8">
+                            <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="cadPrestador input" minlength="6" maxlength="8">
                         </td>
                     </tr>
-                    <small style="color: #505050">
-                        A senha deve ter de 4 à 8 caracteres
-                    </small>
+                    <tr>
+                        <td colspan="2">
+                            <small style="color: #505050">
+                                A senha deve ter de 6 à 8 caracteres
+                            </small>
+                        </td>
+                    </tr>
                 </table>
 
                 <hr style="margin-top: 30px;margin-bottom: 0px">

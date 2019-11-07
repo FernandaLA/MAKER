@@ -101,7 +101,7 @@ include_once "../Scripts.php";
 
         <div class="grid-container" id="telaPrestador">
             <div class="item3" style="text-align: center;">
-                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços Futuros</span>
+                <span style="font-size: 26px;font-weight: bold;color: purple;padding-left: 5px">Serviços à Realizar</span>
             </div>
             <div class="item3" style="width: 600px;">
                 <div id="listagemServicosFuturos"></div>

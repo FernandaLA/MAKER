@@ -51,7 +51,7 @@ class UsuarioModel extends BaseModel
         $dao = new UsuarioDao();
         return json_encode($dao->UpdateUsuario());
     }
-
+    
     function DeleteUsuario(){
         $dao = new UsuarioDao();
         return $dao->DeleteUsuario();
@@ -74,14 +74,14 @@ class UsuarioModel extends BaseModel
         
         return json_encode($result);
     }
-
+    
     Public Function ResetaSenha(){
         $dao = new UsuarioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $nroCpf = $this->objRequest->nroCpf;
         return json_encode($dao->ResetaSenha($nroCpf));
     }
-
+    
     Public Function RecuperarSenha(){
         $dao = new UsuarioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
@@ -133,12 +133,21 @@ class UsuarioModel extends BaseModel
         if (!isset($this->objRequest->dtaNascimento)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Data de Nascimento'\n";
+        } else {
+            $retorno = $this->validaNascimento($this->objRequest->dtaNascimento);
+            if($retorno[0]){
+                $result[0] = false;
+                $result[1] .= $retorno[1];
+            }
         }
         if (!isset($this->objRequest->nroTelefone)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Celular'\n";
         }
-        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+        if (!isset($this->objRequest->txtEmail)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Email'\n";
+        } else if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
             $result[0] = false;
             $result[1] .= "Email inválido\n";
         }
@@ -157,5 +166,90 @@ class UsuarioModel extends BaseModel
         }
         return $result;
     }
+
+    Public Function validaNascimento($dtaNascimento) {
+        $retorno = array(false, '');
+        //Data de nascimento
+        $dtaCad = date('Y-m-d',strtotime(str_replace('/','-',$dtaNascimento)));   
+        // data atual
+        $dtaAtual = date('Y-m-d'); 
+        
+        if (substr($dtaCad,0,4) > date('Y') || substr($dtaCad,0,4) < date('Y')-99 || substr($dtaCad,5,7) > 12 || substr($dtaCad,8,10) > 31){
+            $retorno[0] = true;
+            $retorno[1] = "Informe uma 'Data de Nascimento' válida\n";
+        } else if (date('Y') - substr($dtaCad,0,4) < 18){
+            $retorno[0] = true;
+            $retorno[1] = "Você não tem idade para se cadastrar conosco, sinto muito\n";
+        }
+        
+        // diferenca entre duas datas
+        // if( isset($dtaCad) && $dtaCad != "" && isset($dtaAtual) && $dtaAtual != "") {
+        //     $dtaCad = DateTime::createFromFormat('Y-m-d', $dtaCad);
+        //     $dtaAtual = DateTime::createFromFormat('Y-m-d', $dtaAtual);
+            
+        //     if ((int)$dtaAtual->diff($dtaCad)->format('%y') < 18) {
+        //         $retorno[0] = true;
+        //         $retorno[1] = "Você não tem idade para se cadastrar conosco, sinto muito\n";
+        //     }
+        // }
+        return $retorno;
+    }
+
+    // function UploadCertificado(){
+        
+    //     $arquivo = $_FILES['arquivo'];
+    //     $tipos = array('pdf');
+    //     $result = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos);
+
+    //     return json_encode($result);
+    // }
+
+    // Private Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
+    //     $nomeOriginal='';
+    //     if (isset($arquivo)) {
+    //         $infos = explode(".", $arquivo["name"]);
+    //         if (!$nome) {
+    //             for ($i = 0; $i < count($infos) - 1; $i++) {
+    //                 $nomeOriginal = $nomeOriginal . $infos[$i] . ".";
+    //             }
+    //         } else {
+    //             $nomeOriginal = $nome . ".";
+    //         }
+    //         $tipoArquivo = $infos[count($infos) - 1];
+    //         $tipoPermitido = false;
+    //         foreach ($tipos as $tipo) {
+    //             if(strtolower($tipoArquivo) == strtolower($tipo)){
+    //                 $tipoPermitido = true;
+    //             }
+    //         }            
+    //         if (!$tipoPermitido) {
+    //             $retorno[0] = false;
+    //             $retorno[1] = "Formato de arquivo não permitido";
+    //         } else {
+    //             $caminhoArquivo = $pasta . $nomeOriginal . $tipoArquivo;
+    //             $nmeArquivo = $nomeOriginal . $tipoArquivo;
+    //             if (move_uploaded_file($arquivo['tmp_name'], $caminhoArquivo)) {
+    //                 //lemos o  conteudo do arquivo usando afunção do PHP  file_get_contents
+    //                 $binario = file_get_contents($arquivo['tmp_name']);
+    //                 // evitamos erro de sintaxe do MySQL
+    //                 $binario = mysql_real_escape_string($binario);
+                    
+                    
+    //                 $dao = new UsuarioDao();
+    //                 $result = $dao->uploadFile($nmeArquivo, $nmeOriginal, $binario, $tpoArquivo,  $arquivo["size"]);
+                    
+    //                 // $retorno[0] = true;
+    //                 // $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
+    //             } else {
+    //                 $retorno[0] = false;
+    //                 $retorno[1] = "Erro ao fazer upload";
+    //             }
+    //         }
+    //     } else {
+    //         $retorno[0] = false;
+    //         $retorno[1] = "Arquivo nao setado";
+    //     }
+    //     return $retorno;
+    // } 
 }
 ?>

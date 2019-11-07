@@ -104,12 +104,21 @@ class PrestadorModel extends UsuarioModel
         if (!isset($this->objRequest->dtaNascimento)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Data de Nascimento'\n";
+        } else {
+            $retorno = $this->validaNascimento($this->objRequest->dtaNascimento);
+            if($retorno[0]){
+                $result[0] = false;
+                $result[1] .= $retorno[1];
+            }
         }
         if (!isset($this->objRequest->nroTelefone)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Celular'\n";
         }
-        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+        if (!isset($this->objRequest->txtEmail)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Email'\n";
+        } else if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
             $result[0] = false;
             $result[1] .= "Email inválido\n";
         }      
@@ -135,5 +144,6 @@ class PrestadorModel extends UsuarioModel
         }
         return $result;
     }
+
 }
 

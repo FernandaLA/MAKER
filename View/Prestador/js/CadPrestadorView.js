@@ -17,10 +17,9 @@ $(function () {
     $('#btnSalvarPre').click(function () {
         montaCampoCategorias();
         // if($('#arquivo').val() != '') {
-        //     var formCertificado = new FormData(document.formComprovante);
+        //     var formCertificado = new FormData($('#formComprovante')[0]);
         //     // Ta sem permissão
-        //     ExecutaDispatchUpload('Usuario', 'UploadCertificado', formCertificado, retornaEnvioCertificado);
-            
+        //     ExecutaDispatchUpload('Usuario', 'UploadCertificado', formCertificado+"|verificaPermissao;N|", retornaEnvioCertificado);
         // }
     });
         
@@ -114,7 +113,7 @@ function montaBoxCategoria(categorias) {
             }
             html += "<td width='300px'>";
             html += "<strong class='checkbox'>";
-            html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador checkCat'>"+categorias[1][i]['DSC']+"";
+            html += "<input type='checkbox' name='codCategoria' id='codCategoria"+categorias[1][i]['COD']+"' value='"+categorias[1][i]['COD']+"'class='cadPrestador checkCat'>"+categorias[1][i]['DSC']+"";
             html += "</strong>";
             html += "</td>"
             count++;
@@ -129,7 +128,8 @@ function montaBoxCategoria(categorias) {
 function salvarCadastroPre(categorias) {
     var parametros = retornaParametros("cadPrestador");
     parametros += "|verificaPermissao;N|categoriasPrestador;"+categorias+"|";
-    ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador);
+    ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
+                    "Cadastro realizado com sucesso! Iremos validar seu cadastro e entraremos em contato via Email");
 }
 
 function retornoSalvarPrestador(dado) {
@@ -143,31 +143,18 @@ function DesabilitaCamposPre(ind) {
     $(".cadPrestador").attr('Disabled', ind);
     $("#nroCpfPre").attr('Disabled', false);
     $("#dscLogradouroPre").attr('Disabled', true);
-    // $("#nmeUsuarioPre").attr('Disabled', ind);
-    // $("#dscSobrenomePre").attr('Disabled', ind);
-    // $("#dtaNascimentoPre").attr('Disabled', ind);
-    // $("#nroTelefonePre").attr('Disabled', ind);
-    // $("#txtEmailPre").attr('Disabled', ind);
-    // $("#nroCepPre").attr('Disabled', ind);
-    // $("#dscComplementoEnderecoPre").attr('Disabled', ind);
-    // $("#dscBairroPre").attr('Disabled', ind);
-    // $("#dscCidadePre").attr('Disabled', ind);
-    // $("#sglUfPre").attr('Disabled', ind);
-    // $("#codCategoria").attr('Disabled', ind);
-    // $("#arquivo").attr('Disabled', ind);
-    // $("#txtSenhaCadPre").attr('Disabled', ind);
-    // $("#txtSenhaConfPre").attr('Disabled', ind);
 }
 
 $(document).ready(function() {
     ExecutaDispatch('CategoriaServico','ListarCategoriaServicoAtivo', 'verificaPermissao;N|', montaBoxCategoria);
     DesabilitaCamposPre(true);
 
-    $('#fotoPre').change(function () {
-        if($('#fotoPre').val() !== ''){
-            // Ta sem permissão
-            var formFoto = new FormData(document.formFoto);
-            ExecutaDispatchUpload('Usuario', 'UploadFotoPerfil', formFoto, retornaEnvioFoto, 'Aguarde...', 'Foto Salva!!');
-        }
-    });
+    // $('#fotoPre').change(function () {
+    //     if($('#fotoPre').val() !== ''){
+    //         // Ta sem permissão
+    //         var formFoto = new FormData(document.formFoto);
+    //         var parametros = "fotoPre;"+formFoto+"|verificaPermissao;N|";
+    //         ExecutaDispatchUpload('Usuario', 'UploadFotoPerfil', parametros, retornaEnvioFoto, 'Aguarde...', 'Foto Salva!!');
+    //     }
+    // });
 });

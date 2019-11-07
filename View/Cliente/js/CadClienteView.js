@@ -80,26 +80,19 @@ function RetornoValidaCpfCli(resposta) {
 function salvarCadastroCli() {
     var parametros = retornaParametros("cadCliente");
     parametros += "|verificaPermissao;N|";
-    ExecutaDispatch('Usuario','InsertUsuario', parametros);
+    ExecutaDispatch('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
+}
+
+function retornoSalvarCliente(dado) {
+    if(dado[0]){
+        $('#CadCliente').hide('fade');
+    }
 }
 
 function DesabilitaCamposCli(ind) {
     $(".cadCliente").attr('Disabled', ind);
     $("#nroCpfCli").attr('Disabled', false);
     $("#dscLogradouroCli").attr('Disabled', true);
-    // $("#fotoCli").attr('Disabled', ind);
-    // $("#nmeUsuarioCli").attr('Disabled', ind);
-    // $("#dscSobrenomeCli").attr('Disabled', ind);
-    // $("#dtaNascimentoCli").attr('Disabled', ind);
-    // $("#nroTelefoneCli").attr('Disabled', ind);
-    // $("#txtEmailCli").attr('Disabled', ind);
-    // $("#nroCepCli").attr('Disabled', ind);
-    // $("#dscComplementoEnderecoCli").attr('Disabled', ind);
-    // $("#dscBairroCli").attr('Disabled', ind);
-    // $("#dscCidadeCli").attr('Disabled', ind);
-    // $("#sglUfCli").attr('Disabled', ind);
-    // $("#txtSenhaCadCli").attr('Disabled', ind);
-    // $("#txtSenhaConfCli").attr('Disabled', ind);
 }
 
 $(document).ready(function() {

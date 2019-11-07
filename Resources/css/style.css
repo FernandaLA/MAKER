@@ -524,3 +524,22 @@ text.jqx-knob-label {
 .item2 { grid-area: left; }
 .item3 { grid-area: main; margin: auto }
 .item4 { grid-area: right;}
+
+@Media only screen and (max-width: 1024px) and (min-width: 481px) {
+    .card {
+        max-width: 95%;
+    }
+}
+
+@Media only screen and (max-width: 480px) and (min-width: 321px) {
+    .card {
+        max-width: 95%;
+    }
+}
+
+/* Smart phone em modo retrato */ 
+@Media only screen and (max-width: 320px) {
+    .card {
+        max-width: 95%;
+    }
+}

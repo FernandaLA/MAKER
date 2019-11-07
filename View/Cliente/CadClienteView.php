@@ -108,11 +108,18 @@
                     <tr>
                         <td>
                             <label for="txtSenhaCad" class="titulo">Senha *</label>
-                            <input required type="password" id="txtSenhaCadCli" name="txtSenha" class="cadCliente input">
+                            <input required type="password" id="txtSenhaCadCli" name="txtSenha" class="cadCliente input" minlength="6" maxlength="8">
                         </td>
                         <td>
                             <label for="txtSenhaConf" class="titulo">Confirme a Senha *</label>
-                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="cadCliente input">
+                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="cadCliente input" minlength="6" maxlength="8">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <small style="color: #505050">
+                                A senha deve ter de 6 à 8 caracteres
+                            </small>
                         </td>
                     </tr>
                 </table>
