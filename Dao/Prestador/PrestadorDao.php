@@ -63,7 +63,8 @@ class PrestadorDao extends UsuarioDao
     }
 
     Public Function CarregaDadosPrestador($codUsuario) {
-        $select = " SELECT U.NME_USUARIO,
+        $select = " SELECT U.COD_USUARIO,
+                           U.NME_USUARIO,
                            U.DSC_SOBRENOME,
                            CONCAT(U.NME_USUARIO, ' ', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
                            U.DTA_NASCIMENTO,
