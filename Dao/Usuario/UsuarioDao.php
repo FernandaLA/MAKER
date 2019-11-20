@@ -141,5 +141,18 @@ class UsuarioDao extends BaseDao {
                      WHERE COD_USUARIO = " . $codUsuario;
         return $this->insertDB($update);
     }
+
+    public function uploadFile($nome, $nmeOriginal, $binario, $tipo, $tamanho ) {
+        $insert = "INSERT INTO EN_ARQUIVO (COD_ARQUIVO, NME_ARQUIVO,
+                                           DSC_ARQUIVO, DSC_DADOS_ARQUIVO,
+                                           TPO_ARQUIVO, NRO_TAMANHO_ARQUIVO,
+                                           DTA_REGISTRO)
+                        VALUES (NULL, ".$nome.",
+                                ".$file_name.", ".$binario.",
+                                ".$file_type.", ".$file_size.",
+                                NOW())";
+        return $this->insertDB($insert);
+        // mysql_query("$sql") or die (mysql_error());
+    }
 }
 ?>

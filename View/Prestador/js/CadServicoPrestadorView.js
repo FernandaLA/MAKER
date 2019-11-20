@@ -21,7 +21,7 @@ $(function() {
 
     $('#btnSalvarServico').click(function () {
         var parametros = retornaParametros('cadServico');
-        ExecutaDispatch('ServicoPrestador', 'InsertServicoPrestador', parametros, atualizaGridServicos);
+        ExecutaDispatch('ServicoPrestador', 'InsertServicoPrestador', parametros, atualizaGridServicos, "Aguarde, salvando serviço", "Serviço cadastrado com sucesso!");
     });
 
 });
@@ -37,7 +37,7 @@ function EditarServico(codServicoPrestador, codCategoria, dscServico, vlrServico
 }
 
 function ExcluirServico(codServicoPrestador) {
-    ExecutaDispatch('ServicoPrestador', 'UpdateServicoPrestador', 'codServicoPrestador;'+codServicoPrestador+'|indAtivo;N', )
+    ExecutaDispatch('ServicoPrestador', 'UpdateServicoPrestador', 'codServicoPrestador;'+codServicoPrestador+'|indAtivo;N', atualizaGridServicos, "Aguarde, excluindo serviço", "Serviço excluído com sucesso!" );
 }
 
 function atualizaGridServicos() {

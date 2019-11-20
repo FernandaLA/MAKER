@@ -15,13 +15,26 @@ $(function () {
     });
 
     $('#btnSalvarCli').click(function () {
-        $('#CadCliente').hide('fade');
         salvarCadastroCli();
     });
         
     $("#nroCepCli").on('blur', function(){
         if ($(this).val()!=''){
             pesquisaCepCli();
+        }
+    });
+
+    $("#nmeUsuarioCli").on("input", function(){
+        var regexp = /[^a-zA-Zà-úÀ-Ú' ]/g;
+        if(this.value.match(regexp)){
+          $(this).val(this.value.replace(regexp,''));
+        }
+    });
+
+    $("#dscSobrenomeCli").on("input", function(){
+        var regexp = /[^a-zA-Zà-úÀ-Ú' ]/g;
+        if(this.value.match(regexp)){
+          $(this).val(this.value.replace(regexp,''));
         }
     });
 
@@ -78,14 +91,16 @@ function RetornoValidaCpfCli(resposta) {
 }
 
 function salvarCadastroCli() {
+    var formFotoCli = new FormData($('#formFotoCli')[0]);
     var parametros = retornaParametros("cadCliente");
-    parametros += "|verificaPermissao;N|";
-    ExecutaDispatch('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
+    parametros += "|verificaPermissao;N|"+formFotoCli+"|";
+    ExecutaDispatchUpload('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
 }
 
 function retornoSalvarCliente(dado) {
     if(dado[0]){
         $('#CadCliente').hide('fade');
+        LimparCampos('CadCliente');
     }
 }
 

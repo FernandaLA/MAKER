@@ -45,7 +45,7 @@ class AgendaModel extends BaseModel
 
     Public Function ListarServicosFuturos() {
         $dao = new AgendaDao();
-        $lista = $dao->ListarServicosFuturos();
+        $lista = $dao->ListarServicosFuturos($_SESSION['cod_usuario']);
 
         return json_encode($lista);
     }

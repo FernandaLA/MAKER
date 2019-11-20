@@ -16,16 +16,26 @@ $(function () {
 
     $('#btnSalvarPre').click(function () {
         montaCampoCategorias();
-        // if($('#arquivo').val() != '') {
-        //     var formCertificado = new FormData($('#formComprovante')[0]);
-        //     // Ta sem permissão
-        //     ExecutaDispatchUpload('Usuario', 'UploadCertificado', formCertificado+"|verificaPermissao;N|", retornaEnvioCertificado);
-        // }
+
     });
-        
+
     $("#nroCepPre").on('blur', function(){
         if ($(this).val()!=''){
             pesquisaCepPre();
+        }
+    });
+
+    $("#nmeUsuarioPre").on("input", function(){
+        var regexp = /[^a-zA-Zà-úÀ-Ú' ]/g;
+        if(this.value.match(regexp)){
+          $(this).val(this.value.replace(regexp,''));
+        }
+    });
+
+    $("#dscSobrenomePre").on("input", function(){
+        var regexp = /[^a-zA-Zà-úÀ-Ú' ]/g;
+        if(this.value.match(regexp)){
+          $(this).val(this.value.replace(regexp,''));
         }
     });
 
@@ -126,15 +136,18 @@ function montaBoxCategoria(categorias) {
 }
 
 function salvarCadastroPre(categorias) {
+    var formFoto = new FormData($('#formFoto')[0]);
+    var formCertificado = new FormData($('#formCertificado')[0]);
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|verificaPermissao;N|categoriasPrestador;"+categorias+"|";
-    ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
+    parametros += "|verificaPermissao;N|categoriasPrestador;"+categorias+"|"+formFoto+"|"+formCertificado+"|";
+    ExecutaDispatchUpload('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
                     "Cadastro realizado com sucesso! Iremos validar seu cadastro e entraremos em contato via Email");
 }
 
 function retornoSalvarPrestador(dado) {
     if(dado[0]){
         $('#CadPrestador').hide('fade');
+        LimparCampos('CadPrestador');
     }
 }
 
@@ -148,13 +161,4 @@ function DesabilitaCamposPre(ind) {
 $(document).ready(function() {
     ExecutaDispatch('CategoriaServico','ListarCategoriaServicoAtivo', 'verificaPermissao;N|', montaBoxCategoria);
     DesabilitaCamposPre(true);
-
-    // $('#fotoPre').change(function () {
-    //     if($('#fotoPre').val() !== ''){
-    //         // Ta sem permissão
-    //         var formFoto = new FormData(document.formFoto);
-    //         var parametros = "fotoPre;"+formFoto+"|verificaPermissao;N|";
-    //         ExecutaDispatchUpload('Usuario', 'UploadFotoPerfil', parametros, retornaEnvioFoto, 'Aguarde...', 'Foto Salva!!');
-    //     }
-    // });
 });

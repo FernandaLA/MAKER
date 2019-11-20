@@ -48,9 +48,9 @@ class AgendaDao extends BaseDao
                            CS.DSC_CATEGORIA,
                            SP.DSC_SERVICO,
                            SP.VLR_SERVICO,
-                           CASE WHEN (A.COD_STATUS == 2 AND A.DTA_AGENDAMENTO < NOW(DATE))
+                           CASE WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO < CURRENT_DATE()
                                 THEN 'Realizado'
-                                WHEN (A.COD_STATUS == 2 AND A.DTA_AGENDAMENTO == NOW(DATE) AND A.DSC_HORARIO+SP.TMP_DURACAO_SERVICO < NOW())
+                                WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO = CURRENT_DATE() AND A.DSC_HORARIO+SP.TMP_DURACAO_SERVICO < NOW()
                                 THEN 'Realizado'
                            ELSE SA.DSC_STATUS
                            END AS SITUACAO
@@ -64,9 +64,9 @@ class AgendaDao extends BaseDao
                      INNER JOIN EN_STATUS_AGENDAMENTO SA
                         ON A.COD_STATUS = SA.COD_STATUS
                      WHERE A.COD_STATUS = 2
-                       AND A.DTA_AGENDAMENTO >= NOW(DATE)
+                       AND A.DTA_AGENDAMENTO >= CURRENT_DATE()
                        AND A.DSC_HORARIO > NOW()
-                       AND COD_PRESTADOR =".$codUsuario."
+                       AND A.COD_PRESTADOR =".$codUsuario."
                      ORDER BY A.DTA_AGENDAMENTO, A.DSC_HORARIO";
         return $this->selectDB($select, false);
     }

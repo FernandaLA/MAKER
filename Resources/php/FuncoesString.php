@@ -180,6 +180,21 @@ class FuncoesString{
             return true;
         }
     }
+    
+    function validaTelefone($telefone){
+        $valido = true;
+        $telefone= trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));
+        if($telefone == 00000000000 || $telefone == 11111111111
+        || $telefone == 22222222222 || $telefone == 33333333333
+        || $telefone == 44444444444 || $telefone == 55555555555
+        || $telefone == 66666666666 || $telefone == 77777777777
+        || $telefone == 88888888888 || $telefone == 99999999999) {
+            
+            $valido = false;
+
+        }
+        return $valido;
+    }
 
     function validaCelular($telefone){
         $telefone= trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));

@@ -35,17 +35,23 @@ class UsuarioModel extends BaseModel
         $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
         $result = $this->ValidaCampos();
         if($result[0]){
+            $this->SalvarFotoCli();
             $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
             $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
             $result = $dao->InsertUsuario($this->objRequest);
         }
         return json_encode($result);
     }
-    
-    // function AddUsuario(){
-    //     $dao = new UsuarioDao();
-    //     return json_encode($dao->AddUsuario());
-    // }
+
+    Public Function SalvarFotoCli() {
+        $nome = $this->objRequest->nroCpf;
+        $nome = $nome.replace('.', '');
+        $nome = $nome.replace('-', '');
+        $arquivo = $_FILES['fotoCli'];
+        $tipos = array('png', 'jpeg', 'jpg');
+        $enviar = $this->uploadFile($arquivo, PATH_FOTOS, $tipos, $nome);
+        echo json_encode($enviar);
+    }
 
     function UpdateUsuario(){
         $dao = new UsuarioDao();
@@ -143,6 +149,9 @@ class UsuarioModel extends BaseModel
         if (!isset($this->objRequest->nroTelefone)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Celular'\n";
+        } else if (!FuncoesString::validaTelefone($this->objRequest->nroTelefone)){
+            $result[0] = false;
+            $result[1] .= "Informe um Celular válido\n";
         }
         if (!isset($this->objRequest->txtEmail)){
             $result[0] = false;
@@ -194,62 +203,44 @@ class UsuarioModel extends BaseModel
         // }
         return $retorno;
     }
-
-    // function UploadCertificado(){
-        
-    //     $arquivo = $_FILES['arquivo'];
-    //     $tipos = array('pdf');
-    //     $result = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos);
-
-    //     return json_encode($result);
-    // }
-
-    // Private Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
-    //     $nomeOriginal='';
-    //     if (isset($arquivo)) {
-    //         $infos = explode(".", $arquivo["name"]);
-    //         if (!$nome) {
-    //             for ($i = 0; $i < count($infos) - 1; $i++) {
-    //                 $nomeOriginal = $nomeOriginal . $infos[$i] . ".";
-    //             }
-    //         } else {
-    //             $nomeOriginal = $nome . ".";
-    //         }
-    //         $tipoArquivo = $infos[count($infos) - 1];
-    //         $tipoPermitido = false;
-    //         foreach ($tipos as $tipo) {
-    //             if(strtolower($tipoArquivo) == strtolower($tipo)){
-    //                 $tipoPermitido = true;
-    //             }
-    //         }            
-    //         if (!$tipoPermitido) {
-    //             $retorno[0] = false;
-    //             $retorno[1] = "Formato de arquivo não permitido";
-    //         } else {
-    //             $caminhoArquivo = $pasta . $nomeOriginal . $tipoArquivo;
-    //             $nmeArquivo = $nomeOriginal . $tipoArquivo;
-    //             if (move_uploaded_file($arquivo['tmp_name'], $caminhoArquivo)) {
-    //                 //lemos o  conteudo do arquivo usando afunção do PHP  file_get_contents
-    //                 $binario = file_get_contents($arquivo['tmp_name']);
-    //                 // evitamos erro de sintaxe do MySQL
-    //                 $binario = mysql_real_escape_string($binario);
-                    
-                    
-    //                 $dao = new UsuarioDao();
-    //                 $result = $dao->uploadFile($nmeArquivo, $nmeOriginal, $binario, $tpoArquivo,  $arquivo["size"]);
-                    
-    //                 // $retorno[0] = true;
-    //                 // $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
-    //             } else {
-    //                 $retorno[0] = false;
-    //                 $retorno[1] = "Erro ao fazer upload";
-    //             }
-    //         }
-    //     } else {
-    //         $retorno[0] = false;
-    //         $retorno[1] = "Arquivo nao setado";
-    //     }
-    //     return $retorno;
-    // } 
+    
+    Private Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
+        $nomeOriginal='';
+        if(isset($arquivo)){
+            $infos = explode(".", $arquivo["name"]);
+            if(!$nome){
+                for($i = 0; $i < count($infos) - 1; $i++){
+                    $nomeOriginal = $nomeOriginal . $infos[$i] . ".";
+                }
+            }else{
+                $nomeOriginal = $nome . ".";
+            }
+            $tipoArquivo = $infos[count($infos) - 1];
+            $tipoPermitido = false;
+            foreach($tipos as $tipo){
+                if(strtolower($tipoArquivo) == strtolower($tipo)){
+                    $tipoPermitido = true;
+                }
+            }            
+            if(!$tipoPermitido){
+                $retorno[0] = false;
+                $retorno[1] = "Formato de arquivo não permitido";
+            }else{
+                if(move_uploaded_file($arquivo['tmp_name'], $pasta . $nomeOriginal . $tipoArquivo)){
+                    $retorno[0] = true;
+                    $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
+                }
+                else{
+                    $retorno[0] = false;
+                    $retorno[1] = "Erro ao fazer upload";
+                }
+            }
+        }
+        else{
+            $retorno[0] = false;
+            $retorno[1] = "Arquivo nao setado";
+        }
+        return $retorno;
+    }
 }
 ?>

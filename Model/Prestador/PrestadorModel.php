@@ -22,13 +22,6 @@ class PrestadorModel extends UsuarioModel
         }
     }
 
-    Public Function ListarServicosFuturos() {
-        $dao = new PrestadorDao();
-        $lista = $dao->ListarServicosFuturos();
-
-        return json_encode($lista);
-    }
-
     Public Function InsertPrestador() {
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
@@ -36,6 +29,8 @@ class PrestadorModel extends UsuarioModel
         $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
         $result = $this->ValidaCamposPrestador($cats);
         if($result[0]){
+            $this->SalvarFotoPre();
+            $this->SalvarCertificado();
             $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
             $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
             $result = $dao->InsertPrestador($this->objRequest);
@@ -58,13 +53,33 @@ class PrestadorModel extends UsuarioModel
         if($result[0]){
             $result = $dao->DeleteCategoriaServicoPrestador($this->objRequest->codPrestador);
             $categorias = explode('-', $dao->Populate('categoriasPrestador', 'S'));
-            // var_dump($categorias); die;
+
             $todos = count($categorias);
             for($i=0;$i<$todos;$i++){
                 $result = $dao->InsertCategoriaServicoPrestador($this->objRequest->codPrestador, $categorias[$i]);
             }
         }
         return json_encode($result);
+    }
+
+    Public Function SalvarFotoPre() {
+        $nome = $this->objRequest->nroCpf;
+        $nome = $nome.replace('.', '');
+        $nome = $nome.replace('-', '');
+        $arquivo = $_FILES['fotoPre'];
+        $tipos = array('png', 'jpeg', 'jpg');
+        $enviar = $this->uploadFile($arquivo, PATH_FOTOS, $tipos, $nome);
+        echo json_encode($enviar);
+    }
+
+    Public Function SalvarCertificado() {
+        $nome = $this->objRequest->nroCpf;
+        $nome = $nome.replace('.', '');
+        $nome = $nome.replace('-', '');
+        $arquivo = $_FILES['arquivo'];
+        $tipos = array('pdf');
+        $enviar = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos,  $nome);
+        echo json_encode($enviar);
     }
 
     Public Function CarregaDadosPrestador() {
@@ -114,6 +129,9 @@ class PrestadorModel extends UsuarioModel
         if (!isset($this->objRequest->nroTelefone)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Celular'\n";
+        } else if (!FuncoesString::validaTelefone($this->objRequest->nroTelefone)){
+            $result[0] = false;
+            $result[1] .= "Informe um Celular válido\n";
         }
         if (!isset($this->objRequest->txtEmail)){
             $result[0] = false;
@@ -128,6 +146,10 @@ class PrestadorModel extends UsuarioModel
         } else if (trim($cats)=='') {
             $result[0] = false;
             $result[1] .= "Informe pelo menos uma Categoria\n";
+        }
+        if (!isset($this->objRequest->arquivo)){
+            $result[0] = false;
+            $result[1] .= "Nenhum certificado foi enviado\n";
         }
         if (!isset($this->objRequest->txtSenha)){
             $result[0] = false;

@@ -23,9 +23,10 @@
                 <table width="100%" cellspacing="8px">
                     <tr>
                         <td colspan="2">
-                            <form id="formFoto" name="formFoto" action="">
+                            <form id="formFoto" enctype="multpart/form-data" name="formFoto" action="">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
+                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N">
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:
                                     <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
@@ -115,26 +116,14 @@
                 
                 <label for="servicosBox" class="titulo">Serviços Prestados *</label><br>
                 <span style="color: #303030;padding-left: 35px;font-size: 0.90em;font-weight: bold;margin-bottom: 5px">
-                    ** Informe apenas as categorias, em outro momento pediremos os serviços detalhados
+                    Obs.: Informe apenas as categorias, em outro momento pediremos os serviços detalhados
                 </span>
                 <!-- checkbox  -->
                 <div style="margin-bottom: 1em;margin-top: 1em">
                     <table width="100%" id="servicosBox"></table>
                 </div>
 
-                <!-- <form id="formComprovante" name="formComprovante" action="../../Controller/Usuario/UsuarioController.php" enctype="multipart/form-data" method="post">
-                    <label for="arquivo" class="titulo">Envio do Certificado *</label>
-                    <div style="padding-top: 10px;width: 220px;">
-                        <input id="arquivo" name="arquivo" type="file" class="cadPrestador" />
-
-                        <!-- <input id="enviarArquivo" name="enviarArquivo" type="submit" value="Salvar Certificado" /> -->
-                    </div>
-                    <small style="color: #505050">
-                        Tamanho máximo: 200KB. Apenas .pdf
-                    </small>
-                </form> -->
-
-                <form id="formComprovante" name="formComprovante" action="">
+                <form id="formCertificado" enctype="multpart/form-data" name="formCertificado" action="">
                     <label for="arquivo" class="titulo">Envio do Certificado *</label>
 
                     <div style="padding-top: 10px;width: 220px;">

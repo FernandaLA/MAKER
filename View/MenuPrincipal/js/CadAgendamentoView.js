@@ -14,11 +14,12 @@ $(function() {
         ExecutaDispatch('Agenda', 'InsertAgendamento', params, "Aguarde, salvando agendamento", "Agendamento salvo com sucesso! Aguarde a confirmação do prestador");
     });
     
-    $("#codServico").change(function() {
-        if($(this).val() !== 0) {
+    $("#codServico").change(function () {
+        if ($(this).val() != 0) {
             $("#dtaAgendamento").prop('disabled', false);
         }
     });
+
     $("#dtaAgendamento").change(function() {
         var params = "codServico;"+$("#codServico").val()+"|dtaAgendamento;"+$("#dtaAgendamento").val()+"|";
         ExecutaDispatch('Agenda', 'ListaHorariosDisponiveis', params, MontaComboHorario)

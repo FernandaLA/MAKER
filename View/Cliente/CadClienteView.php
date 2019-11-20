@@ -20,16 +20,22 @@
                 <table width="100%" cellspacing="8px">
                     <tr>
                         <td colspan="2">
-                        <!-- previa da foto -->
-                        <!-- add foto -->
-                        <div style="padding-top: 10px;width: 220px;">
-                            Escolher uma foto:<br>
-                            <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>
-                            <br />
-                            <progress value="0" max="100"></progress>
-                            <span id="porcentagem">0%</span>
-                            <br />
-                        </div>
+                            <form id="formFotoCli" enctype="multpart/form-data" name="formFotoCli" action="">
+                                <!-- previa da foto -->
+                                <!-- add foto -->
+                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N">
+                                <div style="padding-top: 10px;width: 220px;">
+                                    Escolher uma foto:<br>
+                                    <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>
+                                    <br />
+                                    <progress value="0" max="100"></progress>
+                                    <span id="porcentagem">0%</span>
+                                    <br />
+                                </div>
+                                <span style="color: #505050">
+                                    Tamanho máximo: 80KB. Formatos: .jpg, .jpeg ou .png
+                                </span>
+                            </form>
                         </td>
                         <td>
                             <h5 style="width: 100%;margin: 0px;text-align: right;color:#7c15c0">* Campos Obrigatórios</h5>

@@ -15,11 +15,6 @@ class PrestadorController extends UsuarioController
         $PrestadorModel = new PrestadorModel();
         echo $PrestadorModel->ListarPrestador();
     }
-
-    Public Function ListarServicosFuturos() {
-        $PrestadorModel = new PrestadorModel();
-        echo $PrestadorModel->ListarServicosFuturos();
-    }
     
     Public Function InsertPrestador() {
         $PrestadorModel = new PrestadorModel();
