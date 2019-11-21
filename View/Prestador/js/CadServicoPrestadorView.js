@@ -32,6 +32,7 @@ function EditarServico(codServicoPrestador, codCategoria, dscServico, vlrServico
     $("#dscServico").val(dscServico);
     $("#vlrServico").val(vlrServico);
     $("#tmpDuracaoServico").val(duracaoServico);
+    $(".formServico").show();
 
 
 }

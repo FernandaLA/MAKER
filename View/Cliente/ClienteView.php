@@ -46,6 +46,23 @@ include_once "../Scripts.php";
 
             <table width="100%" cellspacing="8px">
                 <tr>
+                    <td colspan="2">
+                        <form id="formFoto" enctype="multpart/form-data" name="formFoto" action="">
+                            <div style="padding-top: 10px;width: 220px;">
+                                Escolher uma nova foto:<br>
+                                <input type="file" name="novaFoto" id="novaFoto"/>
+                                <br />
+                                <progress value="0" max="100"></progress>
+                                <span id="porcentagem">0%</span>
+                                <br />
+                            </div>
+                            <span style="color: #505050">
+                                Tamanho máximo: 80KB. Formatos: .jpg, .jpeg ou .png
+                            </span>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <label for="nroCpfCli" class="titulo">CPF *</label>
                         <input type="text" id="nroCpfCli" name="nroCpf" class="cadCliente input" onblur="validaCpfCli()">

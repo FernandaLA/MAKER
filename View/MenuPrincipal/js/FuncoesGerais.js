@@ -445,6 +445,9 @@ function MontaCardServico(lista, nmeCampo, acao = false){
                 }
             }
             var listaCategorias = categorias.substr(0, categorias.length-3);
+            if (lista[i]['DSC_CAMINHO_FOTO'] !== '') {
+                var fotoHome = lista[i]['DSC_CAMINHO_FOTO'];
+            }
 
             var DIAS = lista[i]['DIAS_ATENDIMENTO'];
             var jornadaDias = "";
@@ -458,7 +461,7 @@ function MontaCardServico(lista, nmeCampo, acao = false){
             html +=" <table width='100%'>";
             html +=" <tr>";
             html +="  <td width='8%'>";
-            html +="   <img style='border-radius:50%' src='../../Resources/images/maker/fotoPerfil.jpg' width='75' alt='foto de Perfil'>";
+            html +="   <img id='fotoHome' style='border-radius:50%' src='"+fotoHome?fotoHome:+"../../Resources/images/maker/semFoto.jpeg' width='75' alt='foto de Perfil'>";
             html +="  </td>";
             html +="  <td width='70%' style='text-align:left'>";
             html +="   <table width='100%'>";
