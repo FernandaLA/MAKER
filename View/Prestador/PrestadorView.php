@@ -13,7 +13,7 @@ include_once "../Scripts.php";
         <table width="100%">
             <tr>
                 <td width="14%">
-                    <img style="border-radius:50%" src="../../Resources/images/maker/fotoPerfil.jpg" width="100" alt="foto de Perfil">
+                    <img id="fotoPerfil" style="border-radius:50%" src="../../Resources/images/maker/semFoto.jpeg" width="100" alt="foto de Perfil">
                 </td>
                 <td width="30%" style="text-align:left">
                     <table width="100%">

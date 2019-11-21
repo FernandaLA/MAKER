@@ -26,7 +26,7 @@
                             <form id="formFoto" enctype="multpart/form-data" name="formFoto" action="">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
-                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N">
+                                <!-- <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N"> -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:
                                     <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>

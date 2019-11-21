@@ -23,7 +23,7 @@
                             <form id="formFotoCli" enctype="multpart/form-data" name="formFotoCli" action="">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
-                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N">
+                                <!-- <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N"> -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:<br>
                                     <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>

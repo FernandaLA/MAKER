@@ -25,8 +25,11 @@ function montaTelaPrestador(dados) {
     preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
+    var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
+    var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
+    var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
     // var nota = dadosPre['NOTA_AVALIACAO'];
     // var icon = $("#avaliacaoPrestador").html();
     var jornada = "";
@@ -49,6 +52,9 @@ function montaTelaPrestador(dados) {
     $("#jornadaPrestador").html(jornada);
     $("#diasAtendimento").html(jornadaDias);
     $("#enderecoPrestador").html("<b>Endereço:</b> "+endereco);
+    if(caminhoFoto !== '') {
+        $("#fotoPerfil").attr("src", caminhoFoto);
+    }
     // $("#avaliacaoPrestador").html("Avaliação: "+ nota + icon);
 }
 
