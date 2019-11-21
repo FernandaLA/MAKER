@@ -445,7 +445,7 @@ function MontaCardServico(lista, nmeCampo, acao = false){
                 }
             }
             var listaCategorias = categorias.substr(0, categorias.length-3);
-            if (lista[i]['DSC_CAMINHO_FOTO'] !== '') {
+            if (lista[i]['DSC_CAMINHO_FOTO'] !== null) {
                 var fotoHome = lista[i]['DSC_CAMINHO_FOTO'];
             }
 
