@@ -35,7 +35,6 @@ class UsuarioModel extends BaseModel
         $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
         $result = $this->ValidaCampos();
         if($result[0]){
-            $this->SalvarFotoCli();
             $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
             $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
             $result = $dao->InsertUsuario($this->objRequest);

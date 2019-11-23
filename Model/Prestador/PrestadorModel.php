@@ -29,8 +29,6 @@ class PrestadorModel extends UsuarioModel
         $this->objRequest->txtSenhaConf = $dao->Populate('txtSenhaConf', 'S');
         $result = $this->ValidaCamposPrestador($cats);
         if($result[0]){
-            $this->objRequest->dscCaminhoFoto = $this->SalvarFotoPre();
-            $this->objRequest->dscCaminhoCertificado = $this->SalvarCertificado();
             $this->objRequest->nmeUsuario = strtoupper($this->objRequest->nmeUsuario);
             $this->objRequest->dscSobrenome = strtoupper($this->objRequest->dscSobrenome);
             $result = $dao->InsertPrestador($this->objRequest);
