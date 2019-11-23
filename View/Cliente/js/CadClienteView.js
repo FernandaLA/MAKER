@@ -86,6 +86,7 @@ function RetornoValidaCpfCli(resposta) {
     if(resposta[0]) {
         DesabilitaCamposCli(false);
     } else {
+        DesabilitaCamposCli(true);
         swal({
             title: "Aviso!",
             text: resposta[1],
@@ -93,7 +94,6 @@ function RetornoValidaCpfCli(resposta) {
             type: "alert"
         });
         limparCampos();
-        DesabilitaCamposCli(true);
     }
 
 }

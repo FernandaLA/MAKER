@@ -181,7 +181,7 @@ class FuncoesString{
         }
     }
     
-    function validaTelefone($telefone){
+    Public Static function validaTelefone($telefone){
         $valido = true;
         $telefone= trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));
         if($telefone == 00000000000 || $telefone == 11111111111

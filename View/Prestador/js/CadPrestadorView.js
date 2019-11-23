@@ -116,6 +116,7 @@ function RetornoValidaCpfPre(resposta) {
     if(resposta[0]) {
         DesabilitaCamposPre(false);
     } else {
+        DesabilitaCamposPre(true);
         swal({
             title: "Aviso!",
             text: resposta[1],
@@ -123,7 +124,6 @@ function RetornoValidaCpfPre(resposta) {
             type: "alert"
         });
         limparCampos();
-        DesabilitaCamposPre(true);
     }
 
 }
