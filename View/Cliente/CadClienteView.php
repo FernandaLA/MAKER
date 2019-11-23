@@ -26,7 +26,7 @@
                                 <!-- previa da foto -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:<br>
-                                    <input type="file" name="fotoCli" id="fotoCli"/>
+                                    <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>
                                     <br />
                                     <progress value="0" max="100"></progress>
                                     <span id="porcentagem">0%</span>
