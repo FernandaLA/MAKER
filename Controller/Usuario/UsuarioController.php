@@ -69,7 +69,7 @@ class UsuarioController extends BaseController
         echo json_encode($enviar);
     }
     
-    Private Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
+    Protected Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
         $nomeOriginal='';
         if(isset($arquivo)){
             $infos = explode(".", $arquivo["name"]);
