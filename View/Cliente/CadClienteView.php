@@ -7,6 +7,7 @@
         <div id="CadCliente" class="modal">
             <input type="hidden" id="codUsuarioCli" name="codUsuario" class="cadCliente">
             <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="4">
+            <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalCli" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">
@@ -23,10 +24,9 @@
                             <form id="formFotoCli" enctype="multpart/form-data" name="formFotoCli" action="">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
-                                <!-- <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N"> -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:<br>
-                                    <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>
+                                    <input type="file" name="fotoCli" id="fotoCli"/>
                                     <br />
                                     <progress value="0" max="100"></progress>
                                     <span id="porcentagem">0%</span>
@@ -67,13 +67,13 @@
                             <input required type="text" id="nroTelefoneCli" name="nroTelefone" class="cadCliente input">
                         </td>
                         <td>
-                            <label for="txtEmail" class="titulo">Email *</label>
+                            <label for="txtEmail" class="titulo">E-mail *</label>
                             <input required type="text" id="txtEmailCli" name="txtEmail" class="cadCliente input">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label class="titulo-cadastro" style="font-size: 20px"><u>Endereço<u></label>
+                            <label class="titulo-cadastro" style="font-size: 20px">Endereço</label>
                         </td>
                     </tr>
                     <tr>

@@ -138,8 +138,9 @@ function montaBoxCategoria(categorias) {
 function salvarCadastroPre(categorias) {
     var formFoto = new FormData($('#formFoto')[0]);
     var formCertificado = new FormData($('#formCertificado')[0]);
+    console.log('fot', formFoto, 'cert', formCertificado);
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|verificaPermissao;N|categoriasPrestador;"+categorias+"|"+formFoto+"|"+formCertificado+"|";
+    parametros += "|categoriasPrestador;"+categorias+"|"+formFoto+"|"+formCertificado+"|";
     ExecutaDispatchUpload('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
                     "Cadastro realizado com sucesso! Iremos validar seu cadastro e entraremos em contato via Email");
 }
@@ -156,6 +157,9 @@ function DesabilitaCamposPre(ind) {
     $(".cadPrestador").attr('Disabled', ind);
     $("#nroCpfPre").attr('Disabled', false);
     $("#dscLogradouroPre").attr('Disabled', true);
+    $("#dscBairroPre").attr('Disabled', true);
+    $("#dscCidadePre").attr('Disabled', true);
+    $("#tdsglUfPre").attr('Disabled', true);
 }
 
 $(document).ready(function() {

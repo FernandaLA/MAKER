@@ -7,8 +7,7 @@
         <div id="CadPrestador" class="modal">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
             <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
-            <input type="hidden" id="dscCaminhoCertificado" name="dscCaminhoCertificado" class="cadPrestador">
-            <input type="hidden" id="dscCaminhoFotoPre" name="dscCaminhoFoto" class="cadPrestador">
+            <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalPre" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">
@@ -26,7 +25,6 @@
                             <form id="formFoto" enctype="multpart/form-data" name="formFoto" action="">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
-                                <!-- <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N"> -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:
                                     <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
@@ -71,18 +69,18 @@
                             <input required type="text" id="nroTelefonePre" name="nroTelefone" class="cadPrestador input">
                         </td>
                         <td>
-                            <label for="txtEmailPre" class="titulo">Email *</label>
+                            <label for="txtEmailPre" class="titulo">E-mail *</label>
                             <input required type="text" id="txtEmailPre" name="txtEmail" class="cadPrestador input">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label class="titulo-cadastro" style="font-size: 20px"><u>Endereço<u></label>
+                            <label class="titulo-cadastro" style="font-size: 20px">Endereço</label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="nroCepPre" class="titulo">Cep *</label>
+                            <label for="nroCepPre" class="titulo">CEP *</label>
                             <input required type="text" id="nroCepPre" name="nroCep" class="cadPrestador input">
                         </td>
                         <td>

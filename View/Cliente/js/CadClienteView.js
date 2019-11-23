@@ -93,7 +93,7 @@ function RetornoValidaCpfCli(resposta) {
 function salvarCadastroCli() {
     var formFotoCli = new FormData($('#formFotoCli')[0]);
     var parametros = retornaParametros("cadCliente");
-    parametros += "|verificaPermissao;N|"+formFotoCli+"|";
+    parametros += formFotoCli;
     ExecutaDispatchUpload('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
 }
 
@@ -108,6 +108,9 @@ function DesabilitaCamposCli(ind) {
     $(".cadCliente").attr('Disabled', ind);
     $("#nroCpfCli").attr('Disabled', false);
     $("#dscLogradouroCli").attr('Disabled', true);
+    $("#dscBairroCli").attr('Disabled', true);
+    $("#dscCidadeCli").attr('Disabled', true);
+    $("#tdsglUfCli").attr('Disabled', true);
 }
 
 $(document).ready(function() {

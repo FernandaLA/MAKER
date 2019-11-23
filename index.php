@@ -73,7 +73,7 @@ include_once getenv("CONSTANTES");
             </div>
             
             <div class="titulo">
-                <input type="button" id="btnCadastrarParceira" value="Cadastro Parceira" class="button-cadastro" style="margin-left: 5px">
+                <input type="button" id="btnCadastrarParceira" value="Cadastro Parceiro" class="button-cadastro" style="margin-left: 5px">
                 <input type="button" id="btnCadastrarCliente" value="Cadastro Cliente" class="button-cadastro" style="margin-left: 45px">
             </div>
         </div>
