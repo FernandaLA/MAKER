@@ -62,26 +62,6 @@ class PrestadorModel extends UsuarioModel
         return json_encode($result);
     }
 
-    Public Function SalvarFotoPre() {
-        $nome = $this->objRequest->nroCpf;
-        $nome = $nome.replace('.', '');
-        $nome = $nome.replace('-', '');
-        $arquivo = $_FILES['fotoPre'];
-        $tipos = array('png', 'jpeg', 'jpg');
-        $enviar = $this->uploadFile($arquivo, PATH_FOTOS, $tipos, $nome);
-        echo json_encode($enviar);
-    }
-
-    Public Function SalvarCertificado() {
-        $nome = $this->objRequest->nroCpf;
-        $nome = $nome.replace('.', '');
-        $nome = $nome.replace('-', '');
-        $arquivo = $_FILES['arquivo'];
-        $tipos = array('pdf');
-        $enviar = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos,  $nome);
-        echo json_encode($enviar);
-    }
-
     Public Function CarregaDadosPrestador() {
         $dao = new PrestadorDao();
         $JPdao = new JornadaPrestadorDao();

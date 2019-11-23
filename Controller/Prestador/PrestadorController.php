@@ -30,4 +30,18 @@ class PrestadorController extends UsuarioController
         $PrestadorModel = new PrestadorModel();
         echo $PrestadorModel->CarregaDadosPrestador();
     }
+
+    Public Function SalvarFotoPre() {
+        $arquivo = $_FILES['fotoPre'];
+        $tipos = array('png', 'jpeg', 'jpg');
+        $enviar = $this->uploadFile($arquivo, PATH_FOTOS, $tipos);
+        echo json_encode($enviar);
+    }
+
+    Public Function SalvarCertificado() {
+        $arquivo = $_FILES['arquivo'];
+        $tipos = array('pdf');
+        $enviar = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos);
+        echo json_encode($enviar);
+    }
 }

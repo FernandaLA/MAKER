@@ -39,7 +39,27 @@ $(function () {
         }
     });
 
+    $("#arquivo").change(function() {
+        var formCertificado = new FormData($('#formCertificado')[0]);
+        ExecutaDispatchUpload('Prestador', 'SalvarCertificado', formCertificado, preencheCampoCartificado);
+    });
+
+    $("#fotoPre").change(function() {
+        var formFotoPre = new FormData($('#formFotoPre')[0]);
+        ExecutaDispatchUpload('Prestador', 'SalvarFotoPre', formFotoPre, preencheCampoFotoPre);
+    });
+
 });
+
+function preencheCampoCartificado(rota) {
+    console.log('foi cert');
+    $("#dscCaminhoCertificado").val(rota);
+}
+
+function preencheCampoFotoPre(rota) {
+    console.log('foi foto');
+    $("#dscCaminhoFotoPre").val(rota);
+}
 
 function montaCampoCategorias() {
     var categorias = '';
@@ -136,12 +156,10 @@ function montaBoxCategoria(categorias) {
 }
 
 function salvarCadastroPre(categorias) {
-    var formFoto = new FormData($('#formFoto')[0]);
-    var formCertificado = new FormData($('#formCertificado')[0]);
     console.log('fot', formFoto, 'cert', formCertificado);
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|categoriasPrestador;"+categorias+"|"+formFoto+"|"+formCertificado+"|";
-    ExecutaDispatchUpload('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
+    parametros += "|categoriasPrestador;"+categorias+"|";
+    ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
                     "Cadastro realizado com sucesso! Iremos validar seu cadastro e entraremos em contato via Email");
 }
 

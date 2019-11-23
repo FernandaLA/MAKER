@@ -43,16 +43,6 @@ class UsuarioModel extends BaseModel
         return json_encode($result);
     }
 
-    Public Function SalvarFotoCli() {
-        $nome = $this->objRequest->nroCpf;
-        $nome = $nome.replace('.', '');
-        $nome = $nome.replace('-', '');
-        $arquivo = $_FILES['fotoCli'];
-        $tipos = array('png', 'jpeg', 'jpg');
-        $enviar = $this->uploadFile($arquivo, PATH_FOTOS, $tipos, $nome);
-        echo json_encode($enviar);
-    }
-
     function UpdateUsuario(){
         $dao = new UsuarioDao();
         return json_encode($dao->UpdateUsuario());
@@ -201,45 +191,6 @@ class UsuarioModel extends BaseModel
         //         $retorno[1] = "Você não tem idade para se cadastrar conosco, sinto muito\n";
         //     }
         // }
-        return $retorno;
-    }
-    
-    Private Function uploadFile($arquivo, $pasta, $tipos, $nome = null){
-        $nomeOriginal='';
-        if(isset($arquivo)){
-            $infos = explode(".", $arquivo["name"]);
-            if(!$nome){
-                for($i = 0; $i < count($infos) - 1; $i++){
-                    $nomeOriginal = $nomeOriginal . $infos[$i] . ".";
-                }
-            }else{
-                $nomeOriginal = $nome . ".";
-            }
-            $tipoArquivo = $infos[count($infos) - 1];
-            $tipoPermitido = false;
-            foreach($tipos as $tipo){
-                if(strtolower($tipoArquivo) == strtolower($tipo)){
-                    $tipoPermitido = true;
-                }
-            }            
-            if(!$tipoPermitido){
-                $retorno[0] = false;
-                $retorno[1] = "Formato de arquivo não permitido";
-            }else{
-                if(move_uploaded_file($arquivo['tmp_name'], $pasta . $nomeOriginal . $tipoArquivo)){
-                    $retorno[0] = true;
-                    $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
-                }
-                else{
-                    $retorno[0] = false;
-                    $retorno[1] = "Erro ao fazer upload";
-                }
-            }
-        }
-        else{
-            $retorno[0] = false;
-            $retorno[1] = "Arquivo nao setado";
-        }
         return $retorno;
     }
 }

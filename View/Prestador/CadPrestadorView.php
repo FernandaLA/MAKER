@@ -7,6 +7,8 @@
         <div id="CadPrestador" class="modal">
             <input type="hidden" id="codUsuarioPre" name="codUsuario" class="cadPrestador">
             <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
+            <input type="hidden" id="dscCaminhoFotoPre" name="dscCaminhoFoto" class="cadPrestador">
+            <input type="hidden" id="dscCaminhoCertificado" name="dscCaminhoCertificado" class="cadPrestador">
             <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalPre" class="close" style="margin-top: 8px;">&times;</span>
@@ -22,7 +24,8 @@
                 <table width="100%" cellspacing="8px">
                     <tr>
                         <td colspan="2">
-                            <form id="formFoto" enctype="multpart/form-data" name="formFoto" action="">
+                            <form id="formFotoPre" enctype="multpart/form-data" name="formFoto" action="">
+                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N">
                                 <!-- previa da foto -->
                                 <!-- add foto -->
                                 <div style="padding-top: 10px;width: 220px;">
@@ -122,11 +125,13 @@
                 </div>
 
                 <form id="formCertificado" enctype="multpart/form-data" name="formCertificado" action="">
+                    <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N">
+
                     <label for="arquivo" class="titulo">Envio do Certificado *</label>
 
                     <div style="padding-top: 10px;width: 220px;">
                         Selecione o arquivo:
-                        <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
+                        <input type="file" name="arquivo" id="arquivo" />
                         <br />
                         <progress value="0" max="100"></progress>
                         <span id="porcentagem">0%</span>

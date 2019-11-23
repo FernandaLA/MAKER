@@ -30,7 +30,10 @@ class AgendaDao extends BaseDao
     }
 
     Public Function ListaHorariosDisponiveis(stdClass $obj) {
-        $select = "";
+        $select = "SELECT horarios(a cada 1hr) entre
+                        JP.HRA_INICIO e JP.HRA_FIM
+                        FROM EN_JORNADA_PRESTADOR
+                    WHERE JP.COD_PRESTADOR = "+ $obj->codPrestador;
 
         return $this->selectDB($select, false);
     }
