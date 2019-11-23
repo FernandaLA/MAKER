@@ -41,7 +41,7 @@ class PrestadorController extends UsuarioController
     Public Function SalvarCertificado() {
         $arquivo = $_FILES['arquivo'];
         $tipos = array('pdf');
-        $enviar = $this->uploadFile($arquivo, PATH_CERTIFICADOS, $tipos);
+        $enviar = $this->uploadFile($arquivo, PATH_CERTIFICADO, $tipos);
         echo json_encode($enviar);
     }
 }
