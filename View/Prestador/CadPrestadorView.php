@@ -9,7 +9,6 @@
             <input type="hidden" id="codPerfilPre" name="codPerfil" class="cadPrestador" value="3">
             <input type="hidden" id="dscCaminhoFotoPre" name="dscCaminhoFoto" class="cadPrestador">
             <input type="hidden" id="dscCaminhoCertificado" name="dscCaminhoCertificado" class="cadPrestador">
-            <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadPrestador" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalPre" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">

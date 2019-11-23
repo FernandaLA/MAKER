@@ -100,6 +100,7 @@ function RetornoValidaCpfCli(resposta) {
 
 function salvarCadastroCli() {
     var parametros = retornaParametros("cadCliente");
+    parametros += "verificaPermissao;N";
     ExecutaDispatch('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
 }
 

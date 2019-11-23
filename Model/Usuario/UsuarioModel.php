@@ -112,6 +112,13 @@ class UsuarioModel extends BaseModel
 
     Public Function ValidaCampos(){
         $result=array(true, '');
+        if (!isset($this->objRequest->nroCpf)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'CPF'\n";
+        }else if (trim($this->objRequest->nroCpf)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'CPF'\n";
+        }
         if (!isset($this->objRequest->nmeUsuario)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Nome'\n";
@@ -149,6 +156,13 @@ class UsuarioModel extends BaseModel
         } else if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
             $result[0] = false;
             $result[1] .= "Email inválido\n";
+        }
+        if (!isset($this->objRequest->nroCep)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'CEP'\n";
+        }else if (trim($this->objRequest->nroCep)==''){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'CEP'\n";
         }
         if (!isset($this->objRequest->txtSenha)){
             $result[0] = false;

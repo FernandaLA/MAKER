@@ -8,7 +8,6 @@
             <input type="hidden" id="codUsuarioCli" name="codUsuario" class="cadCliente">
             <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="4">
             <input type="hidden" id="dscCaminhoFotoCli" name="dscCaminhoFoto" class="cadCliente">
-            <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalCli" class="close" style="margin-top: 8px;">&times;</span>
                 <div style="width: 100%;text-align: center">

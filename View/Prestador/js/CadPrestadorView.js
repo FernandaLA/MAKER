@@ -16,7 +16,6 @@ $(function () {
 
     $('#btnSalvarPre').click(function () {
         montaCampoCategorias();
-
     });
 
     $("#nroCepPre").on('blur', function(){
@@ -154,9 +153,8 @@ function montaBoxCategoria(categorias) {
 }
 
 function salvarCadastroPre(categorias) {
-    console.log('fot', formFoto, 'cert', formCertificado);
     var parametros = retornaParametros("cadPrestador");
-    parametros += "|categoriasPrestador;"+categorias+"|";
+    parametros += "|categoriasPrestador;"+categorias+"|verificaPermissao;N";
     ExecutaDispatch('Prestador','InsertPrestador', parametros, retornoSalvarPrestador, "Aguarde, Salvando",
                     "Cadastro realizado com sucesso! Iremos validar seu cadastro e entraremos em contato via Email");
 }
