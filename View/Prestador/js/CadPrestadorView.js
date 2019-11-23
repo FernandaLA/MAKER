@@ -52,12 +52,10 @@ $(function () {
 });
 
 function preencheCampoCartificado(rota) {
-    console.log('foi cert');
     $("#dscCaminhoCertificado").val(rota);
 }
 
 function preencheCampoFotoPre(rota) {
-    console.log('foi foto');
     $("#dscCaminhoFotoPre").val(rota);
 }
 
@@ -177,7 +175,7 @@ function DesabilitaCamposPre(ind) {
     $("#dscLogradouroPre").attr('Disabled', true);
     $("#dscBairroPre").attr('Disabled', true);
     $("#dscCidadePre").attr('Disabled', true);
-    $("#tdsglUfPre").attr('Disabled', true);
+    $("#sglUfPre").attr('Disabled', true);
 }
 
 $(document).ready(function() {

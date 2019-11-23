@@ -127,7 +127,7 @@ class PrestadorModel extends UsuarioModel
             $result[0] = false;
             $result[1] .= "Informe pelo menos uma Categoria\n";
         }
-        if (!isset($this->objRequest->arquivo)){
+        if (!isset($this->objRequest->dscCaminhoCertificado)){
             $result[0] = false;
             $result[1] .= "Nenhum certificado foi enviado\n";
         }

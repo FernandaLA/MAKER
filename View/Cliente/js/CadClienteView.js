@@ -38,7 +38,15 @@ $(function () {
         }
     });
 
+    $("#fotoCli").change(function() {
+        var formFotoCli = new FormData($('#formFotoCli')[0]);
+        ExecutaDispatchUpload('Usuario', 'SalvarFotoCli', formFotoCli, preencheCampoFotoCli);
+    });
 });
+
+function preencheCampoFotoCli(rota) {
+    $("#dscCaminhoFotoCli").val(rota);
+}
 
 function pesquisaCepCli(){
     var parametros = 'nroCep;'+$("#nroCepCli").val()+'|verificaPermissao;N|';
@@ -91,10 +99,8 @@ function RetornoValidaCpfCli(resposta) {
 }
 
 function salvarCadastroCli() {
-    var formFotoCli = new FormData($('#formFotoCli')[0]);
     var parametros = retornaParametros("cadCliente");
-    parametros += formFotoCli;
-    ExecutaDispatchUpload('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
+    ExecutaDispatch('Usuario','InsertUsuario', parametros, retornoSalvarCliente, "Aguarde, Salvando", "Cadastro realizado com sucesso! Bem Vindo à MAKER");
 }
 
 function retornoSalvarCliente(dado) {
@@ -110,7 +116,7 @@ function DesabilitaCamposCli(ind) {
     $("#dscLogradouroCli").attr('Disabled', true);
     $("#dscBairroCli").attr('Disabled', true);
     $("#dscCidadeCli").attr('Disabled', true);
-    $("#tdsglUfCli").attr('Disabled', true);
+    $("#sglUfCli").attr('Disabled', true);
 }
 
 $(document).ready(function() {

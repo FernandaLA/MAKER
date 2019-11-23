@@ -7,6 +7,7 @@
         <div id="CadCliente" class="modal">
             <input type="hidden" id="codUsuarioCli" name="codUsuario" class="cadCliente">
             <input type="hidden" id="codPerfilCli" name="codPerfil" class="cadCliente" value="4">
+            <input type="hidden" id="dscCaminhoFotoCli" name="dscCaminhoFoto" class="cadCliente">
             <input type="hidden" id="verificaPermissao" name="verificaPermissao" class="cadCliente" value="N">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 800px;">
                 <span id="fechaModalCli" class="close" style="margin-top: 8px;">&times;</span>
@@ -22,8 +23,8 @@
                     <tr>
                         <td colspan="2">
                             <form id="formFotoCli" enctype="multpart/form-data" name="formFotoCli" action="">
+                                <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N">
                                 <!-- previa da foto -->
-                                <!-- add foto -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:<br>
                                     <input type="file" name="fotoCli" id="fotoCli"/>
@@ -100,7 +101,7 @@
                             <input required type="text" id="dscCidadeCli" name="dscCidade" class="cadCliente input">
                         </td>
                         <td>
-                            <label for="dscEstado" class="titulo">Estado *</label>
+                            <label for="dscEstado" class="titulo">UF *</label>
                             <div id="tdsglUfCli"></div>
                         </td>
                     </tr>
@@ -124,7 +125,7 @@
                     <tr>
                         <td colspan="2">
                             <small style="color: #505050">
-                                A senha deve ter de 6 à 8 caracteres
+                                A senha deve ter de 6 a 8 caracteres
                             </small>
                         </td>
                     </tr>

@@ -27,7 +27,6 @@
                             <form id="formFotoPre" enctype="multpart/form-data" name="formFoto" action="">
                                 <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N">
                                 <!-- previa da foto -->
-                                <!-- add foto -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:
                                     <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
@@ -105,7 +104,7 @@
                             <input required type="text" id="dscCidadePre" name="dscCidade" class="cadPrestador input">
                         </td>
                         <td>
-                            <label for="dscEstadoPre" class="titulo">Estado *</label>
+                            <label for="dscEstadoPre" class="titulo">UF *</label>
                             <div id="tdsglUfPre" ></div>
                         </td>
                     </tr>
@@ -121,7 +120,7 @@
                 </span>
                 <!-- checkbox  -->
                 <div style="margin-bottom: 1em;margin-top: 1em">
-                    <table width="100%" id="servicosBox"></table>
+                    <table width="100%" id="servicosBox" class="cadPrestador"></table>
                 </div>
 
                 <form id="formCertificado" enctype="multpart/form-data" name="formCertificado" action="">
@@ -131,7 +130,7 @@
 
                     <div style="padding-top: 10px;width: 220px;">
                         Selecione o arquivo:
-                        <input type="file" name="arquivo" id="arquivo" />
+                        <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
                         <br />
                         <progress value="0" max="100"></progress>
                         <span id="porcentagem">0%</span>
@@ -159,7 +158,7 @@
                     <tr>
                         <td colspan="2">
                             <small style="color: #505050">
-                                A senha deve ter de 6 à 8 caracteres
+                                A senha deve ter de 6 a 8 caracteres
                             </small>
                         </td>
                     </tr>
