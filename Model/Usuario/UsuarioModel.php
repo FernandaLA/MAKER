@@ -186,7 +186,7 @@ class UsuarioModel extends BaseModel
         // data atual
         $dtaAtual = date('Y-m-d'); 
         
-        var_dump('Ano: ', substr($dtaCad,0,3), ' Mês: ', substr($dtaCad,4,5), ' Dia: ', substr($dtaCad,6,7)); die;
+        var_dump('data: ', $dtaCad, ' Ano: ', substr($dtaCad,0,4), ' Mês: ', substr($dtaCad,6,7), ' Dia: ', substr($dtaCad,9,10)); die;
         if (substr($dtaCad,0,4) > date('Y') || substr($dtaCad,0,4) < date('Y')-99 || substr($dtaCad,5,7) > 12 || substr($dtaCad,8,10) > 31){
             $retorno[0] = true;
             $retorno[1] = "Informe uma 'Data de Nascimento' válida\n";
