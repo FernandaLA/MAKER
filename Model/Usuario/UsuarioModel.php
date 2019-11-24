@@ -181,26 +181,23 @@ class UsuarioModel extends BaseModel
 
     Public Function validaNascimento($dtaNascimento) {
         $retorno = array(false, '');
-        //Data de nascimento
-        $dtaCad = date('Y-m-d',strtotime(str_replace('/','-',$dtaNascimento)));   
         // data atual
-        $dtaAtual = date('Y-m-d'); 
-        // var_dump('data nasc: ', $dtaNascimento);
-        var_dump('data: ', $dtaNascimento, ' Ano: ', substr($dtaNascimento,0,4), ' Mês: ', substr($dtaNascimento,5,2), ' Dia: ', substr($dtaNascimento,8,2)); die;
-        if (substr($dtaCad,0,4) > date('Y') || substr($dtaCad,0,4) < date('Y')-99 || substr($dtaCad,5,7) > 12 || substr($dtaCad,8,10) > 31){
+        $dtaAtual = date('Y-m-d');
+
+        if (substr($dtaNascimento,0,4) > date('Y') || substr($dtaNascimento,0,4) < date('Y')-99 || substr($dtaNascimento,5,2) > 12 || substr($dtaNascimento,5,2) == 0 || substr($dtaNascimento,8,2) > 31 || substr($dtaNascimento,8,2) == 0){
             $retorno[0] = true;
             $retorno[1] = "Informe uma 'Data de Nascimento' válida\n";
-        } else if (date('Y') - substr($dtaCad,0,4) < 18){
+        } else if (date('Y') - substr($dtaNascimento,0,4) < 18){
             $retorno[0] = true;
             $retorno[1] = "Você não tem idade para se cadastrar conosco, sinto muito\n";
         }
         
         // diferenca entre duas datas
-        // if( isset($dtaCad) && $dtaCad != "" && isset($dtaAtual) && $dtaAtual != "") {
-        //     $dtaCad = DateTime::createFromFormat('Y-m-d', $dtaCad);
+        // if( isset($dtaNascimento) && $dtaNascimento != "" && isset($dtaAtual) && $dtaAtual != "") {
+        //     $dtaNascimento = DateTime::createFromFormat('Y-m-d', $dtaNascimento);
         //     $dtaAtual = DateTime::createFromFormat('Y-m-d', $dtaAtual);
             
-        //     if ((int)$dtaAtual->diff($dtaCad)->format('%y') < 18) {
+        //     if ((int)$dtaAtual->diff($dtaNascimento)->format('%y') < 18) {
         //         $retorno[0] = true;
         //         $retorno[1] = "Você não tem idade para se cadastrar conosco, sinto muito\n";
         //     }
