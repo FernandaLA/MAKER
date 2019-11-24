@@ -3,12 +3,7 @@ $(function () {
         DeleteMenu();
     });
     $("#btnSalvar").click(function () {
-        // if ($("#arquivo").val() != "") {
-        //     var formData = new FormData($('form')[0]);
-        //     ExecutaDispatchUpload('Menu', 'uploadArquivo', formData, salvarMenu);
-        // } else {
-            salvarMenu();
-        // }
+        salvarMenu();
     });
     $("#btnListarController").click(function () {
         ListarController(undefined);
@@ -20,32 +15,29 @@ $(function () {
 });
 
 function salvarMenu(data) {
-    swal({
-        title: 'Aguarde, salvando menu!',
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
-    });
+    // swal({
+    //     title: 'Aguarde, salvando menu!',
+    //     imageUrl: "../../Resources/images/preload.gif",
+    //     showConfirmButton: false
+    // });
     if ($('#codMenu').val() == '') {
         $("#method").val('AddMenu');
     } else {
         $("#method").val('UpdateMenu');
     }
-    if (data != undefined) {
-        $("#dscCaminhoImagem").val(data.msg);
-    }
     var parametros = retornaParametros();
     parametros +="codMenuPai;"+$("#codMenuPai").val()+"|";
-    ExecutaDispatch('Menu', $("#method").val(), parametros, fecharTelaCadastro);
+    ExecutaDispatch('Menu', $("#method").val(), parametros, fecharTelaCadastro, 'Aguarde, salvando menu!', 'Menu salvo com sucesso!');
 }
 
 function fecharTelaCadastro(dados) {
     $("#CadMenus").jqxWindow("close");
     ExecutaDispatch('Menu', 'ListarMenusGrid', '', CarregaGridMenu);
-    swal({
-        title: "Sucesso!",
-        text: dados[2],
-        type: "info"
-    });
+    // swal({
+    //     title: "Sucesso!",
+    //     text: dados[2],
+    //     type: "info"
+    // });
 }
 
 function MontaComboMenu(arrDados) {

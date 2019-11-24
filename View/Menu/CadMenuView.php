@@ -4,10 +4,8 @@
     <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem" class="persist">
     <table width="100%" align="left">
         <tr>
-            <td class="titulo" style="padding-top: 0px;">Menu</td>
-        </tr>
-        <tr>
             <td>
+                <label class="titulo" style="padding-top: 0px;" for="dscMenu">Menu</label>
                 <input type="text" name="dscMenu" id="dscMenu" class="persist input">
             </td>
         </tr>
@@ -38,8 +36,15 @@
             </td>
         </tr>
         <tr>
-            <td class="titulo">Menu Pai
+            <td class="titulo">
+            <label for="codMenuPai">Menu Pai </label>
                 <div id="tdcodMenuPai"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo">
+                <label for="dscCaminhoImagem">Ícone Menu </label>
+                <input type="text" name="dscCaminhoImagem" id="dscCaminhoImagem" class="persist input">
             </td>
         </tr>
         <!-- <tr>
