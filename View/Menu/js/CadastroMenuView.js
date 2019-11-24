@@ -85,7 +85,7 @@ function MontaTabelaMenu(listaMenus) {
                 { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_MENU', columntype: 'textbox', width: 195 },
                 { text: 'Controller', datafield: 'NME_CONTROLLER', columntype: 'textbox', width: 110 },
                 { text: 'Method', datafield: 'NME_METHOD', columntype: 'textbox', width: 185 },
-                // { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180 },
+                { text: 'Icone', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180 },
                 { text: 'Menu Pai', datafield: 'DSC_MENU_PAI', columntype: 'textbox', width: 100 },
                 { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 48, align: 'center' },
                 // { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 50, align: 'center' },
