@@ -183,12 +183,18 @@ class FuncoesString{
     
     Public Static function validaTelefone($telefone){
         $valido = true;
-        $telefone= trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));
+        $telefone = trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));
+        $semDDD = substr($telefone, 2, 10);
         if($telefone == 00000000000 || $telefone == 11111111111
         || $telefone == 22222222222 || $telefone == 33333333333
         || $telefone == 44444444444 || $telefone == 55555555555
         || $telefone == 66666666666 || $telefone == 77777777777
-        || $telefone == 88888888888 || $telefone == 99999999999) {
+        || $telefone == 88888888888 || $telefone == 99999999999
+        || $semDDD == 000000000 || $semDDD == 111111111
+        || $semDDD == 222222222 || $semDDD == 333333333
+        || $semDDD == 444444444 || $semDDD == 555555555
+        || $semDDD == 666666666 || $semDDD == 777777777
+        || $semDDD == 888888888 || $semDDD == 999999999) {
             
             $valido = false;
 

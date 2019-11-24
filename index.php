@@ -62,7 +62,7 @@ include_once getenv("CONSTANTES");
             <input type="text" id="nroCpf" name="nroCpf" class='login input persist' placeholder="Informe o CPF">
 
             <label for="txtSenha" class="titulo">Senha</label>   
-            <input type="password" id="txtSenha" name="txtSenha" class='login input persist' placeholder="Senha">
+            <input type="password" id="txtSenha" name="txtSenha" class='login input persist' placeholder="Senha" maxlength="8">
 
             <div style="padding-top: 20px;text-align: center;font-size: 16px;">
                 <input type="button" id="btnLogin" value="Login" class="button">
