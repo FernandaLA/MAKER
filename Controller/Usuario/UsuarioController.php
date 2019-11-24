@@ -91,6 +91,7 @@ class UsuarioController extends BaseController
                 $retorno[0] = false;
                 $retorno[1] = "Formato de arquivo não permitido";
             }else{
+                var_dump('pasta ', $pasta, ' nome: ', $nomeOriginal, ' tipo: ', $tipoArquivo); die;
                 if(move_uploaded_file($arquivo['tmp_name'], $pasta . $nomeOriginal . $tipoArquivo)){
                     $retorno[0] = true;
                     $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
