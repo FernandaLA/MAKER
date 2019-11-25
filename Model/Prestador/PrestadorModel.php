@@ -49,12 +49,13 @@ class PrestadorModel extends UsuarioModel
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->UpdatePrestador($this->objRequest);
         if($result[0]){
-            $result = $dao->DeleteCategoriaServicoPrestador($this->objRequest->codPrestador);
+            $codPrestador = $result[2];
+            $result = $dao->DeleteCategoriaServicoPrestador($codPrestador);
             $categorias = explode('-', $dao->Populate('categoriasPrestador', 'S'));
 
             $todos = count($categorias);
             for($i=0;$i<$todos;$i++){
-                $result = $dao->InsertCategoriaServicoPrestador($this->objRequest->codPrestador, $categorias[$i]);
+                $result = $dao->InsertCategoriaServicoPrestador($codPrestador, $categorias[$i]);
             }
         }
         return json_encode($result);

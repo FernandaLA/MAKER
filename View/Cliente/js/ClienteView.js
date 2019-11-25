@@ -8,7 +8,7 @@ $(function() {
     });
 
     $("#btnSalvarCadastro").click(function () {
-        montaCampoCategorias();
+        salvarCadastro();
     });
 
 });
@@ -37,7 +37,7 @@ function MontaComboUF(arrDados) {
 }
 
 
-function salvarCadastro(categorias) {
+function salvarCadastro() {
     var parametros = retornaParametros("cadCliente");
     ExecutaDispatch('Usuario','UpdateUsuario', parametros, retornoSalvarCadastro, "Aguarde, atualizando seu cadastro", "Cadastro atualizado com sucesso!");
 }
