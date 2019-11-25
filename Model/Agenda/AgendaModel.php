@@ -38,16 +38,17 @@ class AgendaModel extends BaseModel
         $dao = new AgendaDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $dtaAgendamento = $this->objRequest->dtaAgendamento;
+        $codPrestador = $this->objRequest->codPrestador;
         $intervalo = 10000;
         $horarios = [];
-        $lista = $dao->BuscaJornadaPrestador($this->objRequest->codPrestador);
+        $lista = $dao->BuscaJornadaPrestador($codPrestador);
         if($lista[0]) {
             $inicio = $lista[1]['HRA_INICIO'];
             $fim = $lista[1]['HRA_FIM'];
             for ($i = $inicio; $i <= $fim; $i+$intervalo){
                 $horarios[$i] = $i;
             }
-            $lista = $dao->BuscaHorariosOcupados($lista[1]['COD_PRESTADOR'], $dtaAgendamento);
+            $lista = $dao->BuscaHorariosOcupados($codPrestador, $dtaAgendamento);
             if($lista[0]) {
                 $agendados = $lista[1];
                 for ($i = 0; $i <= $agendados.length; $i++) {
