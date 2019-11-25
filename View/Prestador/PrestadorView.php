@@ -103,7 +103,7 @@ include_once "../Scripts.php";
                 </tr>
                 <tr>
                     <td>
-                        <label class="titulo-cadastro" style="font-size: 20px"><u>Endereço<u></label>
+                        <label class="titulo-cadastro" style="font-size: 20px">Endereço</label>
                     </td>
                 </tr>
                 <tr>
@@ -123,11 +123,11 @@ include_once "../Scripts.php";
                 <tr>
                     <td>
                         <label for="dscBairroPre" class="titulo">Bairro *</label>
-                        <input required type="text" id="dscBairroPre" name="dscBairro" class="cadPrestador input">
+                        <input disabled required type="text" id="dscBairroPre" name="dscBairro" class="cadPrestador input">
                     </td>
                     <td>
                         <label for="dscCidadePre" class="titulo">Cidade *</label>
-                        <input required type="text" id="dscCidadePre" name="dscCidade" class="cadPrestador input">
+                        <input disabled required type="text" id="dscCidadePre" name="dscCidade" class="cadPrestador input">
                     </td>
                     <td>
                         <label for="dscEstadoPre" class="titulo">Estado *</label>
@@ -141,7 +141,7 @@ include_once "../Scripts.php";
             
             <label for="servicosBox" class="titulo">Serviços Prestados *</label><br>
             <span style="color: #303030;padding-left: 35px;font-size: 0.90em;font-weight: bold;margin-bottom: 5px">
-                ** Informe apenas as categorias, em outro momento pediremos os serviços detalhados
+                Obs.: Informe apenas as categorias, em outro momento pediremos os serviços detalhados
             </span>
             <!-- checkbox  -->
             <div style="margin-bottom: 1em;margin-top: 1em">

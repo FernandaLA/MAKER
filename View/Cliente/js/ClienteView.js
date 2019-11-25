@@ -1,4 +1,9 @@
 $(function() {
+    $("#nroCpfCli").mask('999.999.999-99');
+    $("#dtaNascimentoCli").mask('99/99/9999');
+    $("#nroCepCli").mask('99999-999');
+    $("#nroTelefoneCli").mask('(99) 99999-9999');
+
     $("#btnEditarPerfilCli").click(function () {
         $("#editarCadastro").show('fade');
     });
@@ -20,10 +25,12 @@ function montaTelaCliente(dados) {
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
+    var sglUf = dadosPre['SGL_UF'];
     // var nota = dadosPre['NOTA_AVALIACAO'];
     // var icon = $("#avaliacaoCliente").html();
     
     $("#codUsuarioCli").html(codUsuario);
+    $("#sglUfCli").html(sglUf);
     $("#nmeClienteCompleto").html(nmeCompleto);
     $("#enderecoCliente").html("<b>Endereço:</b> "+endereco);
     // $("#avaliacaoCliente").html("Avaliação: "+ nota + icon);

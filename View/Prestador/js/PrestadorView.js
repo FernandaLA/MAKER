@@ -1,4 +1,9 @@
 $(function() {
+    $("#nroCpfPre").mask('999.999.999-99');
+    $("#dtaNascimentoPre").mask('99/99/9999');
+    $("#nroCepPre").mask('99999-999');
+    $("#nroTelefonePre").mask('(99) 99999-9999');
+
     $("#btnEditarPerfilPre").click(function () {
         $("#editarCadastro").show('fade');
     });
@@ -29,6 +34,7 @@ function montaTelaPrestador(dados) {
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
+    var sglUf = dadosPre['SGL_UF'];
     // var nota = dadosPre['NOTA_AVALIACAO'];
     // var icon = $("#avaliacaoPrestador").html();
     var jornada = "";
@@ -48,6 +54,7 @@ function montaTelaPrestador(dados) {
         jornadaDias = "Você ainda cadastrou essa informação";
     }
     $("#codUsuarioPre").html(codUsuario);
+    $("#sglUfPre").html(sglUf);
     $("#nmePrestadorCompleto").html(nmeCompleto);
     $("#jornadaPrestador").html(jornada);
     $("#diasAtendimento").html(jornadaDias);

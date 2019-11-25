@@ -65,16 +65,16 @@ include_once "../Scripts.php";
                 <tr>
                     <td>
                         <label for="nroCpfCli" class="titulo">CPF *</label>
-                        <input type="text" id="nroCpfCli" name="nroCpf" class="cadCliente input" onblur="validaCpfCli()">
+                        <input disabled type="text" id="nroCpfCli" name="nroCpf" class="cadCliente input">
                     </td>
                     <td>
                         <label for="nmeUsuario" class="titulo">Nome *</label>
-                        <input required type="text" id="nmeUsuarioCli" name="nmeUsuario"
+                        <input disabled required type="text" id="nmeUsuarioCli" name="nmeUsuario"
                             class="cadCliente input" style="text-transform:uppercase;">
                     </td>
                     <td>
                         <label for="dscSobrenome" class="titulo">Sobrenome *</label>
-                        <input required type="text" id="dscSobrenomeCli" name="dscSobrenome"
+                        <input disabled required type="text" id="dscSobrenomeCli" name="dscSobrenome"
                             class="cadCliente input" style="text-transform:uppercase;">
                     </td>
                 </tr>
@@ -94,7 +94,7 @@ include_once "../Scripts.php";
                 </tr>
                 <tr>
                     <td>
-                        <label class="titulo-cadastro" style="font-size: 20px"><u>Endereço<u></label>
+                        <label class="titulo-cadastro" style="font-size: 20px">Endereço</label>
                     </td>
                 </tr>
                 <tr>
@@ -108,17 +108,17 @@ include_once "../Scripts.php";
                     </td>
                     <td>
                         <label for="dscComplementoEndereco" class="titulo">Complemento *</label>
-                        <input required type="text" id="dscComplementoEnderecoCli" name="dscComplementoEndereco" class="cadCliente input">
+                        <input disabled required type="text" id="dscComplementoEnderecoCli" name="dscComplementoEndereco" class="cadCliente input">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label for="dscBairro" class="titulo">Bairro *</label>
-                        <input required type="text" id="dscBairroCli" name="dscBairro" class="cadCliente input">
+                        <input disabled required type="text" id="dscBairroCli" name="dscBairro" class="cadCliente input">
                     </td>
                     <td>
                         <label for="dscCidade" class="titulo">Cidade *</label>
-                        <input required type="text" id="dscCidadeCli" name="dscCidade" class="cadCliente input">
+                        <input disabled required type="text" id="dscCidadeCli" name="dscCidade" class="cadCliente input">
                     </td>
                     <td>
                         <label for="dscEstado" class="titulo">Estado *</label>
