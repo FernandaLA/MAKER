@@ -37,10 +37,25 @@ class AgendaModel extends BaseModel
     Public Function ListaHorariosDisponiveis() {
         $dao = new AgendaDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $lista = $dao->ListaHorariosDisponiveis($this->objRequest);
-
-        return json_encode($lista);
-
+        $dtaAgendamento = $this->objRequest->dtaAgendamento;
+        $intervalo = 10000;
+        $horarios = [];
+        $lista = $dao->BuscaJornadaPrestador($this->objRequest->codPrestador);
+        if($lista[0]) {
+            $inicio = $lista[1]['HRA_INICIO'];
+            $fim = $lista[1]['HRA_FIM'];
+            for ($i = $inicio; $i <= $fim; $i+$intervalo){
+                $horarios[$i] = $i;
+            }
+            $lista = $dao->BuscaHorariosOcupados($lista[1]['COD_PRESTADOR'], $dtaAgendamento);
+            if($lista[0]) {
+                $agendados = $lista[1];
+                for ($i = 0; $i <= $agendados.length; $i++) {
+                    unset($horarios[$agendados[$i]]);
+                }
+            }
+        }
+        return json_encode(array(true, $horarios));
     }
 
     Public Function ListarServicosFuturos() {
