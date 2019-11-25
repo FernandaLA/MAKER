@@ -55,7 +55,8 @@ class ClienteDao extends UsuarioDao
     }
 
     Public Function CarregaDadosCliente($codUsuario) {
-        $select = " SELECT NME_USUARIO,
+        $select = " SELECT COD_USUARIO,
+                           NME_USUARIO,
                            DSC_SOBRENOME,
                            CONCAT(NME_USUARIO, ' ', COALESCE(DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
                            DTA_NASCIMENTO,

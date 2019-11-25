@@ -25,8 +25,7 @@ function montaTelaPrestador(dados) {
     preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
-    var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
-    var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
+    var codUsuario = dadosPre['COD_USUARIO'];
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
@@ -48,6 +47,7 @@ function montaTelaPrestador(dados) {
     } else {
         jornadaDias = "Você ainda cadastrou essa informação";
     }
+    $("#codUsuarioPre").html(codUsuario);
     $("#nmePrestadorCompleto").html(nmeCompleto);
     $("#jornadaPrestador").html(jornada);
     $("#diasAtendimento").html(jornadaDias);

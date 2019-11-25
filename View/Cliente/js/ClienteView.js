@@ -16,12 +16,14 @@ $(function() {
 function montaTelaCliente(dados) {
     preencheCamposForm(dados[1][0], "Cli");
     var dadosPre = dados[1][0];
+    var codUsuario = dadosPre['COD_USUARIO'];
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
     // var nota = dadosPre['NOTA_AVALIACAO'];
     // var icon = $("#avaliacaoCliente").html();
     
+    $("#codUsuarioCli").html(codUsuario);
     $("#nmeClienteCompleto").html(nmeCompleto);
     $("#enderecoCliente").html("<b>Endereço:</b> "+endereco);
     // $("#avaliacaoCliente").html("Avaliação: "+ nota + icon);
