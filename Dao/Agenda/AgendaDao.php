@@ -29,12 +29,21 @@ class AgendaDao extends BaseDao
         return $this->MontarInsert($obj);
     }
 
-    Public Function ListaHorariosDisponiveis(stdClass $obj) {
-        $select = "SELECT horarios(a cada 1hr) entre
-                        JP.HRA_INICIO e JP.HRA_FIM
-                        FROM EN_JORNADA_PRESTADOR
-                    WHERE JP.COD_PRESTADOR = "+ $obj->codPrestador;
-
+    Public Function BuscaJornadaPrestador($codPrestador) {
+        $select = " SELECT HRA_INICIO,
+                           HRA_FIM
+                      FROM EN_JORNADA_PRESTADOR
+                     WHERE COD_PRESTADOR ="+ $codPrestador;
+        return $this->selectDB($select, false);
+    }
+    
+    Public Function BuscaHorariosOcupados($codPrestador, $dtaAgendamento) {
+        $select = " SELECT DSC_HORARIO
+                      FROM EN_AGENDAMENTO
+                     WHERE DTA_AGENDAMENTO = '"+ $dtaEscolhida +"'
+                       AND COD_PRESTADOR ="+ $codPrestador+"
+                       AND COD_STATUS = 2
+                     GROUP BY DSC_HORARIO";
         return $this->selectDB($select, false);
     }
 
