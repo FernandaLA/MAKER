@@ -29,6 +29,7 @@ $(function() {
 function montaTelaPrestador(dados) {
     preencheCamposForm(dados[1][0], "Pre");
     var dadosPre = dados[1][0];
+    montaCategorias(dadosPre['CATEGORIAS']);
     var nmeCompleto = dadosPre['NME_USUARIO_COMPLETO'];
     var codUsuario = dadosPre['COD_USUARIO'];
     var DIAS = dadosPre['DIAS_ATENDIMENTO'];
@@ -63,6 +64,18 @@ function montaTelaPrestador(dados) {
         $("#fotoPerfil").attr("src", caminhoFoto);
     }
     // $("#avaliacaoPrestador").html("Avaliação: "+ nota + icon);
+}
+
+function montaCategorias($cats) {
+    var categorias = '';
+    $(".checkCat").each(function (check) {
+        $cats.each(function (cat) {
+            if (check.attr('id') == cat) {
+                check.prop('checked', true);
+            }
+        });
+    });
+    categorias = categorias.substr(0, categorias.length-1);
 }
 
 function listaCategorias(dados) {

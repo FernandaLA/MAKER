@@ -2,6 +2,7 @@
 include_once("Model/Usuario/UsuarioModel.php");
 include_once("Dao/Prestador/PrestadorDao.php");
 include_once("Dao/JornadaPrestador/JornadaPrestadorDao.php");
+include_once("Dao/CategoriaServico/CategoriaServicoDao.php");
 include_once("Resources/php/FuncoesString.php");
 class PrestadorModel extends UsuarioModel
 {
@@ -64,9 +65,12 @@ class PrestadorModel extends UsuarioModel
     Public Function CarregaDadosPrestador() {
         $dao = new PrestadorDao();
         $JPdao = new JornadaPrestadorDao();
+        $CSdao = new CategoriaServicoDao();
         $result = $dao->CarregaDadosPrestador($_SESSION['cod_usuario']);
         // var_dump($result); die;
         if($result[0] && $result[1] !== null) {
+            $listaCategorias = $CSdao->ListarCategoriaServicoPrestador($_SESSION['cod_usuario']);
+            $result[1][0]['CATEGORIAS'] = $listaCategorias[1];
             $result[1][0]['HRA_INICIO'] = substr($result[1][0]['HRA_INICIO'], 0, 5);
             $result[1][0]['HRA_FIM'] = substr($result[1][0]['HRA_FIM'], 0, 5);
             if($result[1][0]['COD_JORNADA_PRESTADOR'] !== null){
