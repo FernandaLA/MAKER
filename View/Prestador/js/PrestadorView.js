@@ -110,7 +110,7 @@ function montaBoxCategoria(categorias) {
         }
         html += "<td width='300px'>";
         html += "<strong class='checkbox'>";
-        html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador'>"+categorias[1][i]['DSC']+"";
+        html += "<input type='checkbox' name='codCategoria' id='codCategoria' value='"+categorias[1][i]['COD']+"'class='cadPrestador checkCat'>"+categorias[1][i]['DSC']+"";
         html += "</strong>";
         html += "</td>"
         count++;
