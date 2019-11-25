@@ -21,7 +21,7 @@ $(function() {
     });
 
     $("#dtaAgendamento").change(function() {
-        var params = "codServico;"+$("#codServico").val()+"|dtaAgendamento;"+$("#dtaAgendamento").val()+"|";
+        var params = "codPrestador;"+$("#codPrestador").val()+"|dtaAgendamento;"+$("#dtaAgendamento").val()+"|";
         ExecutaDispatch('Agenda', 'ListaHorariosDisponiveis', params, MontaComboHorario)
     });
 });
@@ -31,7 +31,14 @@ function montaComboServicos(arrDados) {
 }
 
 function montaComboHorario(arrDados) {
-    CriarComboDispatch('dscHorario', arrDados, 0, 'cadAgendamento');
+    var html= '';
+    html += "<select id='dscHorario' class='cadAgendamento'>";
+    $(arrDados[1]).each(function(index, horario) {
+        html += "<option id='index' value='horario' class='cadAgendamento'>horario</option>";
+    });
+    html += "</select>";
+    
+    $("#tddscHorario").html(html);
 }
 
 $(document).ready(function() {
