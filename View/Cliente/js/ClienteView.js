@@ -40,7 +40,7 @@ function montaTelaCliente(dados) {
 }
 
 function MontaComboUF(arrDados) {
-    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente');
+    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente', true);
 }
 
 
