@@ -133,7 +133,10 @@ function SelecionaItem(event, dataAdapter, dataFields, callback){
     }
 }
 
-function CriarComboDispatch(nmeCombo, arrDados, valor, classe, name){ 
+function CriarComboDispatch(nmeCombo, arrDados, valor, classe, name, disabled){
+    if (disabled==undefined){
+        disabled = false;
+    }
     if (arrDados[1] !== null){
         if(name == undefined){
             name = nmeCombo;
@@ -147,12 +150,11 @@ function CriarComboDispatch(nmeCombo, arrDados, valor, classe, name){
         }
         select += '</select>';
         $("#td"+nmeCombo).html(select);
-        $("#"+nmeCombo).jqxDropDownList({dropDownHeight: '150px'});
+        $("#"+nmeCombo).jqxDropDownList({dropDownHeight: '150px', disabled: disabled});
         $("#"+nmeCombo).attr('parm', name);
         return false;
     }
 }
-
 
 /**
  * 
