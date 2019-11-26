@@ -168,11 +168,11 @@ function retornoSalvarPrestador(dado) {
 
 
 function DesabilitaCamposPre(ind) {
-    $(".cadPrestador").attr('Disabled', ind);
-    $("#nroCpfPre").attr('Disabled', false);
-    $("#dscLogradouroPre").attr('Disabled', true);
-    $("#dscBairroPre").attr('Disabled', true);
-    $("#dscCidadePre").attr('Disabled', true);
+    $(".off").attr('Disabled', ind);
+    //$("#nroCpfPre").attr('Disabled', false);
+    //$("#dscLogradouroPre").attr('Disabled', true);
+    //$("#dscBairroPre").attr('Disabled', true);
+    //$("#dscCidadePre").attr('Disabled', true);
     $("#sglUfPre").attr('Disabled', true);
 }
 
