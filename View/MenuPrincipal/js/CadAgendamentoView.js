@@ -18,17 +18,16 @@ $(function() {
         var params = "codPrestador;"+$("#codPrestador").val()+"|dtaAgendamento;"+$("#dtaAgendamento").val()+"|";
         ExecutaDispatch('Agenda', 'ListaHorariosDisponiveis', params, montaComboHorario);
     });
-    
-    $("#codServico").change(function () {
-        console.log('mudou');
-        if ($("#codServico").val() !== 0) {
-            $("#dtaAgendamento").prop('disabled', false);
-        }
-    });
 });
 
 function montaComboServicos(arrDados) {
     CriarComboDispatch('codServico', arrDados, 0, 'cadAgendamento');
+
+    $("#codServico").change(function () {
+        if ($("#codServico").val() !== 0) {
+            $("#dtaAgendamento").prop('disabled', false);
+        }
+    });
 }
 
 function montaComboHorario(arrDados) {
@@ -44,10 +43,4 @@ function montaComboHorario(arrDados) {
 }
 
 $(document).ready(function() {
-    $("#codServico").on('change', function() {
-        console.log('mudou');
-        if ($("#codServico").val() !== 0) {
-            $("#dtaAgendamento").prop('disabled', false);
-        }
-    });
 });
