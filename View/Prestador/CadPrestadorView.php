@@ -28,7 +28,7 @@
                                 <!-- previa da foto -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:
-                                    <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador"/>
+                                    <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador off"/>
                                     <br />
                                     <progress value="0" max="100"></progress>
                                     <span id="porcentagem">0%</span>
@@ -51,27 +51,27 @@
                         <td>
                             <label for="nmeUsuarioPre" class="titulo">Nome *</label>
                             <input required type="text" id="nmeUsuarioPre" name="nmeUsuario"
-                                class="cadPrestador input" style="text-transform:uppercase;">
+                                class="cadPrestador input off" style="text-transform:uppercase;">
                         </td>
                         <td>
                             <label for="dscSobrenomePre" class="titulo">Sobrenome *</label>
                             <input required type="text" id="dscSobrenomePre" name="dscSobrenome"
-                                class="cadPrestador input" style="text-transform:uppercase;">
+                                class="cadPrestador input off" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="dtaNascimentoPre" class="titulo">Data de Nascimento *</label>
                             <input required type="text" id="dtaNascimentoPre" name="dtaNascimento"
-                                class="cadPrestador input">
+                                class="cadPrestador input off">
                         </td>
                         <td>
                             <label for="nroTelefonePre" class="titulo">Celular *</label>
-                            <input required type="text" id="nroTelefonePre" name="nroTelefone" class="cadPrestador input">
+                            <input required type="text" id="nroTelefonePre" name="nroTelefone" class="cadPrestador input off">
                         </td>
                         <td>
                             <label for="txtEmailPre" class="titulo">E-mail *</label>
-                            <input required type="text" id="txtEmailPre" name="txtEmail" class="cadPrestador input">
+                            <input required type="text" id="txtEmailPre" name="txtEmail" class="cadPrestador input off">
                         </td>
                     </tr>
                     <tr>
@@ -82,7 +82,7 @@
                     <tr>
                         <td>
                             <label for="nroCepPre" class="titulo">CEP *</label>
-                            <input required type="text" id="nroCepPre" name="nroCep" class="cadPrestador input">
+                            <input required type="text" id="nroCepPre" name="nroCep" class="cadPrestador input off">
                         </td>
                         <td>
                             <label for="dscLogradouroPre" class="titulo">Logradouro *</label>
@@ -119,7 +119,7 @@
                 </span>
                 <!-- checkbox  -->
                 <div style="margin-bottom: 1em;margin-top: 1em">
-                    <table width="100%" id="servicosBox" class="cadPrestador"></table>
+                    <table width="100%" id="servicosBox" class="cadPrestador off"></table>
                 </div>
 
                 <form id="formCertificado" enctype="multpart/form-data" name="formCertificado" action="">
@@ -129,7 +129,7 @@
 
                     <div style="padding-top: 10px;width: 220px;">
                         Selecione o arquivo:
-                        <input type="file" name="arquivo" id="arquivo" class="cadPrestador"/>
+                        <input type="file" name="arquivo" id="arquivo" class="cadPrestador off"/>
                         <br />
                         <progress value="0" max="100"></progress>
                         <span id="porcentagem">0%</span>
@@ -147,11 +147,11 @@
                     <tr>
                         <td>
                             <label for="txtSenhaCadPre" class="titulo">Senha *</label>
-                            <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input" minlength="6" maxlength="8">
+                            <input required type="password" id="txtSenhaCadPre" name="txtSenha" class="cadPrestador input off" minlength="6" maxlength="8">
                         </td>
                         <td>
                             <label for="txtSenhaConfPre" class="titulo">Confirme a Senha *</label>
-                            <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="cadPrestador input" minlength="6" maxlength="8">
+                            <input required type="password" id="txtSenhaConfPre" name="txtSenhaConf" class="cadPrestador input off" minlength="6" maxlength="8">
                         </td>
                     </tr>
                     <tr>
