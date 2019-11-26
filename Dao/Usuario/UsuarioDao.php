@@ -59,26 +59,8 @@ class UsuarioDao extends BaseDao {
         return $this->selectDB("$select", false);
     }
 
-    function UpdateUsuario() {
-        $update = " UPDATE SE_USUARIO
-                       SET NME_USUARIO                  = '" . filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           TXT_EMAIL                    = '" . filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           NRO_TELEFONE                 = '" . filter_input(INPUT_POST, 'nroTelefone', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DSC_LOGRADOURO               = '" . filter_input(INPUT_POST, 'dscLogradouro', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DSC_COMPLEMENTO_ENDERECO     = '" . filter_input(INPUT_POST, 'dscComplementoEndereco', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DSC_BAIRRO                   = '" . filter_input(INPUT_POST, 'DscBairro', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DSC_CIDADE                   = '" . filter_input(INPUT_POST, 'dscCidade', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DSC_SOBRENOME                = '" . filter_input(INPUT_POST, 'dscSobrenome', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           NRO_CEP                      = '" . filter_input(INPUT_POST, 'nroCep', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           SGL_UF                       = '" . filter_input(INPUT_POST, 'sglUf', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                           DTA_NASCIMENTO               = '" . filter_input(INPUT_POST, 'dtaNascimento', FILTER_SANITIZE_MAGIC_QUOTES) . "'
-                     WHERE COD_USUARIO                  = " . filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);
-        $result = $this->insertDB("$update");
-        // if ($result[0]) {
-        //     $result[1] = filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);
-        // }
-        return $result;
-
+    function UpdateUsuario(stdClass $obj) {
+        return $this->MontarUpdate($obj);
     }
 
     function DeleteUsuario() {
@@ -120,18 +102,5 @@ class UsuarioDao extends BaseDao {
                      WHERE COD_USUARIO = " . $codUsuario;
         return $this->insertDB($update);
     }
-
-    // public function uploadFile($nome, $nmeOriginal, $binario, $tipo, $tamanho ) {
-    //     $insert = "INSERT INTO EN_ARQUIVO (COD_ARQUIVO, NME_ARQUIVO,
-    //                                        DSC_ARQUIVO, DSC_DADOS_ARQUIVO,
-    //                                        TPO_ARQUIVO, NRO_TAMANHO_ARQUIVO,
-    //                                        DTA_REGISTRO)
-    //                     VALUES (NULL, ".$nome.",
-    //                             ".$file_name.", ".$binario.",
-    //                             ".$file_type.", ".$file_size.",
-    //                             NOW())";
-    //     return $this->insertDB($insert);
-    //     // mysql_query("$sql") or die (mysql_error());
-    // }
 }
 ?>
