@@ -31,12 +31,15 @@ function montaComboServicos(arrDados) {
 }
 
 function montaComboHorario(arrDados) {
+    var lista = arrDados[1];
     var html= '';
     html += "<select id='dscHorario' name='dscHorario' class='cadAgendamento input' style='background-color: white;'>";
-    html += '<option value="-1" disabled selected>Selecione...</option>';
-    $(arrDados[1]).each(function(index, horario) {
-        html += "<option value='"+horario+"'>"+horario+"</option>";
-    });
+    html += '<option value="0" disabled selected>Selecione...</option>';
+    for (var i = 0; i < lista.length; i++) {
+    //$(arrDados[1]).each(function(index, horario) {
+        html += "<option value='"+lista[i]+"'>"+lista[i]+"</option>";
+    //});
+    }
     html += "</select>";
     
     $("#tddscHorario").html(html);
