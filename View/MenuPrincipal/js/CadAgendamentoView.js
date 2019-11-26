@@ -13,16 +13,17 @@ $(function() {
         var params = retornaParametros('cadAgendamento');
         ExecutaDispatch('Agenda', 'InsertAgendamento', params, "Aguarde, salvando agendamento", "Agendamento salvo com sucesso! Aguarde a confirmação do prestador");
     });
-    
-    $("#codServico").change(function () {
-        if ($(this).val() != 0) {
-            $("#dtaAgendamento").prop('disabled', false);
-        }
-    });
 
     $("#dtaAgendamento").change(function() {
         var params = "codPrestador;"+$("#codPrestador").val()+"|dtaAgendamento;"+$("#dtaAgendamento").val()+"|";
-        ExecutaDispatch('Agenda', 'ListaHorariosDisponiveis', params, MontaComboHorario)
+        ExecutaDispatch('Agenda', 'ListaHorariosDisponiveis', params, montaComboHorario);
+    });
+    
+    $("#codServico").change(function () {
+        console.log('mudou');
+        if ($("#codServico").val() !== 0) {
+            $("#dtaAgendamento").prop('disabled', false);
+        }
     });
 });
 
@@ -32,9 +33,10 @@ function montaComboServicos(arrDados) {
 
 function montaComboHorario(arrDados) {
     var html= '';
-    html += "<select id='dscHorario' class='cadAgendamento'>";
+    html += "<select id='dscHorario' name='dscHorario' class='cadAgendamento input' style='background-color: white;'>";
+    html += '<option value="-1" disabled selected>Selecione...</option>';
     $(arrDados[1]).each(function(index, horario) {
-        html += "<option id='index' value='horario' class='cadAgendamento'>horario</option>";
+        html += "<option value='"+horario+"'>"+horario+"</option>";
     });
     html += "</select>";
     
@@ -42,4 +44,10 @@ function montaComboHorario(arrDados) {
 }
 
 $(document).ready(function() {
+    $("#codServico").on('change', function() {
+        console.log('mudou');
+        if ($("#codServico").val() !== 0) {
+            $("#dtaAgendamento").prop('disabled', false);
+        }
+    });
 });

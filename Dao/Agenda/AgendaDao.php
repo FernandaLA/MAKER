@@ -7,7 +7,7 @@ class AgendaDao extends BaseDao
     Protected $columns = array ("codPrestador"   => array("column" =>"COD_PRESTADOR", "typeColumn" =>"I"),
                                 "codCliente"   => array("column" =>"COD_CLIENTE", "typeColumn" =>"I"),
                                 "codServico"   => array("column" =>"COD_SERVICO", "typeColumn" =>"I"),
-                                "dtaAgendamento"   => array("column" =>"DTA_AGENDAMENTO", "typeColumn" =>"D"),
+                                "dtaAgendamento"   => array("column" =>"DTA_AGENDAMENTO", "typeColumn" =>"S"),
                                 "dscHorario"   => array("column" =>"DSC_HORARIO", "typeColumn" =>"S"),
                                 "codStatus"   => array("column" =>"COD_STATUS", "typeColumn" =>"I"));
 
@@ -33,15 +33,15 @@ class AgendaDao extends BaseDao
         $select = " SELECT HRA_INICIO,
                            HRA_FIM
                       FROM EN_JORNADA_PRESTADOR
-                     WHERE COD_PRESTADOR ="+ $codPrestador;
+                     WHERE COD_PRESTADOR =".$codPrestador;
         return $this->selectDB($select, false);
     }
     
     Public Function BuscaHorariosOcupados($codPrestador, $dtaAgendamento) {
         $select = " SELECT DSC_HORARIO
                       FROM EN_AGENDAMENTO
-                     WHERE DTA_AGENDAMENTO = '"+ $dtaEscolhida +"'
-                       AND COD_PRESTADOR ="+ $codPrestador+"
+                     WHERE DTA_AGENDAMENTO = '". $dtaEscolhida ."'
+                       AND COD_PRESTADOR =". $codPrestador."
                        AND COD_STATUS = 2
                      GROUP BY DSC_HORARIO";
         return $this->selectDB($select, false);
