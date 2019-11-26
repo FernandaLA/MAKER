@@ -49,14 +49,14 @@ class AgendaModel extends BaseModel
             $inicio = str_replace(":", "", $inicio);
             $fim = $lista[1][0]["HRA_FIM"];
             $fim = str_replace(":", "", $fim);
-            for ($i = $inicio; $i <= $fim; $i+$intervalo){
+            for ($i = $inicio; $i <= $fim; $i=$i+$intervalo){
                 $horarios[$i] = $i;
             }
             // var_dump($horarios); die;
             $lista = $dao->BuscaHorariosOcupados($codPrestador, $dtaAgendamento);
             if($lista[0] && $lista[1] > 0) {
                 $agendados = $lista[1];
-                for ($i = 0; $i <= $agendados.length; $i++) {
+                for ($i = 0; $i < $agendados.length; $i++) {
                     unset($horarios[$agendados[$i]]);
                 }
             }
