@@ -24,9 +24,8 @@ function montaComboServicos(arrDados) {
     CriarComboDispatch('codServico', arrDados, 0, 'cadAgendamento');
 
     $("#codServico").change(function () {
-        alert(123);
         if ($("#codServico").val() !== 0) {
-            $("#dtaAgendamento").prop('disabled', false);
+            $("#dtaAgendamento").removeAttr('disabled');
         }
     });
 }
