@@ -35,8 +35,8 @@ function posLogin(logar){
 }
 
 function MontaComboUF(arrDados) {
-    CriarComboDispatch('sglUfPre', arrDados, 0, 'cadPrestador', 'sglUf');
-    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente', 'sglUf');
+    CriarComboDispatch('sglUfPre', arrDados, 0, 'cadPrestador', 'sglUf', true);
+    CriarComboDispatch('sglUfCli', arrDados, 0, 'cadCliente', 'sglUf', true);
 }
 
 $(document).ready(function () {
