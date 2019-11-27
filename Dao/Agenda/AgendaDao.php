@@ -30,17 +30,25 @@ class AgendaDao extends BaseDao
     }
 
     Public Function BuscaJornadaPrestador($codPrestador) {
-        $select = " SELECT HRA_INICIO,
+        $select = " SELECT COD_JORNADA_PRESTADOR,
+                           HRA_INICIO,
                            HRA_FIM
                       FROM EN_JORNADA_PRESTADOR
                      WHERE COD_PRESTADOR =".$codPrestador;
         return $this->selectDB($select, false);
     }
-    
+
+    Public Function BuscaDiasJornadaPrestador($codJornada) {
+        $select= " SELECT COD_DIA
+                     FROM EN_DIAS_JORNADA_PRESTADOR
+                    WHERE COD_JORNADA_PRESTADOR = ".$codJornada;
+        return $this->selectDB($select, false);
+    }
+
     Public Function BuscaHorariosOcupados($codPrestador, $dtaAgendamento) {
         $select = " SELECT DSC_HORARIO
                       FROM EN_AGENDAMENTO
-                     WHERE DTA_AGENDAMENTO = '". $dtaEscolhida ."'
+                     WHERE DTA_AGENDAMENTO = '". $dtaAgendamento ."'
                        AND COD_PRESTADOR =". $codPrestador."
                        AND COD_STATUS = 2
                      GROUP BY DSC_HORARIO";
@@ -57,15 +65,23 @@ class AgendaDao extends BaseDao
                            A.DTA_AGENDAMENTO,
                            A.COD_SERVICO,
                            SP.COD_CATEGORIA,
-                           CS.DSC_CATEGORIA,
+                           CASE WHEN SP.COD_CATEGORIA = 1 THEN 'Depilação'
+                                ELSE CS.DSC_CATEGORIA
+                           END AS DSC_CATEGORIA,
                            SP.DSC_SERVICO,
                            SP.VLR_SERVICO,
-                           CASE WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO < CURRENT_DATE()
-                                THEN 'Realizado'
-                                WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO = CURRENT_DATE() AND A.DSC_HORARIO+SP.TMP_DURACAO_SERVICO < NOW()
-                                THEN 'Realizado'
-                           ELSE SA.DSC_STATUS
-                           END AS SITUACAO
+                           CONCAT(COALESCE(U.DSC_LOGRADOURO, ''), ' ',
+                                  COALESCE(U.DSC_COMPLEMENTO_ENDERECO, ''), ' ',
+                                  COALESCE(U.DSC_BAIRRO, ''), ' ',
+                                  COALESCE(U.DSC_CIDADE, ''), ' ',
+                                  COALESCE(U.SGL_UF, '')) AS ENDERECO_COMPLETO,
+                           'Confirmado' AS SITUACAO
+                        --    CASE WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO < CURRENT_DATE()
+                        --         THEN 'Realizado'
+                        --         WHEN A.COD_STATUS = 2 AND A.DTA_AGENDAMENTO = CURRENT_DATE() AND A.DSC_HORARIO+SP.TMP_DURACAO_SERVICO < NOW()
+                        --         THEN 'Realizado'
+                        --    ELSE SA.DSC_STATUS
+                        --    END AS SITUACAO
                       FROM EN_AGENDAMENTO A
                      INNER JOIN SE_USUARIO U
                         ON A.COD_CLIENTE = U.COD_USUARIO
@@ -76,8 +92,7 @@ class AgendaDao extends BaseDao
                      INNER JOIN EN_STATUS_AGENDAMENTO SA
                         ON A.COD_STATUS = SA.COD_STATUS
                      WHERE A.COD_STATUS = 2
-                       AND A.DTA_AGENDAMENTO >= CURRENT_DATE()
-                       AND A.DSC_HORARIO > NOW()
+                       AND CONCAT(A.DTA_AGENDAMENTO, ' ', A.DSC_HORARIO) >= NOW()
                        AND A.COD_PRESTADOR =".$codUsuario."
                      ORDER BY A.DTA_AGENDAMENTO, A.DSC_HORARIO";
         return $this->selectDB($select, false);

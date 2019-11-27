@@ -44,8 +44,10 @@ class ServicoPrestadorDao extends BaseDao
 
     Public Function ListarServicoAtivoPrestador($codUsuario) {
         $select = " SELECT SP.COD_SERVICO_PRESTADOR AS COD,
-                           CONCAT(SP.DSC_SERVICO, ' - ', SP.VLR_SERVICO) AS DSC
+                           CONCAT(CS.DSC_CATEGORIA, ' - ', SP.DSC_SERVICO, ' - ', SP.VLR_SERVICO) AS DSC
                       FROM EN_SERVICO_PRESTADOR SP
+                     INNER JOIN EN_CATEGORIA_SERVICO CS
+                        ON SP.COD_CATEGORIA = CS.COD_CATEGORIA
                      WHERE SP.COD_PRESTADOR =". $codUsuario ."
                        AND SP.IND_ATIVO = 'S'";
                     //    echo $select; die;

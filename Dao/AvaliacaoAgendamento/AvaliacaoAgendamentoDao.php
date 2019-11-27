@@ -4,13 +4,13 @@ class AvaliacaoAgendamentoDao extends BaseDao
 {
     Protected $tableName = "EN_AVALIACAO";
 
-    Protected $columns = array ("codUsuario"   => array("column" =>"COD_USUARIO", "typeColumn" =>"I"),
-                                "nroNotaAvaliacao"   => array("column" =>"NRO_NOTA_AVALIACAO", "typeColumn" =>"F"),
-                                "dscAvaliacao"   => array("column" =>"DSC_AVALIACAO", "typeColumn" =>"S"),
-                                "codUsuarioAvaliado"   => array("column" =>"COD_USUARIO_AVALIADO", "typeColumn" =>"I"),
-                                "codAgendamento"   => array("column" =>"COD_AGENDAMENTO", "typeColumn" =>"I"));
+    Protected $columns = array ("codUsuario"            => array("column" =>"COD_USUARIO", "typeColumn" =>"I"),
+                                "nroNotaAvaliacao"      => array("column" =>"NRO_NOTA_AVALIACAO", "typeColumn" =>"I"),
+                                "dscAvaliacao"          => array("column" =>"DSC_AVALIACAO", "typeColumn" =>"S"),
+                                "codUsuarioAvaliado"    => array("column" =>"COD_USUARIO_AVALIADO", "typeColumn" =>"I"),
+                                "codAgendamento"        => array("column" =>"COD_AGENDAMENTO", "typeColumn" =>"I"));
 
-    Protected $columnKey = array("codAvaliacao"=> array("column" =>"COD_AVALIACAO", "typeColumn" => "I"));
+    Protected $columnKey = array("codAvaliacao"         => array("column" =>"COD_AVALIACAO", "typeColumn" => "I"));
 
     Public Function AvaliacaoAgendamentoDao() {
         $this->conect();

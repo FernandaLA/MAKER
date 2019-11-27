@@ -282,12 +282,12 @@ td{
     text-align: center;
     cursor: pointer;
     white-space: normal;
-    width: 40%;
+    width: 60%;
     height: 40px;
     font-size: 18px;
 }
 
-.btn-danger {
+.btn-danger:hover {
     opacity: 0.7;
 }
 
@@ -302,7 +302,7 @@ td{
     text-align: center;
     cursor: pointer;
     white-space: normal;
-    width: 40%;
+    width: 60%;
     height: 40px;
     font-size: 18px;
 }

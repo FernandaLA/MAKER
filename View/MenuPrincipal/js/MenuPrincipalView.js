@@ -30,7 +30,7 @@ function MontaTela(dado) {
 }
 
 function MontaListaServicos(dados) {
-    MontaCardServico(dados[1], "listagemServicosFuturos");
+    MontaCardAgenda(dados[1], "listagemServicosFuturos");
 }
 
 function MontaListaPrestadores(dados) {
@@ -41,10 +41,11 @@ function MontaComboCategorias(arrDados) {
     CriarComboDispatch('codCategoria', arrDados, 0, 'persist');
 }
 
-function AbreModalAgendamento(codPrestador) {
-    $('#codPrestador').val(codPrestador);
+function AbreModalAgendamento(codUsuario, nmeUsuario, jornada, dias) {
+    informePrestador(nmeUsuario, jornada, dias);
+    $('#codPrestador').val(codUsuario);
 
-    ExecutaDispatch('ServicoPrestador', 'ListarServicoAtivoPrestador', "codPrestador;"+codPrestador+"|", montaComboServicos)
+    ExecutaDispatch('ServicoPrestador', 'ListarServicoAtivoPrestador', "codPrestador;"+codUsuario+"|", montaComboServicos);
     $('#CadAgendamento').show('fade');
 }
 

@@ -25,20 +25,19 @@
 
                 <table width="100%" cellspacing="8px">
                     <tr>
-                        <td colspan="2" style="border-right: 1px solid #000">
+                        <td colspan="2">
                             <label for="codServico" class="titulo">Serviço *</label><br>
                             <div id="tdcodServico"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td width="45%">
+                        <td width="250px">
                             <label for="dtaAgendamento" class="titulo">Data *</label>
                             <input disabled type="date" id="dtaAgendamento" class="input cadAgendamento">
                         </td>
                         <td>
                             <label for="dscHorario" class="titulo">Horário *</label>
-                            <!-- combo com horários disponíveis -->
-                            <div id="tddscHorario"></div> <!-- criar combo -->
+                            <div id="tddscHorario"></div>
                         </td>
                     </tr>
                     <tr>

@@ -3,7 +3,7 @@ $(function() {
 });
 
 function CarregaLista(dados) {
-    MontaCardServico(dados[1], "listagemFinalizados");
+    MontaCardAgenda(dados[1], "listagemFinalizados");
 
     // var lista = dados[1];
     // var html = "";
