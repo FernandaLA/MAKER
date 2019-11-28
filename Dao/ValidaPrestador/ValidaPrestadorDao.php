@@ -10,7 +10,8 @@ class ValidaPrestadorDao extends UsuarioDao
     Public Function ListarPrestadoresPendentes() {
         $select = " SELECT COD_USUARIO,
                            CONCAT(NME_USUARIO, ' ', DSC_SOBRENOME) AS NME_COMPLETO, 
-                           NRO_CPF
+                           NRO_CPF,
+                           DSC_CAMINHO_CERTIFICADO
                       FROM SE_USUARIO
                       WHERE IND_ATIVO = 'N'";
         return $this->selectDB($select, false);

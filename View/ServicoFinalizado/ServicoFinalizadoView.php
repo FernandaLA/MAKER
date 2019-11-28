@@ -29,4 +29,7 @@ include_once "../Scripts.php";
             </div>
         </div>
     </div>
+    <div id="ModalAvaliacaoServico">
+        <?php include_once "AvaliarServicoView.php"; ?>
+    </div>
 </body>

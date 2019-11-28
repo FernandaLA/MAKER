@@ -26,10 +26,7 @@
                                 <!-- previa da foto -->
                                 <div style="padding-top: 10px;width: 220px;">
                                     Escolher uma foto:<br>
-                                    <input type="file" name="fotoCli" id="fotoCli" class="cadCliente"/>
-                                    <br />
-                                    <progress value="0" max="100"></progress>
-                                    <span id="porcentagem">0%</span>
+                                    <input type="file" name="fotoCli" id="fotoCli" class="cadCliente not"/>
                                     <br />
                                 </div>
                                 <span style="color: #505050">
@@ -49,26 +46,26 @@
                         <td>
                             <label for="nmeUsuario" class="titulo">Nome *</label>
                             <input required type="text" id="nmeUsuarioCli" name="nmeUsuario"
-                                class="cadCliente input" style="text-transform:uppercase;">
+                                class="cadCliente input not" style="text-transform:uppercase;">
                         </td>
                         <td>
                             <label for="dscSobrenome" class="titulo">Sobrenome *</label>
                             <input required type="text" id="dscSobrenomeCli" name="dscSobrenome"
-                                class="cadCliente input" style="text-transform:uppercase;">
+                                class="cadCliente input not" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="dtaNascimento" class="titulo">Data de Nascimento *</label>
-                            <input required type="text" id="dtaNascimentoCli" name="dtaNascimento" class="cadCliente input">
+                            <input required type="text" id="dtaNascimentoCli" name="dtaNascimento" class="cadCliente input not">
                         </td>
                         <td>
                             <label for="nroTelefone" class="titulo">Celular *</label>
-                            <input required type="text" id="nroTelefoneCli" name="nroTelefone" class="cadCliente input">
+                            <input required type="text" id="nroTelefoneCli" name="nroTelefone" class="cadCliente input not">
                         </td>
                         <td>
                             <label for="txtEmail" class="titulo">E-mail *</label>
-                            <input required type="text" id="txtEmailCli" name="txtEmail" class="cadCliente input">
+                            <input required type="text" id="txtEmailCli" name="txtEmail" class="cadCliente input not">
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +76,7 @@
                     <tr>
                         <td>
                             <label for="nroCep" class="titulo">CEP *</label>
-                            <input required type="text" id="nroCepCli" name="nroCep" class="cadCliente input">
+                            <input required type="text" id="nroCepCli" name="nroCep" class="cadCliente input not">
                         </td>
                         <td>
                             <label for="dscLogradouro" class="titulo">Logradouro *</label>
@@ -87,17 +84,17 @@
                         </td>
                         <td>
                             <label for="dscComplementoEndereco" class="titulo">Complemento *</label>
-                            <input required type="text" id="dscComplementoEnderecoCli" name="dscComplementoEndereco" class="cadCliente input">
+                            <input required type="text" id="dscComplementoEnderecoCli" name="dscComplementoEndereco" class="cadCliente input not">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="dscBairro" class="titulo">Bairro *</label>
-                            <input required type="text" id="dscBairroCli" name="dscBairro" class="cadCliente input">
+                            <input disabled required type="text" id="dscBairroCli" name="dscBairro" class="cadCliente input">
                         </td>
                         <td>
                             <label for="dscCidade" class="titulo">Cidade *</label>
-                            <input required type="text" id="dscCidadeCli" name="dscCidade" class="cadCliente input">
+                            <input disabled required type="text" id="dscCidadeCli" name="dscCidade" class="cadCliente input">
                         </td>
                         <td>
                             <label for="dscEstado" class="titulo">UF *</label>
@@ -114,11 +111,11 @@
                     <tr>
                         <td>
                             <label for="txtSenhaCad" class="titulo">Senha *</label>
-                            <input required type="password" id="txtSenhaCadCli" name="txtSenha" class="cadCliente input" minlength="6" maxlength="8">
+                            <input required type="password" id="txtSenhaCadCli" name="txtSenha" class="cadCliente input not" minlength="6" maxlength="8">
                         </td>
                         <td>
                             <label for="txtSenhaConf" class="titulo">Confirme a Senha *</label>
-                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="cadCliente input" minlength="6" maxlength="8">
+                            <input required type="password" id="txtSenhaConfCli" name="txtSenhaConf" class="cadCliente input not" minlength="6" maxlength="8">
                         </td>
                     </tr>
                     <tr>

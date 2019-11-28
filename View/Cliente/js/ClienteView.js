@@ -26,14 +26,14 @@ function montaTelaCliente(dados) {
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
     var sglUf = dadosPre['SGL_UF'];
-    // var nota = dadosPre['NOTA_AVALIACAO'];
-    // var icon = $("#avaliacaoCliente").html();
+    var nota = dadosPre['NOTA_AVALIACAO'];
+    var icon = $("#avaliacaoCliente").html();
     
     $("#codUsuarioCli").html(codUsuario);
     $("#sglUfCli").html(sglUf);
     $("#nmeClienteCompleto").html(nmeCompleto);
     $("#enderecoCliente").html("<b>Endereço:</b> "+endereco);
-    // $("#avaliacaoCliente").html("Avaliação: "+ nota + icon);
+    $("#avaliacaoCliente").html("Avaliação: "+ nota + icon);
     if(caminhoFoto !== '') {
         $("#fotoPerfil").attr("src", caminhoFoto);
     }

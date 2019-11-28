@@ -67,7 +67,6 @@ class PrestadorModel extends UsuarioModel
         $JPdao = new JornadaPrestadorDao();
         $CSdao = new CategoriaServicoDao();
         $result = $dao->CarregaDadosPrestador($_SESSION['cod_usuario']);
-        // var_dump($result); die;
         if($result[0] && $result[1] !== null) {
             $listaCategorias = $CSdao->ListarCategoriaServicoPrestador($_SESSION['cod_usuario']);
             $result[1][0]['CATEGORIAS'] = $listaCategorias[1];

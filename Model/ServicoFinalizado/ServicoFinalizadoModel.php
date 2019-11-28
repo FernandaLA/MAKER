@@ -3,6 +3,7 @@ include_once("Model/Agenda/AgendaModel.php");
 include_once("Dao/ServicoFinalizado/ServicoFinalizadoDao.php");
 include_once("Dao/Usuario/UsuarioDao.php");
 include_once("Dao/Perfil/PerfilDao.php");
+include_once("Resources/php/FuncoesData.php");
 class ServicoFinalizadoModel extends AgendaModel
 {
     public function ServicoFinalizadoModel() {

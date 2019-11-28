@@ -11,6 +11,9 @@ class ServicoPendenteDao extends AgendaDao
         $select = " SELECT A.COD_AGENDAMENTO,
                            A.COD_CLIENTE AS COD_USUARIO_REF,
                            CONCAT(U.NME_USUARIO, ' ', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
+                           (SELECT FORMAT(COALESCE(SUM(AA.NRO_NOTA_AVALIACAO)/COUNT(AA.NRO_NOTA_AVALIACAO), 0), 1)
+                             FROM EN_AVALIACAO AA
+                            WHERE AA.COD_USUARIO_AVALIADO = U.COD_USUARIO) AS NOTA_AVALIACAO,
                         --    '4,8' AS NOTA_PRESTADOR,
                            U.DSC_CAMINHO_FOTO,
                            A.DSC_HORARIO,
@@ -25,7 +28,8 @@ class ServicoPendenteDao extends AgendaDao
                                   COALESCE(U.DSC_BAIRRO, ''), ' ',
                                   COALESCE(U.DSC_CIDADE, ''), ' ',
                                   COALESCE(U.SGL_UF, '')) AS ENDERECO_COMPLETO,
-                           'PendentePre' AS SITUACAO
+                           'PendentePre' AS SITUACAO,
+                           A.COD_STATUS
                       FROM EN_AGENDAMENTO A
                      INNER JOIN SE_USUARIO U
                         ON A.COD_CLIENTE = U.COD_USUARIO
@@ -42,7 +46,10 @@ class ServicoPendenteDao extends AgendaDao
         $select = " SELECT A.COD_AGENDAMENTO,
                            A.COD_PRESTADOR AS COD_USUARIO_REF,
                            CONCAT(U.NME_USUARIO, ' ', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
-                          '4,8' AS NOTA_PRESTADOR,
+                           (SELECT FORMAT(COALESCE(SUM(AA.NRO_NOTA_AVALIACAO)/COUNT(AA.NRO_NOTA_AVALIACAO), 0), 1)
+                             FROM EN_AVALIACAO AA
+                            WHERE AA.COD_USUARIO_AVALIADO = U.COD_USUARIO) AS NOTA_AVALIACAO,
+                        --   '4,8' AS NOTA_PRESTADOR,
                            U.DSC_CAMINHO_FOTO,
                            A.DSC_HORARIO,
                            A.DTA_AGENDAMENTO,
@@ -58,7 +65,8 @@ class ServicoPendenteDao extends AgendaDao
                                   COALESCE(AC.DSC_BAIRRO, ''), ' ',
                                   COALESCE(AC.DSC_CIDADE, ''), ' ',
                                   COALESCE(AC.SGL_UF, '')) AS ENDERECO_COMPLETO,
-                           'PendenteCli' AS SITUACAO
+                           'PendenteCli' AS SITUACAO,
+                           A.COD_STATUS
                       FROM EN_AGENDAMENTO A
                      INNER JOIN SE_USUARIO U
                         ON A.COD_PRESTADOR = U.COD_USUARIO

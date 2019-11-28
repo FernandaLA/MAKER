@@ -40,7 +40,8 @@ ini_set('default_charset', 'UTF-8');
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxradiobutton.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxcalendar.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxnumberinput.js"></script>
-        <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxdatetimeinput.js"></script>      
+        <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxdatetimeinput.js"></script>
+        <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxrating.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxwindow.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtabs.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtooltip.js"></script>

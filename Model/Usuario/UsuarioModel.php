@@ -44,7 +44,8 @@ class UsuarioModel extends BaseModel
 
     function UpdateUsuario(){
         $dao = new UsuarioDao();
-        return json_encode($dao->UpdateUsuario());
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        return json_encode($dao->UpdateUsuario($this->objRequest));
     }
     
     function DeleteUsuario(){

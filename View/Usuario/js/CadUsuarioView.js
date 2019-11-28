@@ -24,7 +24,7 @@ $(function () {
             $('#method').val('UpdateUsuario');
         }
         var parametros = retornaParametros();
-        ExecutaDispatch('Usuario',$('#method').val(), parametros, retornoSalvarUsuario, "Aguarde, Salvando Usuário!");
+        ExecutaDispatch('Usuario',$('#method').val(), parametros, retornoSalvarUsuario, "Aguarde, Salvando Usuário!", "Usuario salvo com sucesso!");
     });
     
     $("#codCliente").change(function () {
@@ -34,21 +34,21 @@ $(function () {
 
 function retornoSalvarUsuario(retorno) {
     if (retorno[0]) {
-        if (retorno[1] != $("#codUsuario").val()) {
-            swal({
-                title: "Usuario salvo com sucesso!",
-                text: "A Senha para acesso é 123459.",
-                confirmButtonText: "OK",
-                type: "success",
-            });
-        } else {
-            swal({
-                title: "Usuario salvo com sucesso!",
-                showConfirmButton: false,
-                type: "success",
-                timer: 2000
-            });
-        }
+        // if (retorno[1] != $("#codUsuario").val()) {
+        //     swal({
+        //         title: "Usuario salvo com sucesso!",
+        //         text: "A Senha para acesso é 123459.",
+        //         confirmButtonText: "OK",
+        //         type: "success",
+        //     });
+        // } else {
+        //     swal({
+        //         title: "Usuario salvo com sucesso!",
+        //         showConfirmButton: false,
+        //         type: "success",
+        //         timer: 2000
+        //     });
+        // }
         $("#codUsuario").val(retorno[1]);
         CarregaGridUsuario();
     }

@@ -36,8 +36,8 @@ function montaTelaPrestador(dados) {
     var endereco = dadosPre['ENDERECO_COMPLETO'];
     var caminhoFoto = dadosPre['DSC_CAMINHO_FOTO'];
     var sglUf = dadosPre['SGL_UF'];
-    // var nota = dadosPre['NOTA_AVALIACAO'];
-    // var icon = $("#avaliacaoPrestador").html();
+    var nota = dadosPre['NOTA_AVALIACAO'];
+    var icon = $("#avaliacaoPrestador").html();
     var jornada = "";
     if(dadosPre['HRA_INICIO'] !== "" && dadosPre['HRA_FIM'] !== ""){
         jornada = dadosPre['HRA_INICIO']+" às "+dadosPre['HRA_FIM'];
@@ -63,7 +63,7 @@ function montaTelaPrestador(dados) {
     if(caminhoFoto !== '') {
         $("#fotoPerfil").attr("src", caminhoFoto);
     }
-    // $("#avaliacaoPrestador").html("Avaliação: "+ nota + icon);
+    $("#avaliacaoPrestador").html("Avaliação: "+ nota + icon);
 }
 
 function montaCategorias($cats) {

@@ -16,7 +16,10 @@ class ClienteDao extends UsuarioDao
     Public Function CarregaListaPrestadores() {
         $select = " SELECT U.COD_USUARIO,
                            CONCAT(U.NME_USUARIO, ' ', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
-                           '4,8' AS NOTA_PRESTADOR,
+                           (SELECT FORMAT(COALESCE(SUM(AA.NRO_NOTA_AVALIACAO)/COUNT(AA.NRO_NOTA_AVALIACAO), 0), 1)
+                             FROM EN_AVALIACAO AA
+                            WHERE AA.COD_USUARIO_AVALIADO = U.COD_USUARIO) AS NOTA_AVALIACAO,
+                        --    '4,8' AS NOTA_PRESTADOR,
                            U.TXT_EMAIL,
                            U.NRO_TELEFONE,
                            U.DSC_CAMINHO_FOTO,
@@ -35,7 +38,10 @@ class ClienteDao extends UsuarioDao
     Public Function CarregaListaPrestadoresPorCategoria(stdClass $obj) {
         $select = " SELECT U.COD_USUARIO,
                            CONCAT(U.NME_USUARIO, ' ', COALESCE(U.DSC_SOBRENOME, '')) AS NME_USUARIO_COMPLETO,
-                           '4,8' AS NOTA_PRESTADOR,
+                           (SELECT FORMAT(COALESCE(SUM(AA.NRO_NOTA_AVALIACAO)/COUNT(AA.NRO_NOTA_AVALIACAO), 0), 1)
+                             FROM EN_AVALIACAO AA
+                            WHERE AA.COD_USUARIO_AVALIADO = U.COD_USUARIO) AS NOTA_AVALIACAO,
+                        --    '4,8' AS NOTA_PRESTADOR,
                            U.TXT_EMAIL,
                            U.NRO_TELEFONE,
                            U.DSC_CAMINHO_FOTO,

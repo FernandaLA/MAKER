@@ -1,7 +1,7 @@
 $(function () {
     $("#ConfirmaValidacao").jqxWindow({
         autoOpen: false,
-        height: 360,
+        height: 240,
         width: 480,
         theme: 'maker',
         animationType: 'fade',
@@ -56,7 +56,7 @@ function MontaTabelaUsuario(listaUsuario) {
             selectionmode: 'singlerow',
             columns: [
                 { text: 'C&oacute;d', columntype: 'textbox', datafield: 'COD_USUARIO', width: 50 },
-                { text: 'Nome Completo', datafield: 'NME_COMPLETO', columntype: 'textbox', width: 320 },
+                { text: 'Nome Completo', datafield: 'NME_COMPLETO', columntype: 'textbox', width: 500 },
                 { text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 150 }
             ]
         });
@@ -68,7 +68,11 @@ function MontaTabelaUsuario(listaUsuario) {
         var rows = $('#listaPrestadores').jqxGrid('getdisplayrows');
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
+        $("#nmeUsuario").html($('#listaPrestadores').jqxGrid('getrowdatabyid', args.rowindex).NME_COMPLETO);
+        $("#nroCPF").html($('#listaPrestadores').jqxGrid('getrowdatabyid', args.rowindex).NRO_CPF);
         preencheCamposForm(listaUsuario[rowID]);
+        $("#linkCertificado").attr("href", "../../"+$('#listaPrestadores').jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_CERTIFICADO); 
+        $("#linkCertificado").html("LinkCertificado"); 
         $("#ConfirmaValidacao").jqxWindow("open");
     });
 }

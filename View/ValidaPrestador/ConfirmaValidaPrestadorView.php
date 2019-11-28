@@ -13,9 +13,18 @@
                 <span id="nroCPF"></span>
             </td>
         </tr>
-        <tr style="padding-top:20px;">
+    </table>
+    <table width="100%" style="padding-top:10px;">
+            <tr>
+                <td align="center" style="padding-top:10px;font-size:20px;">
+                    <a id="linkCertificado" href="" target="_blank" title="Certificado"></a>
+                </td>
+            </tr>
+    </table>
+    <table width="100%" style="padding-top:40px;">
+        <tr>
             <td>
-                <input type="button" id="btnReprovar" value="Reprovar" class="button" style="background-color: darkred;">
+                <input type="button" id="btnReprovar" value="Recusar" class="button" style="background-color: darkred;">
             </td>
             <td>
                 <input type="button" id="btnAprovar" value="Aprovar" class="button">

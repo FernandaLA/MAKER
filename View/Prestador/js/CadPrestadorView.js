@@ -51,11 +51,11 @@ $(function () {
 });
 
 function preencheCampoCartificado(rota) {
-    $("#dscCaminhoCertificado").val(rota);
+    $("#dscCaminhoCertificado").val(rota[1]);
 }
 
 function preencheCampoFotoPre(rota) {
-    $("#dscCaminhoFotoPre").val(rota);
+    $("#dscCaminhoFotoPre").val(rota[1]);
 }
 
 function montaCampoCategorias() {
@@ -70,13 +70,13 @@ function montaCampoCategorias() {
     salvarCadastroPre(categorias);
 }
 
-function retornaEnvioFoto(dado) {
-    $("#dscCaminhoFotoPre").val(dado[1]);
-}
+// function retornaEnvioFoto(dado) {
+//     $("#dscCaminhoFotoPre").val(dado[1]);
+// }
 
-function retornaEnvioCertificado(dado) {
-    $("#dscCaminhoCertificado").val(dado[1]);
-}
+// function retornaEnvioCertificado(dado) {
+//     $("#dscCaminhoCertificado").val(dado[1]);
+// }
 
 function pesquisaCepPre(){
     var parametros = 'nroCep;'+$("#nroCepPre").val()+'|verificaPermissao;N|';
@@ -169,11 +169,6 @@ function retornoSalvarPrestador(dado) {
 
 function DesabilitaCamposPre(ind) {
     $(".off").attr('Disabled', ind);
-    //$("#nroCpfPre").attr('Disabled', false);
-    //$("#dscLogradouroPre").attr('Disabled', true);
-    //$("#dscBairroPre").attr('Disabled', true);
-    //$("#dscCidadePre").attr('Disabled', true);
-    $("#sglUfPre").attr('Disabled', true);
 }
 
 $(document).ready(function() {

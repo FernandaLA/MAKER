@@ -23,7 +23,11 @@ class AvaliacaoAgendamentoModel extends BaseModel
     Public Function InsertAvaliacaoAgendamento() {
         $dao = new AvaliacaoAgendamentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->InsertAvaliacaoAgendamento($this->objRequest);
+        $result = $dao->FinalizaAgendamento($this->objRequest->codAgendamento);
+        if($result[0]) {
+            $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+            $result = $dao->InsertAvaliacaoAgendamento($this->objRequest);
+        }
         return json_encode($result);
     }
     

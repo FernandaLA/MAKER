@@ -112,12 +112,7 @@ function retornoSalvarCliente(dado) {
 }
 
 function DesabilitaCamposCli(ind) {
-    $(".cadCliente").attr('Disabled', ind);
-    $("#nroCpfCli").attr('Disabled', false);
-    $("#dscLogradouroCli").attr('Disabled', true);
-    $("#dscBairroCli").attr('Disabled', true);
-    $("#dscCidadeCli").attr('Disabled', true);
-    $("#sglUfCli").attr('Disabled', true);
+    $(".not").attr('Disabled', ind);
 }
 
 $(document).ready(function() {

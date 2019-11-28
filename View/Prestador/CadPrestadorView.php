@@ -30,9 +30,6 @@
                                     Escolher uma foto:
                                     <input type="file" name="fotoPre" id="fotoPre" class="cadPrestador off"/>
                                     <br />
-                                    <progress value="0" max="100"></progress>
-                                    <span id="porcentagem">0%</span>
-                                    <br />
                                 </div>
                                 <span style="color: #505050">
                                     Tamanho máximo: 80KB. Formatos: .jpg, .jpeg ou .png
@@ -90,17 +87,17 @@
                         </td>
                         <td>
                             <label for="dscComplementoEnderecoPre" class="titulo">Complemento</label>
-                            <input required type="text" id="dscComplementoEnderecoPre" name="dscComplementoEndereco" class="cadPrestador input">
+                            <input required type="text" id="dscComplementoEnderecoPre" name="dscComplementoEndereco" class="cadPrestador input off">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="dscBairroPre" class="titulo">Bairro *</label>
-                            <input required type="text" id="dscBairroPre" name="dscBairro" class="cadPrestador input">
+                            <input disabled required type="text" id="dscBairroPre" name="dscBairro" class="cadPrestador input">
                         </td>
                         <td>
                             <label for="dscCidadePre" class="titulo">Cidade *</label>
-                            <input required type="text" id="dscCidadePre" name="dscCidade" class="cadPrestador input">
+                            <input disabled required type="text" id="dscCidadePre" name="dscCidade" class="cadPrestador input">
                         </td>
                         <td>
                             <label for="dscEstadoPre" class="titulo">UF *</label>
@@ -130,9 +127,6 @@
                     <div style="padding-top: 10px;width: 220px;">
                         Selecione o arquivo:
                         <input type="file" name="arquivo" id="arquivo" class="cadPrestador off"/>
-                        <br />
-                        <progress value="0" max="100"></progress>
-                        <span id="porcentagem">0%</span>
                         <br />
                     </div>
                     <small style="color: #505050">

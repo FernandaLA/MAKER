@@ -446,7 +446,7 @@ function MontaCardServico(lista, nmeCampo, acao = false){
             html +="   <table width='100%'>";
             html +="    <tr><td class='labelFont14' style='font-size: 19px'>"+lista[i]['NME_USUARIO_COMPLETO']+"</td></tr>";
             html +="    <tr>";
-            html +="     <td class='labelFont14' >Avaliação: "+lista[i]['NOTA_PRESTADOR']+" <span class='oi oi-star' style='color:gold;border-color:khaki;'></span></td>";
+            html +="     <td class='labelFont14' >Avaliação: "+lista[i]['NOTA_AVALIACAO']+" <span class='oi oi-star' style='color:gold;border-color:khaki;'></span></td>";
             html +="    </tr>";
             html +="   </table>";
             html +="  </td>";
@@ -480,30 +480,6 @@ function MontaCardServico(lista, nmeCampo, acao = false){
             html +="  <td colspan='3' class='titulo' style='color: purple'>"+listaCategorias+"</td>";
             html +=" </tr>";
             html +=" </table>";
-            if(lista[i]['SITUACAO'] == 'Realizado') {
-                html +="<hr>";
-                html +="<table>";
-                html +=" <tr>";
-                html +="  <td>";
-                html +="   <button class='btn-success'>";
-                html +="    <span class='oi oi-circle-check'></span> Finalizar";
-                html +="   </button> ";
-                html +="  </td>";
-                html +=" </tr>";
-                html +="</table>";
-            }
-            if(lista[i]['SITUACAO'] == 'Confirmado') {
-                html +="<hr>";
-                html +="<table>";
-                html +=" <tr>";
-                html +="  <td>";
-                html +="   <button class='button-default'>";
-                html +="    <span class='oi oi-x'></span> Cancelar";
-                html +="   </button> ";
-                html +="  </td>";
-                html +=" </tr>";
-                html +="</table>";
-            }
             html +=" </div>";
         }
     } else {
@@ -531,7 +507,7 @@ function MontaCardAgenda(lista, nmeCampo){
             html +="   <table width='100%'>";
             html +="    <tr><td class='labelFont14' style='font-size: 19px'>"+lista[i]['NME_USUARIO_COMPLETO']+"</td></tr>";
             html +="    <tr>";
-            html +="     <td class='labelFont14' >Avaliação: "+lista[i]['NOTA_PRESTADOR']+" <span class='oi oi-star' style='color:gold;border-color:khaki;'></span></td>";
+            html +="     <td class='labelFont14' >Avaliação: "+lista[i]['NOTA_AVALIACAO']+" <span class='oi oi-star' style='color:gold;border-color:khaki;'></span></td>";
             html +="    </tr>";
             html +="   </table>";
             html +="  </td>";
@@ -567,7 +543,7 @@ function MontaCardAgenda(lista, nmeCampo){
                 html +="<table width='100%'>";
                 html +=" <tr>";
                 html +="  <td style='text-align: center;'>";
-                html +="   <button class='btn-success' style='margin: 0px;'>";
+                html +='   <button class="btn-success" onClick="javascript: AvaliarAgendamento('+lista[i]['COD_AGENDAMENTO']+', \''+lista[i]['NME_USUARIO_COMPLETO']+'\', '+lista[i]['COD_USUARIO_REF']+')" style="margin: 0px;">';
                 html +="    <span class='oi oi-circle-check'></span> Finalizar";
                 html +="   </button> ";
                 html +="  </td>";
@@ -599,6 +575,21 @@ function MontaCardAgenda(lista, nmeCampo){
                 html +="   <button class='button-default' style='margin: 0px;' onClick='javascript: CancelaAgendamento("+lista[i]['COD_AGENDAMENTO']+")'>";
                 html +="    <span class='oi oi-x'></span> Cancelar";
                 html +="   </button> ";
+                html +="  </td>";
+                html +=" </tr>";
+                html +="</table>";
+            }
+            if(lista[i]['SITUACAO'] == 'Finalizado') {
+                html +="<hr>";
+                html +="<table width='100%'>";
+                html +=" <tr>";
+                if(lista[i]['NRO_NOTA_AVALIACAO']){
+                    html +="  <td style='text-align: center;padding-left: 95px;'>";
+                    html +='  <div id="avaliacao'+lista[i]['COD_AGENDAMENTO']+'" style="margin: 0px"></div>';
+                } else {
+                    html +="  <td style='text-align: center;'>";
+                    html +='  <span class="labelFont15">Não avaliado</span>';
+                }
                 html +="  </td>";
                 html +=" </tr>";
                 html +="</table>";
