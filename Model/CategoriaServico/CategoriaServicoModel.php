@@ -10,16 +10,6 @@ class CategoriaServicoModel extends BaseModel
         }
     }
 
-    Public Function ListarCategoriaServico($Json=true) {
-        $dao = new CategoriaServicoDao();
-        $lista = $dao->ListarCategoriaServico();
-        if ($Json){
-            return json_encode($lista);
-        }else{
-            return $lista;
-        }
-    }
-
     Public Function ListarCategoriaServicoAtivo($Json=true) {
         $dao = new CategoriaServicoDao();
         $lista = $dao->ListarCategoriaServicoAtivo();
@@ -38,20 +28,6 @@ class CategoriaServicoModel extends BaseModel
         }else{
             return $lista;
         }
-    }
-
-    Public Function InsertCategoriaServico() {
-        $dao = new CategoriaServicoDao();
-        BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->InsertCategoriaServico($this->objRequest);
-        return json_encode($result);
-    }
-
-    Public Function UpdateCategoriaServico() {
-        $dao = new CategoriaServicoDao();
-        BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->UpdateCategoriaServico($this->objRequest);
-        return json_encode($result);
     }
     
 }

@@ -13,16 +13,6 @@ class PrestadorModel extends UsuarioModel
         }
     }
 
-    Public Function ListarPrestador($Json=true) {
-        $dao = new PrestadorDao();
-        $lista = $dao->ListarPrestador();
-        if ($Json){
-            return json_encode($lista);
-        }else{
-            return $lista;
-        }
-    }
-
     Public Function InsertPrestador() {
         $dao = new PrestadorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());

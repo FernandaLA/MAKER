@@ -11,16 +11,6 @@ class AgendaModel extends BaseModel
         }
     }
 
-    Public Function ListarAgenda($Json=true) {
-        $dao = new AgendaDao();
-        $lista = $dao->ListarAgenda();
-        if ($Json){
-            return json_encode($lista);
-        }else{
-            return $lista;
-        }
-    }
-
     Public Function InsertAgendamento() {
         $dao = new AgendaDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());

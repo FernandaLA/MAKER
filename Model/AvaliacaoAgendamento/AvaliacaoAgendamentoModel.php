@@ -10,16 +10,6 @@ class AvaliacaoAgendamentoModel extends BaseModel
         }
     }
 
-    Public Function CarregaAvaliacaoAgendamento($Json=true) {
-        $dao = new AvaliacaoAgendamentoDao();
-        $lista = $dao->CarregaAvaliacaoAgendamento();
-        if ($Json){
-            return json_encode($lista);
-        }else{
-            return $lista;
-        }
-    }
-
     Public Function InsertAvaliacaoAgendamento() {
         $dao = new AvaliacaoAgendamentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());

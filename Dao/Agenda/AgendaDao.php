@@ -17,10 +17,6 @@ class AgendaDao extends BaseDao
         $this->conect();
     }
 
-    Public Function ListarAgenda() {
-        return $this->MontarSelect();
-    }
-
     Public Function UpdateAgendamento(stdClass $obj) {
         return $this->MontarUpdate($obj);
     }

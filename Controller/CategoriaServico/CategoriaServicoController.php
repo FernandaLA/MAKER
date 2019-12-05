@@ -11,11 +11,6 @@ class CategoriaServicoController extends BaseController
         echo ($this->gen_redirect_and_form(BaseController::ReturnView(BaseController::getPath(), get_class($this)), $params));
     }
 
-    Public Function ListarCategoriaServico() {
-        $CategoriaServicoModel = new CategoriaServicoModel();
-        echo $CategoriaServicoModel->ListarCategoriaServico();
-    }
-
     Public Function ListarCategoriaServicoAtivo() {
         $CategoriaServicoModel = new CategoriaServicoModel();
         echo $CategoriaServicoModel->ListarCategoriaServicoAtivo();
@@ -24,15 +19,5 @@ class CategoriaServicoController extends BaseController
     Public Function ListarCategoriaServicoPrestador() {
         $CategoriaServicoModel = new CategoriaServicoModel();
         echo $CategoriaServicoModel->ListarCategoriaServicoPrestador();
-    }
-    
-    Public Function InsertCategoriaServico() {
-        $CategoriaServicoModel = new CategoriaServicoModel();
-        echo $CategoriaServicoModel->InsertCategoriaServico();
-    }
-
-    Public Function UpdateCategoriaServico() {
-        $CategoriaServicoModel = new CategoriaServicoModel();
-        echo $CategoriaServicoModel->UpdateCategoriaServico();
     }
 }
