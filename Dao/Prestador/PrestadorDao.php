@@ -6,10 +6,6 @@ class PrestadorDao extends UsuarioDao
     Public Function PrestadorDao() {
         $this->conect();
     }
-
-    Public Function ListarPrestador() {
-        return $this->MontarSelect();
-    }
     
     Public Function UpdatePrestador(stdClass $obj) {
         return $this->MontarUpdate($obj);

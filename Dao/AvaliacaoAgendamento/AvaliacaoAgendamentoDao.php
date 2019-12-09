@@ -16,10 +16,6 @@ class AvaliacaoAgendamentoDao extends BaseDao
         $this->conect();
     }
 
-    Public Function CarregaAvaliacaoAgendamento() {
-        return $this->MontarSelect();
-    }
-
     Public Function FinalizaAgendamento($codAgendamento) {
         $update = "UPDATE EN_AGENDAMENTO SET COD_STATUS = 4 WHERE COD_AGENDAMENTO =".$codAgendamento;
         return $this->insertDB($update);

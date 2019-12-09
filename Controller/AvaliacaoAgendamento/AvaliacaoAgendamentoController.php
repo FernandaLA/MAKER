@@ -10,11 +10,6 @@ class AvaliacaoAgendamentoController extends BaseController
         $params = array();
         echo $this->gen_redirect_and_form(BaseController::ReturnView(BaseController::getPath(), get_class($this)), $params);
     }
-
-    Public Function CarregaAvaliacaoAgendamento() {
-        $AvaliacaoAgendamentoModel = new AvaliacaoAgendamentoModel();
-        echo $AvaliacaoAgendamentoModel->CarregaAvaliacaoAgendamento();
-    }
     
     Public Function InsertAvaliacaoAgendamento() {
         $AvaliacaoAgendamentoModel = new AvaliacaoAgendamentoModel();
